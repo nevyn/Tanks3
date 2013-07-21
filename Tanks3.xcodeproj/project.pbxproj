@@ -11,20 +11,20 @@
 		059CD5B7179C22F500B5981C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B6179C22F500B5981C /* CoreGraphics.framework */; };
 		059CD5B9179C22F500B5981C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B8179C22F500B5981C /* UIKit.framework */; };
 		059CD5BB179C22F500B5981C /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5BA179C22F500B5981C /* SpriteKit.framework */; };
-		059CD5C1179C22F500B5981C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5BF179C22F500B5981C /* InfoPlist.strings */; };
-		059CD5C3179C22F500B5981C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5C2179C22F500B5981C /* main.m */; };
-		059CD5C7179C22F500B5981C /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5C6179C22F500B5981C /* MVAppDelegate.m */; };
-		059CD5CA179C22F500B5981C /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5C8179C22F500B5981C /* Main_iPhone.storyboard */; };
-		059CD5CD179C22F500B5981C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5CB179C22F500B5981C /* Main_iPad.storyboard */; };
-		059CD5D0179C22F500B5981C /* MVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5CF179C22F500B5981C /* MVViewController.m */; };
-		059CD5D3179C22F500B5981C /* MVMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5D2179C22F500B5981C /* MVMyScene.m */; };
-		059CD5D5179C22F500B5981C /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5D4179C22F500B5981C /* Spaceship.png */; };
-		059CD5D7179C22F500B5981C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5D6179C22F500B5981C /* Images.xcassets */; };
 		059CD5DE179C22F500B5981C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5DD179C22F500B5981C /* XCTest.framework */; };
 		059CD5DF179C22F500B5981C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B4179C22F500B5981C /* Foundation.framework */; };
 		059CD5E0179C22F500B5981C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B8179C22F500B5981C /* UIKit.framework */; };
 		059CD5E8179C22F500B5981C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5E6179C22F500B5981C /* InfoPlist.strings */; };
 		059CD5EA179C22F500B5981C /* Tanks3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5E9179C22F500B5981C /* Tanks3Tests.m */; };
+		059CD606179C233E00B5981C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5F4179C233E00B5981C /* Main_iPad.storyboard */; };
+		059CD607179C233E00B5981C /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5F6179C233E00B5981C /* Main_iPhone.storyboard */; };
+		059CD608179C233E00B5981C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5F8179C233E00B5981C /* InfoPlist.strings */; };
+		059CD609179C233E00B5981C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5FA179C233E00B5981C /* Images.xcassets */; };
+		059CD60A179C233E00B5981C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FB179C233E00B5981C /* main.m */; };
+		059CD60B179C233E00B5981C /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FD179C233E00B5981C /* MVAppDelegate.m */; };
+		059CD60C179C233E00B5981C /* MVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FF179C233E00B5981C /* MVViewController.m */; };
+		059CD60E179C233E00B5981C /* MVMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* MVMyScene.m */; };
+		059CD60F179C233E00B5981C /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 059CD605179C233E00B5981C /* Spaceship.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,25 +43,25 @@
 		059CD5B6179C22F500B5981C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		059CD5B8179C22F500B5981C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		059CD5BA179C22F500B5981C /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
-		059CD5BE179C22F500B5981C /* Tanks3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tanks3-Info.plist"; sourceTree = "<group>"; };
-		059CD5C0179C22F500B5981C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		059CD5C2179C22F500B5981C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		059CD5C4179C22F500B5981C /* Tanks3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tanks3-Prefix.pch"; sourceTree = "<group>"; };
-		059CD5C5179C22F500B5981C /* MVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVAppDelegate.h; sourceTree = "<group>"; };
-		059CD5C6179C22F500B5981C /* MVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVAppDelegate.m; sourceTree = "<group>"; };
-		059CD5C9179C22F500B5981C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		059CD5CC179C22F500B5981C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		059CD5CE179C22F500B5981C /* MVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVViewController.h; sourceTree = "<group>"; };
-		059CD5CF179C22F500B5981C /* MVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVViewController.m; sourceTree = "<group>"; };
-		059CD5D1179C22F500B5981C /* MVMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVMyScene.h; sourceTree = "<group>"; };
-		059CD5D2179C22F500B5981C /* MVMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVMyScene.m; sourceTree = "<group>"; };
-		059CD5D4179C22F500B5981C /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
-		059CD5D6179C22F500B5981C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		059CD5DC179C22F500B5981C /* Tanks3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tanks3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		059CD5DD179C22F500B5981C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		059CD5E5179C22F500B5981C /* Tanks3Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tanks3Tests-Info.plist"; sourceTree = "<group>"; };
 		059CD5E7179C22F500B5981C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		059CD5E9179C22F500B5981C /* Tanks3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tanks3Tests.m; sourceTree = "<group>"; };
+		059CD5F5179C233E00B5981C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		059CD5F7179C233E00B5981C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		059CD5F9179C233E00B5981C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		059CD5FA179C233E00B5981C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		059CD5FB179C233E00B5981C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		059CD5FC179C233E00B5981C /* MVAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVAppDelegate.h; sourceTree = "<group>"; };
+		059CD5FD179C233E00B5981C /* MVAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVAppDelegate.m; sourceTree = "<group>"; };
+		059CD5FE179C233E00B5981C /* MVViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVViewController.h; sourceTree = "<group>"; };
+		059CD5FF179C233E00B5981C /* MVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVViewController.m; sourceTree = "<group>"; };
+		059CD600179C233E00B5981C /* Tanks3-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Tanks3-Info.plist"; sourceTree = "<group>"; };
+		059CD601179C233E00B5981C /* Tanks3-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tanks3-Prefix.pch"; sourceTree = "<group>"; };
+		059CD603179C233E00B5981C /* MVMyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMyScene.h; sourceTree = "<group>"; };
+		059CD604179C233E00B5981C /* MVMyScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMyScene.m; sourceTree = "<group>"; };
+		059CD605179C233E00B5981C /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,8 @@
 		059CD5A8179C22F500B5981C = {
 			isa = PBXGroup;
 			children = (
-				059CD5BC179C22F500B5981C /* Tanks3 */,
+				059CD5F3179C233E00B5981C /* iOS */,
+				059CD602179C233E00B5981C /* Shared */,
 				059CD5E3179C22F500B5981C /* Tanks3Tests */,
 				059CD5B3179C22F500B5981C /* Frameworks */,
 				059CD5B2179C22F500B5981C /* Products */,
@@ -120,35 +121,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		059CD5BC179C22F500B5981C /* Tanks3 */ = {
-			isa = PBXGroup;
-			children = (
-				059CD5C5179C22F500B5981C /* MVAppDelegate.h */,
-				059CD5C6179C22F500B5981C /* MVAppDelegate.m */,
-				059CD5C8179C22F500B5981C /* Main_iPhone.storyboard */,
-				059CD5CB179C22F500B5981C /* Main_iPad.storyboard */,
-				059CD5CE179C22F500B5981C /* MVViewController.h */,
-				059CD5CF179C22F500B5981C /* MVViewController.m */,
-				059CD5D1179C22F500B5981C /* MVMyScene.h */,
-				059CD5D2179C22F500B5981C /* MVMyScene.m */,
-				059CD5D4179C22F500B5981C /* Spaceship.png */,
-				059CD5D6179C22F500B5981C /* Images.xcassets */,
-				059CD5BD179C22F500B5981C /* Supporting Files */,
-			);
-			path = Tanks3;
-			sourceTree = "<group>";
-		};
-		059CD5BD179C22F500B5981C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				059CD5BE179C22F500B5981C /* Tanks3-Info.plist */,
-				059CD5BF179C22F500B5981C /* InfoPlist.strings */,
-				059CD5C2179C22F500B5981C /* main.m */,
-				059CD5C4179C22F500B5981C /* Tanks3-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		059CD5E3179C22F500B5981C /* Tanks3Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +137,34 @@
 				059CD5E6179C22F500B5981C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		059CD5F3179C233E00B5981C /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				059CD5F4179C233E00B5981C /* Main_iPad.storyboard */,
+				059CD5F6179C233E00B5981C /* Main_iPhone.storyboard */,
+				059CD5F8179C233E00B5981C /* InfoPlist.strings */,
+				059CD5FA179C233E00B5981C /* Images.xcassets */,
+				059CD5FB179C233E00B5981C /* main.m */,
+				059CD5FC179C233E00B5981C /* MVAppDelegate.h */,
+				059CD5FD179C233E00B5981C /* MVAppDelegate.m */,
+				059CD5FE179C233E00B5981C /* MVViewController.h */,
+				059CD5FF179C233E00B5981C /* MVViewController.m */,
+				059CD600179C233E00B5981C /* Tanks3-Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		059CD602179C233E00B5981C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				059CD601179C233E00B5981C /* Tanks3-Prefix.pch */,
+				059CD603179C233E00B5981C /* MVMyScene.h */,
+				059CD604179C233E00B5981C /* MVMyScene.m */,
+				059CD605179C233E00B5981C /* Spaceship.png */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,11 +244,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				059CD5D5179C22F500B5981C /* Spaceship.png in Resources */,
-				059CD5D7179C22F500B5981C /* Images.xcassets in Resources */,
-				059CD5CD179C22F500B5981C /* Main_iPad.storyboard in Resources */,
-				059CD5CA179C22F500B5981C /* Main_iPhone.storyboard in Resources */,
-				059CD5C1179C22F500B5981C /* InfoPlist.strings in Resources */,
+				059CD607179C233E00B5981C /* Main_iPhone.storyboard in Resources */,
+				059CD609179C233E00B5981C /* Images.xcassets in Resources */,
+				059CD608179C233E00B5981C /* InfoPlist.strings in Resources */,
+				059CD606179C233E00B5981C /* Main_iPad.storyboard in Resources */,
+				059CD60F179C233E00B5981C /* Spaceship.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,10 +267,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				059CD5C3179C22F500B5981C /* main.m in Sources */,
-				059CD5D3179C22F500B5981C /* MVMyScene.m in Sources */,
-				059CD5D0179C22F500B5981C /* MVViewController.m in Sources */,
-				059CD5C7179C22F500B5981C /* MVAppDelegate.m in Sources */,
+				059CD60A179C233E00B5981C /* main.m in Sources */,
+				059CD60E179C233E00B5981C /* MVMyScene.m in Sources */,
+				059CD60C179C233E00B5981C /* MVViewController.m in Sources */,
+				059CD60B179C233E00B5981C /* MVAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,34 +293,34 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		059CD5BF179C22F500B5981C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				059CD5C0179C22F500B5981C /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		059CD5C8179C22F500B5981C /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				059CD5C9179C22F500B5981C /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		059CD5CB179C22F500B5981C /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				059CD5CC179C22F500B5981C /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		059CD5E6179C22F500B5981C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				059CD5E7179C22F500B5981C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		059CD5F4179C233E00B5981C /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				059CD5F5179C233E00B5981C /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		059CD5F6179C233E00B5981C /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				059CD5F7179C233E00B5981C /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		059CD5F8179C233E00B5981C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				059CD5F9179C233E00B5981C /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -404,8 +404,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tanks3/Tanks3-Prefix.pch";
-				INFOPLIST_FILE = "Tanks3/Tanks3-Info.plist";
+				GCC_PREFIX_HEADER = "Shared/Tanks3-Prefix.pch";
+				INFOPLIST_FILE = "iOS/Tanks3-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
@@ -418,8 +418,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tanks3/Tanks3-Prefix.pch";
-				INFOPLIST_FILE = "Tanks3/Tanks3-Info.plist";
+				GCC_PREFIX_HEADER = "Shared/Tanks3-Prefix.pch";
+				INFOPLIST_FILE = "iOS/Tanks3-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
@@ -485,6 +485,7 @@
 				059CD5EF179C22F500B5981C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		059CD5F0179C22F500B5981C /* Build configuration list for PBXNativeTarget "Tanks3Tests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +494,7 @@
 				059CD5F2179C22F500B5981C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
