@@ -28,6 +28,7 @@
     return self;
 }
 
+#if TARGET_OS_IPHONE
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
@@ -45,6 +46,24 @@
         [self addChild:sprite];
     }
 }
+#else
+-(void)mouseDown:(NSEvent *)theEvent {
+     /* Called when a mouse click occurs */
+    
+    CGPoint location = [theEvent locationInNode:self];
+    
+    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+    
+    sprite.position = location;
+    sprite.scale = 0.5;
+    
+    SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
+    
+    [sprite runAction:[SKAction repeatActionForever:action]];
+    
+    [self addChild:sprite];
+}
+#endif
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */

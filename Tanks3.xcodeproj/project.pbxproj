@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051BCBAB179C24440065B55D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 051BCBAA179C24440065B55D /* Cocoa.framework */; };
+		051BCBAC179C24440065B55D /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5BA179C22F500B5981C /* SpriteKit.framework */; };
+		051BCBB6179C24440065B55D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 051BCBB4179C24440065B55D /* InfoPlist.strings */; };
+		051BCBB8179C24440065B55D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 051BCBB7179C24440065B55D /* main.m */; };
+		051BCBBC179C24440065B55D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 051BCBBA179C24440065B55D /* Credits.rtf */; };
+		051BCBBE179C24440065B55D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 051BCBBD179C24440065B55D /* MainMenu.xib */; };
+		051BCBC3179C24440065B55D /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 051BCBC2179C24440065B55D /* MVAppDelegate.m */; };
+		051BCBC8179C24440065B55D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051BCBC7179C24440065B55D /* Images.xcassets */; };
+		051BCBE0179C248F0065B55D /* MVMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* MVMyScene.m */; };
+		051BCBE1179C24920065B55D /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 059CD605179C233E00B5981C /* Spaceship.png */; };
 		059CD5B5179C22F500B5981C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B4179C22F500B5981C /* Foundation.framework */; };
 		059CD5B7179C22F500B5981C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B6179C22F500B5981C /* CoreGraphics.framework */; };
 		059CD5B9179C22F500B5981C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B8179C22F500B5981C /* UIKit.framework */; };
@@ -38,6 +48,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		051BCBA9179C24440065B55D /* MacTanks3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacTanks3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		051BCBAA179C24440065B55D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		051BCBAE179C24440065B55D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		051BCBAF179C24440065B55D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		051BCBB0179C24440065B55D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		051BCBB3179C24440065B55D /* MacTanks3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MacTanks3-Info.plist"; sourceTree = "<group>"; };
+		051BCBB5179C24440065B55D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		051BCBB7179C24440065B55D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		051BCBB9179C24440065B55D /* MacTanks3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MacTanks3-Prefix.pch"; sourceTree = "<group>"; };
+		051BCBBB179C24440065B55D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		051BCBBD179C24440065B55D /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		051BCBC2179C24440065B55D /* MVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVAppDelegate.m; sourceTree = "<group>"; };
+		051BCBC4179C24440065B55D /* MVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVAppDelegate.h; sourceTree = "<group>"; };
+		051BCBC7179C24440065B55D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		059CD5B1179C22F500B5981C /* Tanks3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tanks3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		059CD5B4179C22F500B5981C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		059CD5B6179C22F500B5981C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,6 +89,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		051BCBA6179C24440065B55D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				051BCBAC179C24440065B55D /* SpriteKit.framework in Frameworks */,
+				051BCBAB179C24440065B55D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		059CD5AE179C22F500B5981C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -89,10 +122,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		051BCBAD179C24440065B55D /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				051BCBAE179C24440065B55D /* AppKit.framework */,
+				051BCBAF179C24440065B55D /* CoreData.framework */,
+				051BCBB0179C24440065B55D /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		051BCBB1179C24440065B55D /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				051BCBBD179C24440065B55D /* MainMenu.xib */,
+				051BCBC2179C24440065B55D /* MVAppDelegate.m */,
+				051BCBC4179C24440065B55D /* MVAppDelegate.h */,
+				051BCBC7179C24440065B55D /* Images.xcassets */,
+				051BCBB2179C24440065B55D /* Supporting Files */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		051BCBB2179C24440065B55D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				051BCBB3179C24440065B55D /* MacTanks3-Info.plist */,
+				051BCBB4179C24440065B55D /* InfoPlist.strings */,
+				051BCBB7179C24440065B55D /* main.m */,
+				051BCBB9179C24440065B55D /* MacTanks3-Prefix.pch */,
+				051BCBBA179C24440065B55D /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		059CD5A8179C22F500B5981C = {
 			isa = PBXGroup;
 			children = (
 				059CD5F3179C233E00B5981C /* iOS */,
+				051BCBB1179C24440065B55D /* Mac */,
 				059CD602179C233E00B5981C /* Shared */,
 				059CD5E3179C22F500B5981C /* Tanks3Tests */,
 				059CD5B3179C22F500B5981C /* Frameworks */,
@@ -105,6 +173,7 @@
 			children = (
 				059CD5B1179C22F500B5981C /* Tanks3.app */,
 				059CD5DC179C22F500B5981C /* Tanks3Tests.xctest */,
+				051BCBA9179C24440065B55D /* MacTanks3.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +186,8 @@
 				059CD5B8179C22F500B5981C /* UIKit.framework */,
 				059CD5BA179C22F500B5981C /* SpriteKit.framework */,
 				059CD5DD179C22F500B5981C /* XCTest.framework */,
+				051BCBAA179C24440065B55D /* Cocoa.framework */,
+				051BCBAD179C24440065B55D /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,6 +241,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		051BCBA8179C24440065B55D /* MacTanks3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 051BCBDA179C24440065B55D /* Build configuration list for PBXNativeTarget "MacTanks3" */;
+			buildPhases = (
+				051BCBA5179C24440065B55D /* Sources */,
+				051BCBA6179C24440065B55D /* Frameworks */,
+				051BCBA7179C24440065B55D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacTanks3;
+			productName = MacTanks3;
+			productReference = 051BCBA9179C24440065B55D /* MacTanks3.app */;
+			productType = "com.apple.product-type.application";
+		};
 		059CD5B0179C22F500B5981C /* Tanks3 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 059CD5ED179C22F500B5981C /* Build configuration list for PBXNativeTarget "Tanks3" */;
@@ -235,11 +323,24 @@
 			targets = (
 				059CD5B0179C22F500B5981C /* Tanks3 */,
 				059CD5DB179C22F500B5981C /* Tanks3Tests */,
+				051BCBA8179C24440065B55D /* MacTanks3 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		051BCBA7179C24440065B55D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				051BCBE1179C24920065B55D /* Spaceship.png in Resources */,
+				051BCBC8179C24440065B55D /* Images.xcassets in Resources */,
+				051BCBB6179C24440065B55D /* InfoPlist.strings in Resources */,
+				051BCBBC179C24440065B55D /* Credits.rtf in Resources */,
+				051BCBBE179C24440065B55D /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		059CD5AF179C22F500B5981C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -263,6 +364,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		051BCBA5179C24440065B55D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				051BCBE0179C248F0065B55D /* MVMyScene.m in Sources */,
+				051BCBB8179C24440065B55D /* main.m in Sources */,
+				051BCBC3179C24440065B55D /* MVAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		059CD5AD179C22F500B5981C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -293,6 +404,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		051BCBB4179C24440065B55D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				051BCBB5179C24440065B55D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		051BCBBA179C24440065B55D /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				051BCBBB179C24440065B55D /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
 		059CD5E6179C22F500B5981C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -328,6 +455,55 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		051BCBDB179C24440065B55D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Shared/Tanks3-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "Mac/MacTanks3-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		051BCBDC179C24440065B55D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Shared/Tanks3-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "Mac/MacTanks3-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		059CD5EB179C22F500B5981C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -469,6 +645,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		051BCBDA179C24440065B55D /* Build configuration list for PBXNativeTarget "MacTanks3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				051BCBDB179C24440065B55D /* Debug */,
+				051BCBDC179C24440065B55D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		059CD5AC179C22F500B5981C /* Build configuration list for PBXProject "Tanks3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
