@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		059CD5B5179C22F500B5981C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B4179C22F500B5981C /* Foundation.framework */; };
+		059CD5B7179C22F500B5981C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B6179C22F500B5981C /* CoreGraphics.framework */; };
+		059CD5B9179C22F500B5981C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B8179C22F500B5981C /* UIKit.framework */; };
+		059CD5BB179C22F500B5981C /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5BA179C22F500B5981C /* SpriteKit.framework */; };
+		059CD5C1179C22F500B5981C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5BF179C22F500B5981C /* InfoPlist.strings */; };
+		059CD5C3179C22F500B5981C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5C2179C22F500B5981C /* main.m */; };
+		059CD5C7179C22F500B5981C /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5C6179C22F500B5981C /* MVAppDelegate.m */; };
+		059CD5CA179C22F500B5981C /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5C8179C22F500B5981C /* Main_iPhone.storyboard */; };
+		059CD5CD179C22F500B5981C /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5CB179C22F500B5981C /* Main_iPad.storyboard */; };
+		059CD5D0179C22F500B5981C /* MVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5CF179C22F500B5981C /* MVViewController.m */; };
+		059CD5D3179C22F500B5981C /* MVMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5D2179C22F500B5981C /* MVMyScene.m */; };
+		059CD5D5179C22F500B5981C /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5D4179C22F500B5981C /* Spaceship.png */; };
+		059CD5D7179C22F500B5981C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5D6179C22F500B5981C /* Images.xcassets */; };
+		059CD5DE179C22F500B5981C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5DD179C22F500B5981C /* XCTest.framework */; };
+		059CD5DF179C22F500B5981C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B4179C22F500B5981C /* Foundation.framework */; };
+		059CD5E0179C22F500B5981C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B8179C22F500B5981C /* UIKit.framework */; };
+		059CD5E8179C22F500B5981C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 059CD5E6179C22F500B5981C /* InfoPlist.strings */; };
+		059CD5EA179C22F500B5981C /* Tanks3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5E9179C22F500B5981C /* Tanks3Tests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		059CD5E1179C22F500B5981C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 059CD5A9179C22F500B5981C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 059CD5B0179C22F500B5981C;
+			remoteInfo = Tanks3;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		059CD5B1179C22F500B5981C /* Tanks3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tanks3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		059CD5B4179C22F500B5981C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		059CD5B6179C22F500B5981C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		059CD5B8179C22F500B5981C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		059CD5BA179C22F500B5981C /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		059CD5BE179C22F500B5981C /* Tanks3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tanks3-Info.plist"; sourceTree = "<group>"; };
+		059CD5C0179C22F500B5981C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		059CD5C2179C22F500B5981C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		059CD5C4179C22F500B5981C /* Tanks3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tanks3-Prefix.pch"; sourceTree = "<group>"; };
+		059CD5C5179C22F500B5981C /* MVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVAppDelegate.h; sourceTree = "<group>"; };
+		059CD5C6179C22F500B5981C /* MVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVAppDelegate.m; sourceTree = "<group>"; };
+		059CD5C9179C22F500B5981C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		059CD5CC179C22F500B5981C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		059CD5CE179C22F500B5981C /* MVViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVViewController.h; sourceTree = "<group>"; };
+		059CD5CF179C22F500B5981C /* MVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVViewController.m; sourceTree = "<group>"; };
+		059CD5D1179C22F500B5981C /* MVMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVMyScene.h; sourceTree = "<group>"; };
+		059CD5D2179C22F500B5981C /* MVMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVMyScene.m; sourceTree = "<group>"; };
+		059CD5D4179C22F500B5981C /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		059CD5D6179C22F500B5981C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		059CD5DC179C22F500B5981C /* Tanks3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tanks3Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		059CD5DD179C22F500B5981C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		059CD5E5179C22F500B5981C /* Tanks3Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tanks3Tests-Info.plist"; sourceTree = "<group>"; };
+		059CD5E7179C22F500B5981C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		059CD5E9179C22F500B5981C /* Tanks3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tanks3Tests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		059CD5AE179C22F500B5981C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				059CD5B7179C22F500B5981C /* CoreGraphics.framework in Frameworks */,
+				059CD5B9179C22F500B5981C /* UIKit.framework in Frameworks */,
+				059CD5BB179C22F500B5981C /* SpriteKit.framework in Frameworks */,
+				059CD5B5179C22F500B5981C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		059CD5D9179C22F500B5981C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				059CD5DE179C22F500B5981C /* XCTest.framework in Frameworks */,
+				059CD5E0179C22F500B5981C /* UIKit.framework in Frameworks */,
+				059CD5DF179C22F500B5981C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		059CD5A8179C22F500B5981C = {
+			isa = PBXGroup;
+			children = (
+				059CD5BC179C22F500B5981C /* Tanks3 */,
+				059CD5E3179C22F500B5981C /* Tanks3Tests */,
+				059CD5B3179C22F500B5981C /* Frameworks */,
+				059CD5B2179C22F500B5981C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		059CD5B2179C22F500B5981C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				059CD5B1179C22F500B5981C /* Tanks3.app */,
+				059CD5DC179C22F500B5981C /* Tanks3Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		059CD5B3179C22F500B5981C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				059CD5B4179C22F500B5981C /* Foundation.framework */,
+				059CD5B6179C22F500B5981C /* CoreGraphics.framework */,
+				059CD5B8179C22F500B5981C /* UIKit.framework */,
+				059CD5BA179C22F500B5981C /* SpriteKit.framework */,
+				059CD5DD179C22F500B5981C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		059CD5BC179C22F500B5981C /* Tanks3 */ = {
+			isa = PBXGroup;
+			children = (
+				059CD5C5179C22F500B5981C /* MVAppDelegate.h */,
+				059CD5C6179C22F500B5981C /* MVAppDelegate.m */,
+				059CD5C8179C22F500B5981C /* Main_iPhone.storyboard */,
+				059CD5CB179C22F500B5981C /* Main_iPad.storyboard */,
+				059CD5CE179C22F500B5981C /* MVViewController.h */,
+				059CD5CF179C22F500B5981C /* MVViewController.m */,
+				059CD5D1179C22F500B5981C /* MVMyScene.h */,
+				059CD5D2179C22F500B5981C /* MVMyScene.m */,
+				059CD5D4179C22F500B5981C /* Spaceship.png */,
+				059CD5D6179C22F500B5981C /* Images.xcassets */,
+				059CD5BD179C22F500B5981C /* Supporting Files */,
+			);
+			path = Tanks3;
+			sourceTree = "<group>";
+		};
+		059CD5BD179C22F500B5981C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				059CD5BE179C22F500B5981C /* Tanks3-Info.plist */,
+				059CD5BF179C22F500B5981C /* InfoPlist.strings */,
+				059CD5C2179C22F500B5981C /* main.m */,
+				059CD5C4179C22F500B5981C /* Tanks3-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		059CD5E3179C22F500B5981C /* Tanks3Tests */ = {
+			isa = PBXGroup;
+			children = (
+				059CD5E9179C22F500B5981C /* Tanks3Tests.m */,
+				059CD5E4179C22F500B5981C /* Supporting Files */,
+			);
+			path = Tanks3Tests;
+			sourceTree = "<group>";
+		};
+		059CD5E4179C22F500B5981C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				059CD5E5179C22F500B5981C /* Tanks3Tests-Info.plist */,
+				059CD5E6179C22F500B5981C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		059CD5B0179C22F500B5981C /* Tanks3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 059CD5ED179C22F500B5981C /* Build configuration list for PBXNativeTarget "Tanks3" */;
+			buildPhases = (
+				059CD5AD179C22F500B5981C /* Sources */,
+				059CD5AE179C22F500B5981C /* Frameworks */,
+				059CD5AF179C22F500B5981C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tanks3;
+			productName = Tanks3;
+			productReference = 059CD5B1179C22F500B5981C /* Tanks3.app */;
+			productType = "com.apple.product-type.application";
+		};
+		059CD5DB179C22F500B5981C /* Tanks3Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 059CD5F0179C22F500B5981C /* Build configuration list for PBXNativeTarget "Tanks3Tests" */;
+			buildPhases = (
+				059CD5D8179C22F500B5981C /* Sources */,
+				059CD5D9179C22F500B5981C /* Frameworks */,
+				059CD5DA179C22F500B5981C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				059CD5E2179C22F500B5981C /* PBXTargetDependency */,
+			);
+			name = Tanks3Tests;
+			productName = Tanks3Tests;
+			productReference = 059CD5DC179C22F500B5981C /* Tanks3Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		059CD5A9179C22F500B5981C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MV;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = Mastervone;
+				TargetAttributes = {
+					059CD5DB179C22F500B5981C = {
+						TestTargetID = 059CD5B0179C22F500B5981C;
+					};
+				};
+			};
+			buildConfigurationList = 059CD5AC179C22F500B5981C /* Build configuration list for PBXProject "Tanks3" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 059CD5A8179C22F500B5981C;
+			productRefGroup = 059CD5B2179C22F500B5981C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				059CD5B0179C22F500B5981C /* Tanks3 */,
+				059CD5DB179C22F500B5981C /* Tanks3Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		059CD5AF179C22F500B5981C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				059CD5D5179C22F500B5981C /* Spaceship.png in Resources */,
+				059CD5D7179C22F500B5981C /* Images.xcassets in Resources */,
+				059CD5CD179C22F500B5981C /* Main_iPad.storyboard in Resources */,
+				059CD5CA179C22F500B5981C /* Main_iPhone.storyboard in Resources */,
+				059CD5C1179C22F500B5981C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		059CD5DA179C22F500B5981C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				059CD5E8179C22F500B5981C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		059CD5AD179C22F500B5981C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				059CD5C3179C22F500B5981C /* main.m in Sources */,
+				059CD5D3179C22F500B5981C /* MVMyScene.m in Sources */,
+				059CD5D0179C22F500B5981C /* MVViewController.m in Sources */,
+				059CD5C7179C22F500B5981C /* MVAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		059CD5D8179C22F500B5981C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				059CD5EA179C22F500B5981C /* Tanks3Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		059CD5E2179C22F500B5981C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 059CD5B0179C22F500B5981C /* Tanks3 */;
+			targetProxy = 059CD5E1179C22F500B5981C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		059CD5BF179C22F500B5981C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				059CD5C0179C22F500B5981C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		059CD5C8179C22F500B5981C /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				059CD5C9179C22F500B5981C /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		059CD5CB179C22F500B5981C /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				059CD5CC179C22F500B5981C /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		059CD5E6179C22F500B5981C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				059CD5E7179C22F500B5981C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		059CD5EB179C22F500B5981C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		059CD5EC179C22F500B5981C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		059CD5EE179C22F500B5981C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tanks3/Tanks3-Prefix.pch";
+				INFOPLIST_FILE = "Tanks3/Tanks3-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		059CD5EF179C22F500B5981C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tanks3/Tanks3-Prefix.pch";
+				INFOPLIST_FILE = "Tanks3/Tanks3-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		059CD5F1179C22F500B5981C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tanks3.app/Tanks3";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tanks3/Tanks3-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Tanks3Tests/Tanks3Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		059CD5F2179C22F500B5981C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tanks3.app/Tanks3";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tanks3/Tanks3-Prefix.pch";
+				INFOPLIST_FILE = "Tanks3Tests/Tanks3Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		059CD5AC179C22F500B5981C /* Build configuration list for PBXProject "Tanks3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				059CD5EB179C22F500B5981C /* Debug */,
+				059CD5EC179C22F500B5981C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		059CD5ED179C22F500B5981C /* Build configuration list for PBXNativeTarget "Tanks3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				059CD5EE179C22F500B5981C /* Debug */,
+				059CD5EF179C22F500B5981C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		059CD5F0179C22F500B5981C /* Build configuration list for PBXNativeTarget "Tanks3Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				059CD5F1179C22F500B5981C /* Debug */,
+				059CD5F2179C22F500B5981C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 059CD5A9179C22F500B5981C /* Project object */;
+}
