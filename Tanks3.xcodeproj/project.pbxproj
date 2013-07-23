@@ -68,6 +68,8 @@
 		38ED0718179F354F001D8294 /* TankEnemyTank.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ED0717179F354F001D8294 /* TankEnemyTank.m */; };
 		38ED071A179F354F001D8294 /* TankEnemyTank.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ED0717179F354F001D8294 /* TankEnemyTank.m */; };
 		995920B6179F3B1F007C6456 /* TankTankController.m in Sources */ = {isa = PBXBuildFile; fileRef = 995920B5179F3B1F007C6456 /* TankTankController.m */; };
+		995920BA179F3F98007C6456 /* TankKeyboardInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 995920B9179F3F98007C6456 /* TankKeyboardInputController.m */; };
+		995920BB179F3F98007C6456 /* TankKeyboardInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 995920B9179F3F98007C6456 /* TankKeyboardInputController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +176,8 @@
 		38ED0717179F354F001D8294 /* TankEnemyTank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankEnemyTank.m; sourceTree = "<group>"; };
 		995920B4179F3B1F007C6456 /* TankTankController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankTankController.h; sourceTree = "<group>"; };
 		995920B5179F3B1F007C6456 /* TankTankController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankTankController.m; sourceTree = "<group>"; };
+		995920B8179F3F98007C6456 /* TankKeyboardInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankKeyboardInputController.h; sourceTree = "<group>"; };
+		995920B9179F3F98007C6456 /* TankKeyboardInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankKeyboardInputController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +394,8 @@
 		995920AF179F32A9007C6456 /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
+				995920B8179F3F98007C6456 /* TankKeyboardInputController.h */,
+				995920B9179F3F98007C6456 /* TankKeyboardInputController.m */,
 			);
 			name = Inputs;
 			sourceTree = "<group>";
@@ -576,6 +582,7 @@
 				0598EF05179EB97400EAD12D /* TankTank.m in Sources */,
 				051BCBB8179C24440065B55D /* main.m in Sources */,
 				0598EF16179EC0BD00EAD12D /* TankMenuScene.m in Sources */,
+				995920BB179F3F98007C6456 /* TankKeyboardInputController.m in Sources */,
 				38ED071A179F354F001D8294 /* TankEnemyTank.m in Sources */,
 				0598EF20179ED40C00EAD12D /* Vector2.m in Sources */,
 				0598EF22179ED40C00EAD12D /* BNZLine.m in Sources */,
@@ -598,6 +605,7 @@
 				0598EF15179EC0BD00EAD12D /* TankMenuScene.m in Sources */,
 				0598EF08179EB9D200EAD12D /* TankLevel.m in Sources */,
 				0598EEF3179EB18600EAD12D /* TankGame.m in Sources */,
+				995920BA179F3F98007C6456 /* TankKeyboardInputController.m in Sources */,
 				059CD60C179C233E00B5981C /* MVViewController.m in Sources */,
 				059CD60B179C233E00B5981C /* MVAppDelegate.m in Sources */,
 				0598EF26179ED61900EAD12D /* TankMine.m in Sources */,
