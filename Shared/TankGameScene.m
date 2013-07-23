@@ -24,6 +24,9 @@
 	TankPlayer *_me;
 	SKSpriteNode *_meSprite;
 	SKSpriteNode *_turretSprite;
+    
+    SKSpriteNode *_floor;
+    SKNode *_map;
 }
 
 -(id)initWithSize:(CGSize)size game:(TankGame*)game
@@ -57,6 +60,33 @@
 			[weakSelf addChild:sprite];
 			weakSelf.bulletSprites[[bullet identifier]] = sprite;
 		} initial:YES];
+        
+        _floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor"];
+        [self addChild:_floor];
+        
+        _map = [SKNode node];
+        int x = -1;
+        int y = -1;
+        for(NSNumber *n in _game.currentLevel.map) {
+            NSInteger val = [n integerValue];
+            
+            x++;
+            if(x == 22) {
+                x = 0;
+                y++;
+            }
+            
+            if(val == 0) {
+                continue;
+            }
+            NSString *tex = val == 1 ? @"wall" : @"breakable";
+            
+            SKSpriteNode *n = [SKSpriteNode spriteNodeWithImageNamed:tex];
+            n.size = CGSizeMake(50, 50);
+            n.position = CGPointMake(x * 50, y * 50);
+            [_map addChild:n];
+        }
+        [self addChild:_map];
 	}
     return self;
 }
