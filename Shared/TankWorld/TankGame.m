@@ -102,9 +102,19 @@
     
 	[self sp_addObserver:self forKeyPath:@"players" options:NSKeyValueObservingOptionInitial callback:^(NSDictionary *change, id object, NSString *keyPath) {
 		for(TankPlayer *player in [object players]) {
-			if (!player.tank)
+			if (!player.tank) {
 				player.tank = [TankTank new];
+				[[self.currentLevel mutableArrayValueForKey:@"tanks"] addObject:player.tank];
+			}
 		}
 	}];
+	
+	for(int i = 0; i < 2; i++) {
+        TankEnemyTank *enemyTank = [[TankEnemyTank alloc] init];
+        enemyTank.position = [Vector2 vectorWithX:300+(200*(i+1)) y:300*(i+1)];
+
+		[[self.currentLevel mutableArrayValueForKey:@"tanks"] addObject:enemyTank];
+        [[self mutableArrayValueForKey:@"enemyTanks"] addObject:enemyTank];
+	}
 }
 @end

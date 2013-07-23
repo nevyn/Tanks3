@@ -17,15 +17,38 @@
 
 @interface TankGameScene ()
 @property(nonatomic,readonly) NSMutableDictionary *bulletSprites;
+@property(nonatomic,readonly) NSMutableDictionary *tankSprites;
+@end
+
+@interface TankNode : SKNode
+@property(nonatomic) TankTank *tank;
+@property(nonatomic) SKSpriteNode *body;
+@property(nonatomic) SKSpriteNode *turret;
+@end
+
+@implementation TankNode
+
+- (id)initWithTank:(TankTank*)tank
+{
+	if(self = [super init]) {
+		self.tank = tank;
+		
+		_body = [SKSpriteNode spriteNodeWithImageNamed:@"Tank"];
+		_body.size = CGSizeMake(_body.size.width*0.3, _body.size.height*0.3);
+		_turret = [SKSpriteNode spriteNodeWithImageNamed:@"Turret"];
+		_turret.size = CGSizeMake(_turret.size.width*0.3, _turret.size.height*0.3);
+		_turret.anchorPoint = CGPointMake(0.5, 0.42);
+		[_body addChild:_turret];
+		[self addChild:_body];
+	}
+	return self;
+}
 @end
 
 @implementation TankGameScene
 {
 	TankGame *_game;
 	TankPlayer *_me;
-	SKSpriteNode *_meSprite;
-	SKSpriteNode *_turretSprite;
-  NSMutableArray *_enemyTanks;
 }
 
 -(id)initWithSize:(CGSize)size game:(TankGame*)clientGame hackyServerGame:(TankGame*)game;
@@ -40,13 +63,6 @@
 		_me.identifier = @"Fusk";
 		[[game mutableArrayValueForKey:@"players"] addObject:_me];
 		
-		_meSprite = [SKSpriteNode spriteNodeWithImageNamed:@"Tank"];
-		_meSprite.size = CGSizeMake(_meSprite.size.width*0.3, _meSprite.size.height*0.3);
-		_turretSprite = [SKSpriteNode spriteNodeWithImageNamed:@"Turret"];
-		_turretSprite.size = CGSizeMake(_turretSprite.size.width*0.3, _turretSprite.size.height*0.3);
-		_turretSprite.anchorPoint = CGPointMake(0.5, 0.42);
-		[_meSprite addChild:_turretSprite];
-        [self addChild:_meSprite];
 		
 		_bulletSprites = [NSMutableDictionary new];
 		__weak __typeof(self) weakSelf = self;
@@ -59,25 +75,18 @@
 			[weakSelf addChild:sprite];
 			weakSelf.bulletSprites[[bullet identifier]] = sprite;
 		} initial:YES];
-      
-      // Enemies
-      _enemyTanks = [NSMutableArray array];
-
-      for (int i = 0; i < 2; i++) {
-        TankEnemyTank *enemyTank = [[TankEnemyTank alloc] init];
-        enemyTank.position = [Vector2 vectorWithX:300+(200*(i+1)) y:300*(i+1)];
-        
-        SKSpriteNode *enemySprite = [SKSpriteNode spriteNodeWithImageNamed:@"Tank"];
-        enemySprite.size = CGSizeMake(enemySprite.size.width*0.3, enemySprite.size.height*0.3);
-        SKSpriteNode *enemyTurret = [SKSpriteNode spriteNodeWithImageNamed:@"Turret"];
-        enemyTurret.size = CGSizeMake(enemyTurret.size.width*0.3, enemyTurret.size.height*0.3);
-        enemyTurret.anchorPoint = CGPointMake(0.5, 0.42);
-        [enemySprite addChild:enemyTurret];
-        [self addChild:enemySprite];
-        
-        [_enemyTanks addObject:[NSDictionary dictionaryWithObjectsAndKeys:enemyTank, @"Tank", enemySprite, @"TankSprite", enemyTurret, @"TurretSprite", nil]];
-        [[_game mutableArrayValueForKey:@"enemyTanks"] addObject:enemyTank];
-      }
+	  
+		
+		_tankSprites = [NSMutableDictionary new];
+		[_game.currentLevel sp_observe:@"tanks" removed:^(id tank) {
+			TankNode *node = [weakSelf tankSprites][[tank identifier]];
+			[node removeFromParent];
+			[weakSelf.tankSprites removeObjectForKey:[tank identifier]];
+		} added:^(id tank) {
+			TankNode *tankNode = [[TankNode alloc] initWithTank:tank];
+			[weakSelf addChild:tankNode];
+			[weakSelf tankSprites][[tank identifier]] = tankNode;
+		} initial:YES];
 	}
     return self;
 }
@@ -132,24 +141,18 @@
 #endif
 
 -(void)update:(CFTimeInterval)currentTime {
-	_meSprite.position = _me.tank.position.point;
-	_meSprite.zRotation = _me.tank.rotation;
-	_turretSprite.zRotation = _me.tank.turretRotation;
+	for(TankTank *tank in _game.currentLevel.tanks) {
+		TankNode *tankNode = _tankSprites[tank.identifier];
+		tankNode.position = tank.position.point;
+		tankNode.zRotation = tank.rotation;
+		tankNode.turret.zRotation = tank.turretRotation;
+	}
 	
 	for(TankBullet *bullet in _game.currentLevel.bullets) {
 		SKSpriteNode *sprite = _bulletSprites[bullet.identifier];
 		sprite.position = bullet.position.point;
 		sprite.zRotation = bullet.angle;
 	}
-  
-  for (NSDictionary *enemy in _enemyTanks) {
-    TankEnemyTank *enemyTank = [enemy objectForKey:@"Tank"];
-    SKSpriteNode *enemySprite = [enemy objectForKey:@"TankSprite"];
-    SKSpriteNode *enemyTurretSprite = [enemy objectForKey:@"TurretSprite"];
-    enemySprite.position = enemyTank.position.point;
-    enemySprite.zRotation = enemyTank.rotation;
-    enemyTurretSprite.zRotation = enemyTank.turretRotation;
-  }
 }
 
 @end
