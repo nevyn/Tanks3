@@ -24,7 +24,6 @@
         /* Setup your scene here */
         
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-		self.anchorPoint = CGPointMake(0, 1);
 		_game = game;
 		_me = [[TankPlayer alloc] init];
 		_me.name = @"Hej";
@@ -41,15 +40,27 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 }
 #else
--(void)mouseDown:(NSEvent *)theEvent {
+-(void)mouseDown:(NSEvent *)theEvent
+{
 
 }
 - (void)keyDown:(NSEvent *)theEvent
 {
 	if([[theEvent characters] isEqual:@"w"])
-		_me.tank.position = [_me.tank.position vectorByAddingVector:[Vector2 vectorWithX:0 y:-10]];
+		_me.tank.acceleration = [[Vector2 vectorWithX:0 y:5000] vectorByRotatingByRadians:_me.tank.rotation];
 	if([[theEvent characters] isEqual:@"s"])
-		_me.tank.position = [_me.tank.position vectorByAddingVector:[Vector2 vectorWithX:0 y:10]];
+		_me.tank.acceleration = [[Vector2 vectorWithX:0 y:-5000] vectorByRotatingByRadians:_me.tank.rotation];
+	if([[theEvent characters] isEqual:@"a"])
+		_me.tank.angularAcceleration = M_PI*80;
+	if([[theEvent characters] isEqual:@"d"])
+		_me.tank.angularAcceleration = -M_PI*80;
+}
+- (void)keyUp:(NSEvent *)theEvent
+{
+	if(_me.tank.acceleration.length)
+		_me.tank.acceleration = [Vector2 zero];
+	else if(_me.tank.angularAcceleration)
+		_me.tank.angularAcceleration = 0;
 }
 #endif
 
