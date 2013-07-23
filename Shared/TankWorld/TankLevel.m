@@ -18,4 +18,11 @@
 	}
 	return self;
 }
+
++ (NSSet*)observableToManyAttributes
+{
+	NSMutableSet *s = [[super observableToManyAttributes] mutableCopy];
+	[s removeObject:@"walls"];
+	return s;
+}
 @end

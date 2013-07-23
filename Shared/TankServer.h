@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <WorldKit/WorldKit.h>
 
+static NSString *const TankBonjourType = @"_mastervone_tanks._tcp";
+
 @interface TankServer : NSObject
 @property(readonly) WorldGameServer *gameServer;
 @end
