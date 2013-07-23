@@ -70,7 +70,7 @@
 
 -(void)masterClient:(WorldMasterClient *)mc isNowInGame:(WorldGameClient*)gameClient
 {
-	TankGameScene *gameScene = [[TankGameScene alloc] initWithSize:self.skView.scene.size game:(id)gameClient.game];
+	TankGameScene *gameScene = [[TankGameScene alloc] initWithSize:self.skView.scene.size game:(id)gameClient.game hackyServerGame:(id)_server.gameServer.game];
 	[self.skView presentScene:gameScene transition:[SKTransition doorsOpenHorizontalWithDuration:0.35]];
 }
 

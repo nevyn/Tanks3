@@ -10,5 +10,5 @@
 #import "TankWorld/TankGame.h"
 
 @interface TankGameScene : SKScene
--(id)initWithSize:(CGSize)size game:(TankGame*)game;
+-(id)initWithSize:(CGSize)size game:(TankGame*)game hackyServerGame:(TankGame*)serverGame;
 @end

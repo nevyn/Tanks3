@@ -28,7 +28,7 @@
   NSMutableArray *_enemyTanks;
 }
 
--(id)initWithSize:(CGSize)size game:(TankGame*)game
+-(id)initWithSize:(CGSize)size game:(TankGame*)clientGame hackyServerGame:(TankGame*)game;
 {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
@@ -62,7 +62,7 @@
       
       // Enemies
       _enemyTanks = [NSMutableArray array];
-      _game.enemyTanks = [NSMutableArray array];
+
       for (int i = 0; i < 2; i++) {
         TankEnemyTank *enemyTank = [[TankEnemyTank alloc] init];
         enemyTank.position = [Vector2 vectorWithX:300+(200*(i+1)) y:300*(i+1)];
@@ -76,7 +76,7 @@
         [self addChild:enemySprite];
         
         [_enemyTanks addObject:[NSDictionary dictionaryWithObjectsAndKeys:enemyTank, @"Tank", enemySprite, @"TankSprite", enemyTurret, @"TurretSprite", nil]];
-        [_game.enemyTanks addObject:enemyTank];
+        [[_game mutableArrayValueForKey:@"enemyTanks"] addObject:enemyTank];
       }
 	}
     return self;

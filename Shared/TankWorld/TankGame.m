@@ -9,6 +9,14 @@
 #import "BNZLine.h"
 
 @implementation TankGame
+- (id)init
+{
+	if(self = [super init]) {
+		_enemyTanks = [NSMutableArray array];
+	}
+	return self;
+}
+
 - (void)tick:(float)delta
 {
 	for(TankTank *tank in [self.players valueForKeyPath:@"tank"]) {

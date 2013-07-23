@@ -3,8 +3,8 @@
 static const int kTankServerPort = 29534;
 
 @interface TankGame : WorldGame
-@property(WORLD_WRITABLE) TankLevel *currentLevel;
-@property(nonatomic, strong) NSMutableArray *enemyTanks;
+@property(nonatomic,WORLD_WRITABLE) TankLevel *currentLevel;
+@property(nonatomic,readonly) WORLD_ARRAY *enemyTanks;
 
 - (void)tick:(float)delta;
 @end
