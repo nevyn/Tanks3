@@ -16,5 +16,6 @@
 	#endif
 
 	#import <Foundation/Foundation.h>
+	#import "Vector2.h"
 
 #endif

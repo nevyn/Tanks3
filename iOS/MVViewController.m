@@ -7,7 +7,8 @@
 //
 
 #import "MVViewController.h"
-#import "MVMyScene.h"
+#import "TankGameScene.h"
+#import "TankMenuScene.h"
 
 @implementation MVViewController
 
@@ -21,7 +22,8 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [MVMyScene sceneWithSize:skView.bounds.size];
+    TankMenuScene * scene = [TankMenuScene sceneWithSize:skView.bounds.size];
+	scene.delegate = self;
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

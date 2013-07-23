@@ -7,7 +7,15 @@
 //
 
 #import "MVAppDelegate.h"
-#import "MVMyScene.h"
+#import "TankMenuScene.h"
+#import "TankServer.h"
+
+@interface MVAppDelegate () <TankMenuSceneDelegate>
+{
+	TankServer *_server;
+}
+
+@end
 
 @implementation MVAppDelegate
 
@@ -16,7 +24,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     /* Pick a size for the scene */
-    SKScene *scene = [MVMyScene sceneWithSize:CGSizeMake(1024, 768)];
+    TankMenuScene *scene = [TankMenuScene sceneWithSize:CGSizeMake(1024, 768)];
+    scene.delegate = self;
 
     /* Set the scale mode to scale to fit the window */
     scene.scaleMode = SKSceneScaleModeAspectFit;
@@ -31,4 +40,9 @@
     return YES;
 }
 
+- (void)tankMenu:(TankMenuScene *)scene requestsCreatingServerWithGameCallback:(void (^)(TankGame *))callback
+{
+	_server = [TankServer new];
+	callback((id)_server.gameServer.game);
+}
 @end

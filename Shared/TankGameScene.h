@@ -7,7 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "TankWorld/TankGame.h"
 
-@interface MVMyScene : SKScene
-
+@interface TankGameScene : SKScene
+-(id)initWithSize:(CGSize)size game:(TankGame*)game;
 @end

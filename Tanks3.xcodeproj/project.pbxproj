@@ -15,8 +15,34 @@
 		051BCBBE179C24440065B55D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 051BCBBD179C24440065B55D /* MainMenu.xib */; };
 		051BCBC3179C24440065B55D /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 051BCBC2179C24440065B55D /* MVAppDelegate.m */; };
 		051BCBC8179C24440065B55D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051BCBC7179C24440065B55D /* Images.xcassets */; };
-		051BCBE0179C248F0065B55D /* MVMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* MVMyScene.m */; };
+		051BCBE0179C248F0065B55D /* TankGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* TankGameScene.m */; };
 		051BCBE1179C24920065B55D /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 059CD605179C233E00B5981C /* Spaceship.png */; };
+		0598EEEA179EAAF700EAD12D /* libWorldKitClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE8179EAABE00EAD12D /* libWorldKitClient.a */; };
+		0598EEEB179EAAFB00EAD12D /* libWorldKitCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE2179EAABE00EAD12D /* libWorldKitCommon.a */; };
+		0598EEEC179EAAFB00EAD12D /* libWorldKitServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE6179EAABE00EAD12D /* libWorldKitServer.a */; };
+		0598EEED179EAB0000EAD12D /* libWorldKitClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE8179EAABE00EAD12D /* libWorldKitClient.a */; };
+		0598EEEE179EAB0000EAD12D /* libWorldKitCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE2179EAABE00EAD12D /* libWorldKitCommon.a */; };
+		0598EEEF179EAB0000EAD12D /* libWorldKitServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE6179EAABE00EAD12D /* libWorldKitServer.a */; };
+		0598EEF3179EB18600EAD12D /* TankGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EEF2179EB18600EAD12D /* TankGame.m */; };
+		0598EEF4179EB18600EAD12D /* TankGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EEF2179EB18600EAD12D /* TankGame.m */; };
+		0598EEFC179EB94E00EAD12D /* TankPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EEFB179EB94E00EAD12D /* TankPlayer.m */; };
+		0598EEFD179EB94E00EAD12D /* TankPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EEFB179EB94E00EAD12D /* TankPlayer.m */; };
+		0598EF04179EB97400EAD12D /* TankTank.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF03179EB97400EAD12D /* TankTank.m */; };
+		0598EF05179EB97400EAD12D /* TankTank.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF03179EB97400EAD12D /* TankTank.m */; };
+		0598EF08179EB9D200EAD12D /* TankLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF07179EB9D200EAD12D /* TankLevel.m */; };
+		0598EF09179EB9D200EAD12D /* TankLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF07179EB9D200EAD12D /* TankLevel.m */; };
+		0598EF0C179EBC5C00EAD12D /* TankServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF0B179EBC5C00EAD12D /* TankServer.m */; };
+		0598EF0D179EBC5C00EAD12D /* TankServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF0B179EBC5C00EAD12D /* TankServer.m */; };
+		0598EF15179EC0BD00EAD12D /* TankMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF14179EC0BD00EAD12D /* TankMenuScene.m */; };
+		0598EF16179EC0BD00EAD12D /* TankMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF14179EC0BD00EAD12D /* TankMenuScene.m */; };
+		0598EF19179ED39300EAD12D /* TankBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF18179ED39300EAD12D /* TankBullet.m */; };
+		0598EF1A179ED39300EAD12D /* TankBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF18179ED39300EAD12D /* TankBullet.m */; };
+		0598EF1F179ED40C00EAD12D /* Vector2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF1C179ED40C00EAD12D /* Vector2.m */; };
+		0598EF20179ED40C00EAD12D /* Vector2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF1C179ED40C00EAD12D /* Vector2.m */; };
+		0598EF21179ED40C00EAD12D /* BNZLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF1E179ED40C00EAD12D /* BNZLine.m */; };
+		0598EF22179ED40C00EAD12D /* BNZLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF1E179ED40C00EAD12D /* BNZLine.m */; };
+		0598EF26179ED61900EAD12D /* TankMine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF25179ED61900EAD12D /* TankMine.m */; };
+		0598EF27179ED61900EAD12D /* TankMine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF25179ED61900EAD12D /* TankMine.m */; };
 		059CD5B5179C22F500B5981C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B4179C22F500B5981C /* Foundation.framework */; };
 		059CD5B7179C22F500B5981C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B6179C22F500B5981C /* CoreGraphics.framework */; };
 		059CD5B9179C22F500B5981C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B8179C22F500B5981C /* UIKit.framework */; };
@@ -33,11 +59,39 @@
 		059CD60A179C233E00B5981C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FB179C233E00B5981C /* main.m */; };
 		059CD60B179C233E00B5981C /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FD179C233E00B5981C /* MVAppDelegate.m */; };
 		059CD60C179C233E00B5981C /* MVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FF179C233E00B5981C /* MVViewController.m */; };
-		059CD60E179C233E00B5981C /* MVMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* MVMyScene.m */; };
+		059CD60E179C233E00B5981C /* TankGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* TankGameScene.m */; };
 		059CD60F179C233E00B5981C /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 059CD605179C233E00B5981C /* Spaceship.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0598EEE1179EAABE00EAD12D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 055A815C15CD45CF0033FA0C;
+			remoteInfo = WorldKitCommon;
+		};
+		0598EEE3179EAABE00EAD12D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 055A816A15CD45D00033FA0C;
+			remoteInfo = WorldKitCommonTests;
+		};
+		0598EEE5179EAABE00EAD12D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 05AD0D8D16341D9500DF7452;
+			remoteInfo = WorldKitServer;
+		};
+		0598EEE7179EAABE00EAD12D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 05AD0DAA16341D9E00DF7452;
+			remoteInfo = WorldKitClient;
+		};
 		059CD5E1179C22F500B5981C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 059CD5A9179C22F500B5981C /* Project object */;
@@ -62,6 +116,27 @@
 		051BCBC2179C24440065B55D /* MVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVAppDelegate.m; sourceTree = "<group>"; };
 		051BCBC4179C24440065B55D /* MVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVAppDelegate.h; sourceTree = "<group>"; };
 		051BCBC7179C24440065B55D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WorldKit.xcodeproj; path = Vendor/WorldKit/WorldKit.xcodeproj; sourceTree = SOURCE_ROOT; };
+		0598EEF1179EB18600EAD12D /* TankGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankGame.h; sourceTree = "<group>"; };
+		0598EEF2179EB18600EAD12D /* TankGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankGame.m; sourceTree = "<group>"; };
+		0598EEFA179EB94E00EAD12D /* TankPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankPlayer.h; sourceTree = "<group>"; };
+		0598EEFB179EB94E00EAD12D /* TankPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankPlayer.m; sourceTree = "<group>"; };
+		0598EF02179EB97400EAD12D /* TankTank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankTank.h; sourceTree = "<group>"; };
+		0598EF03179EB97400EAD12D /* TankTank.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankTank.m; sourceTree = "<group>"; };
+		0598EF06179EB9D200EAD12D /* TankLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankLevel.h; sourceTree = "<group>"; };
+		0598EF07179EB9D200EAD12D /* TankLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankLevel.m; sourceTree = "<group>"; };
+		0598EF0A179EBC5C00EAD12D /* TankServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankServer.h; sourceTree = "<group>"; };
+		0598EF0B179EBC5C00EAD12D /* TankServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankServer.m; sourceTree = "<group>"; };
+		0598EF13179EC0BD00EAD12D /* TankMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankMenuScene.h; sourceTree = "<group>"; };
+		0598EF14179EC0BD00EAD12D /* TankMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankMenuScene.m; sourceTree = "<group>"; };
+		0598EF17179ED39300EAD12D /* TankBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankBullet.h; sourceTree = "<group>"; };
+		0598EF18179ED39300EAD12D /* TankBullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankBullet.m; sourceTree = "<group>"; };
+		0598EF1B179ED40C00EAD12D /* Vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vector2.h; path = Vendor/WorldKit/Examples/MultiPong/MultiPong/Vector2.h; sourceTree = SOURCE_ROOT; };
+		0598EF1C179ED40C00EAD12D /* Vector2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Vector2.m; path = Vendor/WorldKit/Examples/MultiPong/MultiPong/Vector2.m; sourceTree = SOURCE_ROOT; };
+		0598EF1D179ED40C00EAD12D /* BNZLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BNZLine.h; path = Vendor/WorldKit/Examples/MultiPong/MultiPong/BNZLine.h; sourceTree = SOURCE_ROOT; };
+		0598EF1E179ED40C00EAD12D /* BNZLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNZLine.m; path = Vendor/WorldKit/Examples/MultiPong/MultiPong/BNZLine.m; sourceTree = SOURCE_ROOT; };
+		0598EF24179ED61900EAD12D /* TankMine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankMine.h; sourceTree = "<group>"; };
+		0598EF25179ED61900EAD12D /* TankMine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankMine.m; sourceTree = "<group>"; };
 		059CD5B1179C22F500B5981C /* Tanks3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tanks3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		059CD5B4179C22F500B5981C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		059CD5B6179C22F500B5981C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -83,8 +158,8 @@
 		059CD5FF179C233E00B5981C /* MVViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVViewController.m; sourceTree = "<group>"; };
 		059CD600179C233E00B5981C /* Tanks3-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Tanks3-Info.plist"; sourceTree = "<group>"; };
 		059CD601179C233E00B5981C /* Tanks3-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tanks3-Prefix.pch"; sourceTree = "<group>"; };
-		059CD603179C233E00B5981C /* MVMyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMyScene.h; sourceTree = "<group>"; };
-		059CD604179C233E00B5981C /* MVMyScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMyScene.m; sourceTree = "<group>"; };
+		059CD603179C233E00B5981C /* TankGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankGameScene.h; sourceTree = "<group>"; };
+		059CD604179C233E00B5981C /* TankGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankGameScene.m; sourceTree = "<group>"; };
 		059CD605179C233E00B5981C /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +168,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0598EEED179EAB0000EAD12D /* libWorldKitClient.a in Frameworks */,
+				0598EEEE179EAB0000EAD12D /* libWorldKitCommon.a in Frameworks */,
+				0598EEEF179EAB0000EAD12D /* libWorldKitServer.a in Frameworks */,
 				051BCBAC179C24440065B55D /* SpriteKit.framework in Frameworks */,
 				051BCBAB179C24440065B55D /* Cocoa.framework in Frameworks */,
 			);
@@ -102,6 +180,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0598EEEB179EAAFB00EAD12D /* libWorldKitCommon.a in Frameworks */,
+				0598EEEC179EAAFB00EAD12D /* libWorldKitServer.a in Frameworks */,
+				0598EEEA179EAAF700EAD12D /* libWorldKitClient.a in Frameworks */,
 				059CD5B7179C22F500B5981C /* CoreGraphics.framework in Frameworks */,
 				059CD5B9179C22F500B5981C /* UIKit.framework in Frameworks */,
 				059CD5BB179C22F500B5981C /* SpriteKit.framework in Frameworks */,
@@ -136,8 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				051BCBBD179C24440065B55D /* MainMenu.xib */,
-				051BCBC2179C24440065B55D /* MVAppDelegate.m */,
 				051BCBC4179C24440065B55D /* MVAppDelegate.h */,
+				051BCBC2179C24440065B55D /* MVAppDelegate.m */,
 				051BCBC7179C24440065B55D /* Images.xcassets */,
 				051BCBB2179C24440065B55D /* Supporting Files */,
 			);
@@ -156,9 +237,40 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0598EEDB179EAABE00EAD12D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0598EEE2179EAABE00EAD12D /* libWorldKitCommon.a */,
+				0598EEE4179EAABE00EAD12D /* WorldKitCommonTests.octest */,
+				0598EEE6179EAABE00EAD12D /* libWorldKitServer.a */,
+				0598EEE8179EAABE00EAD12D /* libWorldKitClient.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0598EEE9179EAAE500EAD12D /* TankWorld */ = {
+			isa = PBXGroup;
+			children = (
+				0598EEF1179EB18600EAD12D /* TankGame.h */,
+				0598EEF2179EB18600EAD12D /* TankGame.m */,
+				0598EEFA179EB94E00EAD12D /* TankPlayer.h */,
+				0598EEFB179EB94E00EAD12D /* TankPlayer.m */,
+				0598EF02179EB97400EAD12D /* TankTank.h */,
+				0598EF03179EB97400EAD12D /* TankTank.m */,
+				0598EF06179EB9D200EAD12D /* TankLevel.h */,
+				0598EF07179EB9D200EAD12D /* TankLevel.m */,
+				0598EF17179ED39300EAD12D /* TankBullet.h */,
+				0598EF18179ED39300EAD12D /* TankBullet.m */,
+				0598EF24179ED61900EAD12D /* TankMine.h */,
+				0598EF25179ED61900EAD12D /* TankMine.m */,
+			);
+			path = TankWorld;
+			sourceTree = "<group>";
+		};
 		059CD5A8179C22F500B5981C = {
 			isa = PBXGroup;
 			children = (
+				0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */,
 				059CD5F3179C233E00B5981C /* iOS */,
 				051BCBB1179C24440065B55D /* Mac */,
 				059CD602179C233E00B5981C /* Shared */,
@@ -230,9 +342,18 @@
 		059CD602179C233E00B5981C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				0598EEE9179EAAE500EAD12D /* TankWorld */,
+				0598EF1B179ED40C00EAD12D /* Vector2.h */,
+				0598EF1C179ED40C00EAD12D /* Vector2.m */,
+				0598EF1D179ED40C00EAD12D /* BNZLine.h */,
+				0598EF1E179ED40C00EAD12D /* BNZLine.m */,
+				0598EF0A179EBC5C00EAD12D /* TankServer.h */,
+				0598EF0B179EBC5C00EAD12D /* TankServer.m */,
 				059CD601179C233E00B5981C /* Tanks3-Prefix.pch */,
-				059CD603179C233E00B5981C /* MVMyScene.h */,
-				059CD604179C233E00B5981C /* MVMyScene.m */,
+				0598EF13179EC0BD00EAD12D /* TankMenuScene.h */,
+				0598EF14179EC0BD00EAD12D /* TankMenuScene.m */,
+				059CD603179C233E00B5981C /* TankGameScene.h */,
+				059CD604179C233E00B5981C /* TankGameScene.m */,
 				059CD605179C233E00B5981C /* Spaceship.png */,
 			);
 			path = Shared;
@@ -319,6 +440,12 @@
 			mainGroup = 059CD5A8179C22F500B5981C;
 			productRefGroup = 059CD5B2179C22F500B5981C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0598EEDB179EAABE00EAD12D /* Products */;
+					ProjectRef = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				059CD5B0179C22F500B5981C /* Tanks3 */,
@@ -327,6 +454,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0598EEE2179EAABE00EAD12D /* libWorldKitCommon.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWorldKitCommon.a;
+			remoteRef = 0598EEE1179EAABE00EAD12D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0598EEE4179EAABE00EAD12D /* WorldKitCommonTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = WorldKitCommonTests.octest;
+			remoteRef = 0598EEE3179EAABE00EAD12D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0598EEE6179EAABE00EAD12D /* libWorldKitServer.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWorldKitServer.a;
+			remoteRef = 0598EEE5179EAABE00EAD12D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0598EEE8179EAABE00EAD12D /* libWorldKitClient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libWorldKitClient.a;
+			remoteRef = 0598EEE7179EAABE00EAD12D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		051BCBA7179C24440065B55D /* Resources */ = {
@@ -368,8 +526,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				051BCBE0179C248F0065B55D /* MVMyScene.m in Sources */,
+				051BCBE0179C248F0065B55D /* TankGameScene.m in Sources */,
+				0598EF1A179ED39300EAD12D /* TankBullet.m in Sources */,
+				0598EF27179ED61900EAD12D /* TankMine.m in Sources */,
+				0598EF09179EB9D200EAD12D /* TankLevel.m in Sources */,
+				0598EEFD179EB94E00EAD12D /* TankPlayer.m in Sources */,
+				0598EEF4179EB18600EAD12D /* TankGame.m in Sources */,
+				0598EF0D179EBC5C00EAD12D /* TankServer.m in Sources */,
+				0598EF05179EB97400EAD12D /* TankTank.m in Sources */,
 				051BCBB8179C24440065B55D /* main.m in Sources */,
+				0598EF16179EC0BD00EAD12D /* TankMenuScene.m in Sources */,
+				0598EF20179ED40C00EAD12D /* Vector2.m in Sources */,
+				0598EF22179ED40C00EAD12D /* BNZLine.m in Sources */,
 				051BCBC3179C24440065B55D /* MVAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,9 +547,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				059CD60A179C233E00B5981C /* main.m in Sources */,
-				059CD60E179C233E00B5981C /* MVMyScene.m in Sources */,
+				0598EF04179EB97400EAD12D /* TankTank.m in Sources */,
+				0598EF0C179EBC5C00EAD12D /* TankServer.m in Sources */,
+				0598EF21179ED40C00EAD12D /* BNZLine.m in Sources */,
+				059CD60E179C233E00B5981C /* TankGameScene.m in Sources */,
+				0598EEFC179EB94E00EAD12D /* TankPlayer.m in Sources */,
+				0598EF1F179ED40C00EAD12D /* Vector2.m in Sources */,
+				0598EF15179EC0BD00EAD12D /* TankMenuScene.m in Sources */,
+				0598EF08179EB9D200EAD12D /* TankLevel.m in Sources */,
+				0598EEF3179EB18600EAD12D /* TankGame.m in Sources */,
 				059CD60C179C233E00B5981C /* MVViewController.m in Sources */,
 				059CD60B179C233E00B5981C /* MVAppDelegate.m in Sources */,
+				0598EF26179ED61900EAD12D /* TankMine.m in Sources */,
+				0598EF19179ED39300EAD12D /* TankBullet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,8 +713,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					Vendor/WorldKit/Interface,
+					Vendor/WorldKit/Libraries/SPSuccinct,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -567,7 +750,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					Vendor/WorldKit/Interface,
+					Vendor/WorldKit/Libraries/SPSuccinct,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
