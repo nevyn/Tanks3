@@ -3,6 +3,7 @@
 #import "TankGame.h"
 #import "TankPlayer.h"
 #import "TankTank.h"
+#import "TankEnemyTank.h"
 #import "TankLevel.h"
 #import "TankBullet.h"
 #import "BNZLine.h"
@@ -45,12 +46,12 @@
 	}
   
   // Update enemies!!
-  for (TankTank *enemyTank in self.enemyTanks) {
+  for (TankEnemyTank *enemyTank in self.enemyTanks) {
     TankTank *closestPlayer = [self closestPlayerToPosition:enemyTank.position];
     enemyTank.aimingAt = closestPlayer.position;
     
     // Should fire?
-    if (arc4random() % 1000 > 900 && [enemyTank.position distance:closestPlayer.position] < 500) {
+    if (enemyTank.timeSinceFire > 0.25f && [enemyTank.position distance:closestPlayer.position] < 500) {
       
       TankBullet *bullet = [TankBullet new];
       bullet.speed = 1000;
@@ -58,7 +59,11 @@
       [[self.currentLevel mutableArrayValueForKey:@"bullets"] addObject:bullet];
       bullet.position = enemyTank.position;
       bullet.angle = enemyTank.turretRotation + enemyTank.rotation;
+      
+      enemyTank.timeSinceFire = 0.0f;
     }
+    
+    enemyTank.timeSinceFire += delta;
   }
 }
 

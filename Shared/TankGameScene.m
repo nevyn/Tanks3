@@ -10,6 +10,7 @@
 #import "TankGameScene.h"
 #import "TankPlayer.h"
 #import "TankTank.h"
+#import "TankEnemyTank.h"
 #import "TankLevel.h"
 #import "TankBullet.h"
 #import <SPSuccinct/SPSuccinct.h>
@@ -63,8 +64,8 @@
       _enemyTanks = [NSMutableArray array];
       _game.enemyTanks = [NSMutableArray array];
       for (int i = 0; i < 2; i++) {
-        TankTank *enemyTank = [[TankTank alloc] init];
-        enemyTank.position = [Vector2 vectorWithX:300*(i+1) y:300*(i+1)];
+        TankEnemyTank *enemyTank = [[TankEnemyTank alloc] init];
+        enemyTank.position = [Vector2 vectorWithX:300+(200*(i+1)) y:300*(i+1)];
         
         SKSpriteNode *enemySprite = [SKSpriteNode spriteNodeWithImageNamed:@"Tank"];
         enemySprite.size = CGSizeMake(enemySprite.size.width*0.3, enemySprite.size.height*0.3);
@@ -142,7 +143,7 @@
 	}
   
   for (NSDictionary *enemy in _enemyTanks) {
-    TankTank *enemyTank = [enemy objectForKey:@"Tank"];
+    TankEnemyTank *enemyTank = [enemy objectForKey:@"Tank"];
     SKSpriteNode *enemySprite = [enemy objectForKey:@"TankSprite"];
     SKSpriteNode *enemyTurretSprite = [enemy objectForKey:@"TurretSprite"];
     enemySprite.position = enemyTank.position.point;
