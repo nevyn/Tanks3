@@ -10,6 +10,13 @@
 #import "TankGameScene.h"
 #import "TankPlayer.h"
 #import "TankTank.h"
+#import "TankLevel.h"
+#import "TankBullet.h"
+#import <SPSuccinct/SPSuccinct.h>
+
+@interface TankGameScene ()
+@property(nonatomic,readonly) NSMutableDictionary *bulletSprites;
+@end
 
 @implementation TankGameScene
 {
@@ -38,6 +45,17 @@
 		_turretSprite.anchorPoint = CGPointMake(0.5, 0.42);
 		[_meSprite addChild:_turretSprite];
         [self addChild:_meSprite];
+		
+		_bulletSprites = [NSMutableDictionary new];
+		__weak __typeof(self) weakSelf = self;
+		[_game.currentLevel sp_observe:@"bullets" removed:^(id bullet) {
+			[weakSelf.bulletSprites[[bullet identifier]] removeFromParent];
+			[weakSelf.bulletSprites removeObjectForKey:[bullet identifier]];
+		} added:^(id bullet) {
+			SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"bulleta"];
+			[weakSelf addChild:sprite];
+			weakSelf.bulletSprites[[bullet identifier]] = sprite;
+		} initial:YES];
 	}
     return self;
 }
@@ -64,13 +82,11 @@
 }
 - (void)mouseDown:(NSEvent *)theEvent
 {
-	SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithImageNamed:@"bulleta"];
-	bullet.zRotation = _me.tank.turretRotation + _me.tank.rotation;
-	bullet.position = _me.tank.position.point;
-	
-	Vector2 *bulletDest = [[Vector2 vectorWithX:0 y:500] vectorByRotatingByRadians:bullet.zRotation];
-	[bullet runAction:[SKAction moveByX:bulletDest.x y:bulletDest.y duration:1]];
-	[self addChild:bullet];
+	TankBullet *bullet = [TankBullet new];
+	bullet.speed = 400;
+	[[_game.currentLevel mutableArrayValueForKey:@"bullets"] addObject:bullet];
+	bullet.position = _me.tank.position;
+	bullet.angle = _me.tank.turretRotation + _me.tank.rotation;
 }
 - (void)keyDown:(NSEvent *)theEvent
 {
@@ -96,6 +112,12 @@
 	_meSprite.position = _me.tank.position.point;
 	_meSprite.zRotation = _me.tank.rotation;
 	_turretSprite.zRotation = _me.tank.turretRotation;
+	
+	for(TankBullet *bullet in _game.currentLevel.bullets) {
+		SKSpriteNode *sprite = _bulletSprites[bullet.identifier];
+		sprite.position = bullet.position.point;
+		sprite.zRotation = bullet.angle;
+	}
 }
 
 @end
