@@ -43,6 +43,38 @@
 			}
 		}
 	}
+  
+  // Update enemies!!
+  for (TankTank *enemyTank in self.enemyTanks) {
+    TankTank *closestPlayer = [self closestPlayerToPosition:enemyTank.position];
+    enemyTank.aimingAt = closestPlayer.position;
+    
+    // Should fire?
+    if (arc4random() % 1000 > 900 && [enemyTank.position distance:closestPlayer.position] < 500) {
+      
+      TankBullet *bullet = [TankBullet new];
+      bullet.speed = 1000;
+      bullet.collisionTTL = 2;
+      [[self.currentLevel mutableArrayValueForKey:@"bullets"] addObject:bullet];
+      bullet.position = enemyTank.position;
+      bullet.angle = enemyTank.turretRotation + enemyTank.rotation;
+    }
+  }
+}
+
+- (TankTank*) closestPlayerToPosition:(Vector2*)pos {
+  
+  TankTank *closestPlayer = NULL;
+  float closestDistance = 0;
+  for (TankTank *tank in [self.players valueForKeyPath:@"tank"]) {
+    float distance = [pos distance:tank.position];
+    if (!closestPlayer || distance < closestDistance) {
+      closestPlayer = tank;
+      closestDistance = distance;
+    }
+  }
+  
+  return closestPlayer;
 }
 @end
 
