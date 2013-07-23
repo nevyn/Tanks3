@@ -10,7 +10,6 @@
 		_velocity = [Vector2 zero];
 		_acceleration  = [Vector2 zero];
 		_aimingAt = [Vector2 zero];
-
 	}
 	return self;
 }

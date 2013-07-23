@@ -1,5 +1,7 @@
 #import <WorldKit/Shared/Shared.h>
 
+@class TankTankController;
+
 @interface TankTank : WorldEntity
 @property(nonatomic,WORLD_WRITABLE) Vector2 *position;
 @property(nonatomic,WORLD_WRITABLE) Vector2 *velocity;
@@ -10,4 +12,6 @@
 
 @property(nonatomic,WORLD_WRITABLE) Vector2 *aimingAt;
 - (float)turretRotation;
+
+@property (nonatomic, strong) TankTankController *tankController;
 @end

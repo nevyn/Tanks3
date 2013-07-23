@@ -11,6 +11,4 @@
 
 @interface MVViewController : UIViewController
 
-Per är bäst
-
 @end
