@@ -17,6 +17,20 @@
 	return self;
 }
 
+- (NSDictionary*)rep
+{
+    return WorldDictAppend([super rep], @{
+		@"currentLevel": self.currentLevel.identifier ?: [NSNull null],
+	});
+}
+- (void)updateFromRep:(NSDictionary*)rep fetcher:(WorldEntityFetcher)fetcher
+{
+    [super updateFromRep:rep fetcher:fetcher];
+    WorldIf(rep, @"currentLevel", ^(id o) {
+		self.currentLevel = [o isEqual:[NSNull null]] ? nil : fetcher(o, [TankLevel class], NO);
+    });
+}
+
 - (void)tick:(float)delta
 {
 	for(TankTank *tank in [self.players valueForKeyPath:@"tank"]) {

@@ -13,7 +13,7 @@
 - (id)init
 {
 	if(self = [super init]) {
-    _timeSinceFire = 0.0f;
+		_timeSinceFire = 0.0f;
 	}
 	return self;
 }
