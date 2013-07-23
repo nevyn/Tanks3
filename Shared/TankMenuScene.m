@@ -71,11 +71,20 @@
 
 - (void)touchAt:(CGPoint)location
 {
-	if([self nodeAtPoint:location] == _createGameButton) {
-		[self.delegate tankMenu:self requestsCreatingServerWithGameCallback:^(TankGame *game) {
-			TankGameScene *gameScene = [[TankGameScene alloc] initWithSize:self.size game:(id)game];
-			[self.view presentScene:gameScene transition:[SKTransition doorsOpenHorizontalWithDuration:0.35]];
-		}];
+	SKNode *hit = [self nodeAtPoint:location];
+	
+	if(hit == _createGameButton) {
+		[self.delegate tankMenuRequestsCreatingServer:self];
+		return;
+	}
+	int i = 0;
+	for(SKLabelNode *label in _serviceLabels) {
+		if(hit == label) {
+			NSNetService *service = _foundServices[i];
+			[self.delegate tankMenu:self requestsConnectingToServerAtHost:service.hostName port:service.port];
+			return;
+		}
+		i++;
 	}
 }
 

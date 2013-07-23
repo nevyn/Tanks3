@@ -9,7 +9,6 @@
 @end
 
 @implementation TankServer {
-    WorldMasterServer *_master;
 	NSNetService *_publisher;
 }
 

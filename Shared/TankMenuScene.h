@@ -15,5 +15,6 @@
 @end
 
 @protocol TankMenuSceneDelegate <NSObject>
-- (void)tankMenu:(TankMenuScene*)scene requestsCreatingServerWithGameCallback:(void(^)(TankGame*))callback;
+- (void)tankMenuRequestsCreatingServer:(TankMenuScene*)scene;
+- (void)tankMenu:(TankMenuScene*)scene requestsConnectingToServerAtHost:(NSString*)hostName port:(NSInteger)port;
 @end
