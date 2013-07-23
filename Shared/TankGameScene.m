@@ -16,6 +16,7 @@
 	TankGame *_game;
 	TankPlayer *_me;
 	SKSpriteNode *_meSprite;
+	SKSpriteNode *_turretSprite;
 }
 
 -(id)initWithSize:(CGSize)size game:(TankGame*)game
@@ -30,19 +31,46 @@
 		_me.identifier = @"Fusk";
 		[[game mutableArrayValueForKey:@"players"] addObject:_me];
 		
-		_meSprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+		_meSprite = [SKSpriteNode spriteNodeWithImageNamed:@"Tank"];
+		_meSprite.size = CGSizeMake(_meSprite.size.width*0.3, _meSprite.size.height*0.3);
+		_turretSprite = [SKSpriteNode spriteNodeWithImageNamed:@"Turret"];
+		_turretSprite.size = CGSizeMake(_turretSprite.size.width*0.3, _turretSprite.size.height*0.3);
+		_turretSprite.anchorPoint = CGPointMake(0.5, 0.42);
+		[_meSprite addChild:_turretSprite];
         [self addChild:_meSprite];
-    }
+	}
     return self;
+}
+
+- (void)didMoveToView:(SKView *)view
+{
+#if !TARGET_OS_IPHONE
+	int opts = (NSTrackingActiveAlways | NSTrackingMouseMoved);
+	NSTrackingArea *area = [[NSTrackingArea alloc] initWithRect:CGRectMake(0, 0, self.size.width, self.size.height)
+                                                 options:opts
+                                                   owner:self
+                                                userInfo:nil];
+	[self.view addTrackingArea:area];
+#endif
 }
 
 #if TARGET_OS_IPHONE
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 }
 #else
--(void)mouseDown:(NSEvent *)theEvent
+- (void)mouseMoved:(NSEvent *)theEvent
 {
-
+	_me.tank.aimingAt = [Vector2 vectorWithPoint:[theEvent locationInNode:self]];
+}
+- (void)mouseDown:(NSEvent *)theEvent
+{
+	SKSpriteNode *bullet = [SKSpriteNode spriteNodeWithImageNamed:@"bulleta"];
+	bullet.zRotation = _me.tank.turretRotation + _me.tank.rotation;
+	bullet.position = _me.tank.position.point;
+	
+	Vector2 *bulletDest = [[Vector2 vectorWithX:0 y:500] vectorByRotatingByRadians:bullet.zRotation];
+	[bullet runAction:[SKAction moveByX:bulletDest.x y:bulletDest.y duration:1]];
+	[self addChild:bullet];
 }
 - (void)keyDown:(NSEvent *)theEvent
 {
@@ -67,6 +95,7 @@
 -(void)update:(CFTimeInterval)currentTime {
 	_meSprite.position = _me.tank.position.point;
 	_meSprite.zRotation = _me.tank.rotation;
+	_turretSprite.zRotation = _me.tank.turretRotation;
 }
 
 @end

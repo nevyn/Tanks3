@@ -16,7 +16,6 @@
 		051BCBC3179C24440065B55D /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 051BCBC2179C24440065B55D /* MVAppDelegate.m */; };
 		051BCBC8179C24440065B55D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051BCBC7179C24440065B55D /* Images.xcassets */; };
 		051BCBE0179C248F0065B55D /* TankGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* TankGameScene.m */; };
-		051BCBE1179C24920065B55D /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 059CD605179C233E00B5981C /* Spaceship.png */; };
 		0598EEEA179EAAF700EAD12D /* libWorldKitClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE8179EAABE00EAD12D /* libWorldKitClient.a */; };
 		0598EEEB179EAAFB00EAD12D /* libWorldKitCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE2179EAABE00EAD12D /* libWorldKitCommon.a */; };
 		0598EEEC179EAAFB00EAD12D /* libWorldKitServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE6179EAABE00EAD12D /* libWorldKitServer.a */; };
@@ -60,7 +59,12 @@
 		059CD60B179C233E00B5981C /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FD179C233E00B5981C /* MVAppDelegate.m */; };
 		059CD60C179C233E00B5981C /* MVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FF179C233E00B5981C /* MVViewController.m */; };
 		059CD60E179C233E00B5981C /* TankGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* TankGameScene.m */; };
-		059CD60F179C233E00B5981C /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 059CD605179C233E00B5981C /* Spaceship.png */; };
+		05EDE1BA179EE2850051E7F6 /* bulleta.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1B8179EE2850051E7F6 /* bulleta.png */; };
+		05EDE1BB179EE2850051E7F6 /* bulleta.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1B8179EE2850051E7F6 /* bulleta.png */; };
+		05EDE1BC179EE2850051E7F6 /* Tank.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1B9179EE2850051E7F6 /* Tank.png */; };
+		05EDE1BD179EE2850051E7F6 /* Tank.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1B9179EE2850051E7F6 /* Tank.png */; };
+		05EDE1BF179EE3E40051E7F6 /* Turret.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1BE179EE3E40051E7F6 /* Turret.png */; };
+		05EDE1C0179EE3E40051E7F6 /* Turret.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1BE179EE3E40051E7F6 /* Turret.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,7 +164,9 @@
 		059CD601179C233E00B5981C /* Tanks3-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tanks3-Prefix.pch"; sourceTree = "<group>"; };
 		059CD603179C233E00B5981C /* TankGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankGameScene.h; sourceTree = "<group>"; };
 		059CD604179C233E00B5981C /* TankGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankGameScene.m; sourceTree = "<group>"; };
-		059CD605179C233E00B5981C /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		05EDE1B8179EE2850051E7F6 /* bulleta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulleta.png; sourceTree = "<group>"; };
+		05EDE1B9179EE2850051E7F6 /* Tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tank.png; sourceTree = "<group>"; };
+		05EDE1BE179EE3E40051E7F6 /* Turret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Turret.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +280,7 @@
 				059CD5F3179C233E00B5981C /* iOS */,
 				051BCBB1179C24440065B55D /* Mac */,
 				059CD602179C233E00B5981C /* Shared */,
+				05EDE1B7179EE2850051E7F6 /* Resources */,
 				059CD5E3179C22F500B5981C /* Tanks3Tests */,
 				059CD5B3179C22F500B5981C /* Frameworks */,
 				059CD5B2179C22F500B5981C /* Products */,
@@ -354,9 +361,18 @@
 				0598EF14179EC0BD00EAD12D /* TankMenuScene.m */,
 				059CD603179C233E00B5981C /* TankGameScene.h */,
 				059CD604179C233E00B5981C /* TankGameScene.m */,
-				059CD605179C233E00B5981C /* Spaceship.png */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		05EDE1B7179EE2850051E7F6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				05EDE1B8179EE2850051E7F6 /* bulleta.png */,
+				05EDE1B9179EE2850051E7F6 /* Tank.png */,
+				05EDE1BE179EE3E40051E7F6 /* Turret.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,9 +507,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				051BCBE1179C24920065B55D /* Spaceship.png in Resources */,
 				051BCBC8179C24440065B55D /* Images.xcassets in Resources */,
+				05EDE1BB179EE2850051E7F6 /* bulleta.png in Resources */,
 				051BCBB6179C24440065B55D /* InfoPlist.strings in Resources */,
+				05EDE1BD179EE2850051E7F6 /* Tank.png in Resources */,
+				05EDE1C0179EE3E40051E7F6 /* Turret.png in Resources */,
 				051BCBBC179C24440065B55D /* Credits.rtf in Resources */,
 				051BCBBE179C24440065B55D /* MainMenu.xib in Resources */,
 			);
@@ -504,10 +522,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				059CD607179C233E00B5981C /* Main_iPhone.storyboard in Resources */,
+				05EDE1BA179EE2850051E7F6 /* bulleta.png in Resources */,
 				059CD609179C233E00B5981C /* Images.xcassets in Resources */,
+				05EDE1BC179EE2850051E7F6 /* Tank.png in Resources */,
+				05EDE1BF179EE3E40051E7F6 /* Turret.png in Resources */,
 				059CD608179C233E00B5981C /* InfoPlist.strings in Resources */,
 				059CD606179C233E00B5981C /* Main_iPad.storyboard in Resources */,
-				059CD60F179C233E00B5981C /* Spaceship.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

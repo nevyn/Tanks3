@@ -7,4 +7,7 @@
 @property(nonatomic,WORLD_WRITABLE) float rotation; // 0 is up, cw
 @property(nonatomic,WORLD_WRITABLE) float angularVelocity;
 @property(nonatomic,WORLD_WRITABLE) float angularAcceleration;
+
+@property(nonatomic,WORLD_WRITABLE) Vector2 *aimingAt;
+- (float)turretRotation;
 @end

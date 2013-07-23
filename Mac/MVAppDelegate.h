@@ -15,3 +15,7 @@
 @property (assign) IBOutlet SKView *skView;
 
 @end
+
+
+@interface TankSKView : SKView
+@end

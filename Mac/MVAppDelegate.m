@@ -9,6 +9,7 @@
 #import "MVAppDelegate.h"
 #import "TankMenuScene.h"
 #import "TankServer.h"
+#import <objc/runtime.h>
 
 @interface MVAppDelegate () <TankMenuSceneDelegate>
 {
@@ -23,6 +24,8 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+	object_setClass(self.skView, [TankSKView class]);
+	[self.window setAcceptsMouseMovedEvents:YES];
     /* Pick a size for the scene */
     TankMenuScene *scene = [TankMenuScene sceneWithSize:CGSizeMake(1024, 768)];
     scene.delegate = self;
@@ -44,5 +47,13 @@
 {
 	_server = [TankServer new];
 	callback((id)_server.gameServer.game);
+}
+@end
+
+
+@implementation TankSKView
+- (BOOL)acceptsFirstMouse:(NSEvent *)theEvent
+{
+	return YES;
 }
 @end
