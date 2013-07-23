@@ -53,6 +53,7 @@
 			[weakSelf.bulletSprites removeObjectForKey:[bullet identifier]];
 		} added:^(id bullet) {
 			SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"bulleta"];
+			sprite.size = CGSizeMake(sprite.size.width*0.3, sprite.size.height*0.3);
 			[weakSelf addChild:sprite];
 			weakSelf.bulletSprites[[bullet identifier]] = sprite;
 		} initial:YES];
@@ -83,7 +84,8 @@
 - (void)mouseDown:(NSEvent *)theEvent
 {
 	TankBullet *bullet = [TankBullet new];
-	bullet.speed = 400;
+	bullet.speed = 1000;
+	bullet.collisionTTL = 2;
 	[[_game.currentLevel mutableArrayValueForKey:@"bullets"] addObject:bullet];
 	bullet.position = _me.tank.position;
 	bullet.angle = _me.tank.turretRotation + _me.tank.rotation;

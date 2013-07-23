@@ -5,6 +5,7 @@
 #import "TankTank.h"
 #import "TankLevel.h"
 #import "TankBullet.h"
+#import "BNZLine.h"
 
 @implementation TankGame
 - (void)tick:(float)delta
@@ -16,8 +17,31 @@
 		tank.rotation = tank.rotation + tank.angularVelocity*delta;
 	}
 	
-	for(TankBullet *bullet in self.currentLevel.bullets) {
+	for(TankBullet *bullet in [self.currentLevel.bullets copy]) {
+		Vector2 *oldPosition = bullet.position;
 		bullet.position = [bullet.position vectorByAddingVector:[[Vector2 vectorWithX:0 y:delta*bullet.speed] vectorByRotatingByRadians:bullet.angle]];
+		BNZLine *movement = [BNZLine lineAt:oldPosition to:bullet.position];
+		for(BNZLine *wall in _currentLevel.walls) {
+			Vector2 *collision;
+			if([wall getIntersectionPoint:&collision withLine:movement] == BNZLinesIntersect) {
+				bullet.collisionTTL -= 1;
+				if(bullet.collisionTTL == 0) {
+					[[self.currentLevel mutableArrayValueForKey:@"bullets"] removeObject:bullet];
+					break;
+				}
+				Vector2 *collisionVector = [[[BNZLine lineAt:oldPosition to:collision] vector] invertedVector];
+				Vector2 *paddleVector = [wall vector];
+				Vector2 *normal = [paddleVector rightHandNormal];
+				Vector2 *mirror = [collisionVector vectorByProjectingOnto:normal];
+				Vector2 *lefty = [collisionVector vectorBySubtractingVector:mirror];
+				Vector2 *righty = [lefty invertedVector];
+				Vector2 *outgoingVector = [mirror vectorByAddingVector:righty];
+				Vector2 *newBallPos = [collision vectorByAddingVector:outgoingVector];
+				bullet.position = newBallPos;
+				bullet.angle = [outgoingVector angle] - M_PI_2;
+				break;
+			}
+		}
 	}
 }
 @end
