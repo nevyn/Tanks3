@@ -16,6 +16,8 @@
 		051BCBC3179C24440065B55D /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 051BCBC2179C24440065B55D /* MVAppDelegate.m */; };
 		051BCBC8179C24440065B55D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051BCBC7179C24440065B55D /* Images.xcassets */; };
 		051BCBE0179C248F0065B55D /* TankGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* TankGameScene.m */; };
+		055549C7179F54F7006E4BC1 /* TankSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 055549C6179F54F7006E4BC1 /* TankSceneManager.m */; };
+		055549C8179F54F7006E4BC1 /* TankSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 055549C6179F54F7006E4BC1 /* TankSceneManager.m */; };
 		0598EEEA179EAAF700EAD12D /* libWorldKitClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE8179EAABE00EAD12D /* libWorldKitClient.a */; };
 		0598EEEB179EAAFB00EAD12D /* libWorldKitCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE2179EAABE00EAD12D /* libWorldKitCommon.a */; };
 		0598EEEC179EAAFB00EAD12D /* libWorldKitServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE6179EAABE00EAD12D /* libWorldKitServer.a */; };
@@ -125,6 +127,8 @@
 		051BCBC2179C24440065B55D /* MVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVAppDelegate.m; sourceTree = "<group>"; };
 		051BCBC4179C24440065B55D /* MVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVAppDelegate.h; sourceTree = "<group>"; };
 		051BCBC7179C24440065B55D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		055549C5179F54F7006E4BC1 /* TankSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankSceneManager.h; sourceTree = "<group>"; };
+		055549C6179F54F7006E4BC1 /* TankSceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankSceneManager.m; sourceTree = "<group>"; };
 		0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WorldKit.xcodeproj; path = Vendor/WorldKit/WorldKit.xcodeproj; sourceTree = SOURCE_ROOT; };
 		0598EEF1179EB18600EAD12D /* TankGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankGame.h; sourceTree = "<group>"; };
 		0598EEF2179EB18600EAD12D /* TankGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankGame.m; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 				0598EF18179ED39300EAD12D /* TankBullet.m */,
 				0598EF24179ED61900EAD12D /* TankMine.h */,
 				0598EF25179ED61900EAD12D /* TankMine.m */,
+				38ED0716179F354F001D8294 /* TankEnemyTank.h */,
+				38ED0717179F354F001D8294 /* TankEnemyTank.m */,
 			);
 			path = TankWorld;
 			sourceTree = "<group>";
@@ -368,6 +374,8 @@
 				0598EF14179EC0BD00EAD12D /* TankMenuScene.m */,
 				059CD603179C233E00B5981C /* TankGameScene.h */,
 				059CD604179C233E00B5981C /* TankGameScene.m */,
+				055549C5179F54F7006E4BC1 /* TankSceneManager.h */,
+				055549C6179F54F7006E4BC1 /* TankSceneManager.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -572,7 +580,9 @@
 				0598EF05179EB97400EAD12D /* TankTank.m in Sources */,
 				051BCBB8179C24440065B55D /* main.m in Sources */,
 				0598EF16179EC0BD00EAD12D /* TankMenuScene.m in Sources */,
+				38ED071A179F354F001D8294 /* TankEnemyTank.m in Sources */,
 				0598EF20179ED40C00EAD12D /* Vector2.m in Sources */,
+				055549C8179F54F7006E4BC1 /* TankSceneManager.m in Sources */,
 				0598EF22179ED40C00EAD12D /* BNZLine.m in Sources */,
 				051BCBC3179C24440065B55D /* MVAppDelegate.m in Sources */,
 			);
@@ -583,8 +593,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				059CD60A179C233E00B5981C /* main.m in Sources */,
+				38ED0718179F354F001D8294 /* TankEnemyTank.m in Sources */,
 				0598EF04179EB97400EAD12D /* TankTank.m in Sources */,
 				0598EF0C179EBC5C00EAD12D /* TankServer.m in Sources */,
+				055549C7179F54F7006E4BC1 /* TankSceneManager.m in Sources */,
 				0598EF21179ED40C00EAD12D /* BNZLine.m in Sources */,
 				059CD60E179C233E00B5981C /* TankGameScene.m in Sources */,
 				0598EEFC179EB94E00EAD12D /* TankPlayer.m in Sources */,

@@ -1,30 +1,13 @@
-//
-//  MVAppDelegate.m
-//  MacTanks3
-//
-//  Created by Joachim Bengtsson on 2013-07-21.
-//  Copyright (c) 2013 Mastervone. All rights reserved.
-//
-
 #import "MVAppDelegate.h"
-#import "TankMenuScene.h"
-#import "TankServer.h"
-#import <objc/runtime.h>
-
-@interface MVAppDelegate () <TankMenuSceneDelegate>
-{
-	TankServer *_server;
-}
-
-@end
+#import "TankSceneManager.h"
 
 @implementation MVAppDelegate
-
-@synthesize window = _window;
+{
+	TankSceneManager *_sceneManager;
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	object_setClass(self.skView, [TankSKView class]);
 	[self.window setAcceptsMouseMovedEvents:YES];
     /* Pick a size for the scene */
     TankMenuScene *scene = [TankMenuScene sceneWithSize:CGSizeMake(800, 600)];
@@ -41,19 +24,5 @@
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     return YES;
-}
-
-- (void)tankMenu:(TankMenuScene *)scene requestsCreatingServerWithGameCallback:(void (^)(TankGame *))callback
-{
-	_server = [TankServer new];
-	callback((id)_server.gameServer.game);
-}
-@end
-
-
-@implementation TankSKView
-- (BOOL)acceptsFirstMouse:(NSEvent *)theEvent
-{
-	return YES;
 }
 @end
