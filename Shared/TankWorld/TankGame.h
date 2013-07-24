@@ -1,6 +1,5 @@
 #import <WorldKit/Shared/Shared.h>
 @class TankLevel;
-static const int kTankServerPort = 29534;
 
 @interface PlayerInputState : NSObject
 @property (nonatomic, assign) BOOL up;

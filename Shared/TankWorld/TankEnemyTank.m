@@ -46,14 +46,7 @@
 	// Should fire?
     if (self.timeSinceFire > 2.f && [self.position distance:playerInSight.position] < 250) {
 		
-		TankBullet *bullet = [TankBullet new];
-		bullet.speed = TankBulletStandardSpeed;
-		bullet.collisionTTL = 2;
-		[[game.currentLevel mutableArrayValueForKey:@"bullets"] addObject:bullet];
-		bullet.position = self.position;
-		bullet.rotation = [self turretRotation] + self.rotation;
-		[bullet updatePhysicsFromProperties];
-		
+		[self fireBulletIntoLevel:game.currentLevel];		
 		_timeSinceFire = 0.0f;
     }
     

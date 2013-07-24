@@ -1,11 +1,14 @@
 #import <WorldKit/Shared/Shared.h>
 #import "TankPhysicalEntity.h"
+@class TankLevel;
 
 // Pixels per second
-const static float tankMaxSpeed = 60;
+const static float TankMaxSpeed = 60;
+
+const static float TankCollisionRadius = 20;
 
 // Radians per second
-const static float tankRotationSpeed = M_PI*2;
+const static float TankRotationSpeed = M_PI*2;
 
 
 @interface TankTank : TankPhysicalEntity
@@ -17,4 +20,5 @@ const static float tankRotationSpeed = M_PI*2;
 @property(nonatomic) BOOL canMove;  // YES when facing same direction as velocity
 
 - (float)turretRotation;
+- (void)fireBulletIntoLevel:(TankLevel*)level;
 @end

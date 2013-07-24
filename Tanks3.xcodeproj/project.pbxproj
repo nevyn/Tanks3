@@ -137,6 +137,7 @@
 		051BCBC7179C24440065B55D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0527DA1317A031E200731529 /* TankPhysicalEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankPhysicalEntity.h; sourceTree = "<group>"; };
 		0527DA1417A031E200731529 /* TankPhysicalEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankPhysicalEntity.m; sourceTree = "<group>"; };
+		0540B05D17A092EC00163AB8 /* TankTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TankTypes.h; sourceTree = "<group>"; };
 		055549C5179F54F7006E4BC1 /* TankSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankSceneManager.h; sourceTree = "<group>"; };
 		055549C6179F54F7006E4BC1 /* TankSceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankSceneManager.m; sourceTree = "<group>"; };
 		0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WorldKit.xcodeproj; path = Vendor/WorldKit/WorldKit.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -283,6 +284,7 @@
 		0598EEE9179EAAE500EAD12D /* TankWorld */ = {
 			isa = PBXGroup;
 			children = (
+				0540B05D17A092EC00163AB8 /* TankTypes.h */,
 				0598EEF1179EB18600EAD12D /* TankGame.h */,
 				0598EEF2179EB18600EAD12D /* TankGame.m */,
 				0527DA1317A031E200731529 /* TankPhysicalEntity.h */,

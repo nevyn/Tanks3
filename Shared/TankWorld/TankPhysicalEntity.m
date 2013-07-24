@@ -57,4 +57,7 @@
     }
 }
 
+- (void)collidedWithBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame*)game
+{
+}
 @end

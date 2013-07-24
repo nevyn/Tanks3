@@ -1,7 +1,10 @@
 #define WORLD_WRITABLE_MODEL 1
 #import "TankTank.h"
+#import "TankLevel.h"
+#import "TankBullet.h"
 #import "BNZLine.h"
 #import "SKPhysics+Private.h"
+#import "TankTypes.h"
 
 @implementation TankTank
 - (id)init
@@ -10,14 +13,15 @@
 		self.position = [Vector2 vectorWithX:10 y:10];
         self.moveIntent = [Vector2 vectorWithX:0 y:0];
         
-        self.speed = 60;
+        self.speed = TankMaxSpeed;
 		
         _aimingAt = [Vector2 zero];
-        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:20];
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:TankCollisionRadius];
 //        self.physicsBody.friction = 100;
 //        self.physicsBody.linearDamping = 0.0;
         self.physicsBody.angularDamping = 30;
         self.physicsBody.allowsRotation = NO;
+        self.physicsBody.categoryBitMask = TankGamePhysicsCategoryTank | TankGamePhysicsCategoryMakesBulletExplode;
 	}
 	return self;
 }
@@ -39,6 +43,18 @@
 - (float)turretRotation
 {
 	return [[[[BNZLine alloc] initAt:self.position to:_aimingAt] vector] angle] - self.rotation - M_PI_2;
+}
+
+- (void)fireBulletIntoLevel:(TankLevel*)level
+{
+	TankBullet *bullet = [TankBullet new];
+	bullet.speed = TankBulletStandardSpeed;
+	bullet.collisionTTL = 2;
+    Vector2 *offset = [[Vector2 vectorWithX:0 y:TankCollisionRadius*1.1] vectorByRotatingByRadians:self.turretRotation];
+	bullet.position = [self.position vectorByAddingVector:offset];
+	bullet.rotation = self.turretRotation + self.rotation;
+    [bullet updatePhysicsFromProperties];
+	[[level mutableArrayValueForKey:@"bullets"] addObject:bullet];
 }
 
 -(void)applyForces
@@ -67,7 +83,7 @@
         
         
         self.physicsBody.velocity = CGPointZero;
-        self.physicsBody.angularVelocity = tankRotationSpeed * (goal < 0 ? -1 : 1);
+        self.physicsBody.angularVelocity = TankRotationSpeed * (goal < 0 ? -1 : 1);
         
         if(goal > -0.1 && goal < 0.1) {
             self.physicsBody.rotation += goal;

@@ -86,20 +86,15 @@
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
 {
-    NSArray *bullets = self.currentLevel.bullets;
-    NSArray *bulletBodies = [bullets valueForKeyPath:@"physicsBody"];
-    SKPhysicsBody *body = [contact bodyA];
-//    PKPhysicsBody *other = [contact bodyB];
-    if(![bulletBodies containsObject:body])
-        body = [contact bodyB];
-    if(![bulletBodies containsObject:body])
-        return;
+    SKPhysicsBody *a = contact.bodyA;
+    WorldEntity *ae = SKPhysicsBodyGetUserData(a);
+    SKPhysicsBody *b = contact.bodyB;
+    WorldEntity *be = SKPhysicsBodyGetUserData(b);
     
-    TankBullet *bullet = bullets[[bulletBodies indexOfObject:body]];
-    if(--bullet.collisionTTL == 0) {
-        [self.world removeBody:body];
-        [[self.currentLevel mutableArrayValueForKey:@"bullets"] removeObject:bullet];
-    }
+    if([ae respondsToSelector:@selector(collidedWithBody:entity:inGame:)])
+        [(id)ae collidedWithBody:b entity:be inGame:self];
+    if([be respondsToSelector:@selector(collidedWithBody:entity:inGame:)])
+        [(id)be collidedWithBody:a entity:ae inGame:self];
 }
 
 @end
@@ -160,13 +155,7 @@
 
 - (void)commandFromPlayer:(TankPlayer*)player fire:(NSDictionary*)args
 {
-	TankBullet *bullet = [TankBullet new];
-	bullet.speed = TankBulletStandardSpeed;
-	bullet.collisionTTL = 2;
-	bullet.position = player.tank.position;
-	bullet.rotation = player.tank.turretRotation + player.tank.rotation;
-    [bullet updatePhysicsFromProperties];
-	[[self.currentLevel mutableArrayValueForKey:@"bullets"] addObject:bullet];
+    [player.tank fireBulletIntoLevel:self.currentLevel];
 }
 
 - (void)commandFromPlayer:(TankPlayer*)player moveTank:(NSDictionary*)args

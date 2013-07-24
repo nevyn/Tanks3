@@ -3,6 +3,7 @@
 #import <WorldKit/WorldKit.h>
 #import "TankWorld/TankGame.h"
 #import "TankWorld/TankPlayer.h"
+#import "TankWorld/TankTypes.h"
 #import <SPSuccinct/SPSuccinct.h>
 
 @interface TankServer () <WorldMasterServerDelegate, NSNetServiceDelegate>

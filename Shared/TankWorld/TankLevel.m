@@ -2,6 +2,7 @@
 #import "TankLevel.h"
 #import "BNZLine.h"
 #import "SKPhysics+Private.h"
+#import "TankTypes.h"
 
 @implementation TankLevel
 - (id)init
@@ -41,6 +42,7 @@
 {
     CGPathRef path = CGPathCreateWithRect((CGRect){.size=self.levelSize}, NULL);
     SKPhysicsBody *body = [SKPhysicsBody bodyWithEdgeLoopFromPath:path];
+    body.categoryBitMask = TankGamePhysicsCategoryWall | TankGamePhysicsCategoryMakesBulletBounce;
     CGPathRelease(path);
     [world addBody:body];
 	
@@ -54,6 +56,7 @@
 			
 			SKPhysicsBody *tileBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(tileWidth, tileHeight)];
 			tileBody.position = CGPointMake(((i%arenaWidth)*tileWidth)+tileWidth/2, (floor(i/arenaWidth)*tileHeight)+tileHeight/2);
+            tileBody.categoryBitMask = TankGamePhysicsCategoryWall | TankGamePhysicsCategoryMakesBulletBounce;
 			tileBody.mass = 100000;
 			[world addBody:tileBody];
 		}
