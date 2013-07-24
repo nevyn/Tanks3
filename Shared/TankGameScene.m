@@ -213,7 +213,7 @@ const static int tileSize = 30;
 	for(TankBullet *bullet in self.game.currentLevel.bullets) {
 		SKSpriteNode *sprite = _bulletSprites[bullet.identifier];
 		sprite.position = bullet.position.point;
-		sprite.zRotation = bullet.angle;
+		sprite.zRotation = bullet.rotation;
 	}
 }
 

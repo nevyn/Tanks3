@@ -2,11 +2,18 @@
 #import "TankBullet.h"
 
 @implementation TankBullet
+- (id)init
+{
+    if(self = [super init]) {
+        self.physicsBody = [PKPhysicsBody bodyWithCircleOfRadius:2];
+        self.physicsBody.angularDamping = 100000;
+    }
+    return self;
+}
+
 - (NSDictionary*)rep
 {
     return WorldDictAppend([super rep], @{
-        @"position": _position.rep,
-		@"angle": @(_angle),
 		@"speed": @(_speed),
 		@"collisionTTL": @(_collisionTTL),
     });
@@ -14,10 +21,14 @@
 - (void)updateFromRep:(NSDictionary*)rep fetcher:(WorldEntityFetcher)fetcher
 {
     [super updateFromRep:rep fetcher:fetcher];
-    WorldIf(rep, @"position", ^(id o) { self.position = [[Vector2 alloc] initWithRep:o]; });
-    WorldIf(rep, @"angle", ^(id o) { self.angle = [o floatValue]; });
     WorldIf(rep, @"speed", ^(id o) { self.speed = [o floatValue]; });
     WorldIf(rep, @"collisionTTL", ^(id o) { self.collisionTTL = [o intValue]; });
+}
+
+- (void)applyForces;
+{
+    self.acceleration = [[[Vector2 vectorWithX:0 y:1] vectorByRotatingByRadians:self.rotation] vectorByMultiplyingWithScalar:self.speed];
+    [super applyForces];
 }
 
 @end

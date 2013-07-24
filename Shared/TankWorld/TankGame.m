@@ -1,5 +1,6 @@
 #define WORLD_WRITABLE_MODEL 1
 #import <SPSuccinct/SPSuccinct.h>
+#import <PhysicsKit/PhysicsKit.h>
 #import "TankGame.h"
 #import "TankPlayer.h"
 #import "TankTank.h"
@@ -9,10 +10,16 @@
 #import "BNZLine.h"
 
 @implementation TankGame
+{
+    PKPhysicsWorld *_world;
+}
+
 - (id)init
 {
 	if(self = [super init]) {
 		_enemyTanks = [NSMutableArray array];
+        _world = [[PKPhysicsWorld alloc] init];
+        _world.gravity = CGPointZero;
 	}
 	return self;
 }
@@ -33,41 +40,17 @@
 
 - (void)tick:(float)delta
 {
-	for(TankTank *tank in [self.players valueForKeyPath:@"tank"]) {
-		tank.velocity = [[tank.velocity vectorByAddingVector:[tank.acceleration vectorByMultiplyingWithScalar:delta]] vectorByMultiplyingWithScalar:0.9];
-		tank.position = [tank.position vectorByAddingVector:[tank.velocity vectorByMultiplyingWithScalar:delta]];
-		tank.angularVelocity = (tank.angularVelocity + tank.angularAcceleration*delta)*0.4;
-		tank.rotation = tank.rotation + tank.angularVelocity*delta;
-	}
+    NSArray *physicalEntities = [self.currentLevel.tanks arrayByAddingObjectsFromArray:self.currentLevel.bullets];
+	for(TankPhysicalEntity *ent in physicalEntities) {
+        if(!ent.physicsBody._world)
+            [_world addBody:ent.physicsBody];
+        [ent applyForces];
+    }
+    
+    [_world stepWithTime:delta velocityIterations:100 positionIterations:100];
 	
-	for(TankBullet *bullet in [self.currentLevel.bullets copy]) {
-		Vector2 *oldPosition = bullet.position;
-		bullet.position = [bullet.position vectorByAddingVector:[[Vector2 vectorWithX:0 y:delta*bullet.speed] vectorByRotatingByRadians:bullet.angle]];
-		BNZLine *movement = [BNZLine lineAt:oldPosition to:bullet.position];
-		for(BNZLine *wall in _currentLevel.walls) {
-			Vector2 *collision;
-			if([wall getIntersectionPoint:&collision withLine:movement] == BNZLinesIntersect) {
-				bullet.collisionTTL -= 1;
-				if(bullet.collisionTTL == 0) {
-					[[self.currentLevel mutableArrayValueForKey:@"bullets"] removeObject:bullet];
-					break;
-				}
-				Vector2 *collisionVector = [[[BNZLine lineAt:oldPosition to:collision] vector] invertedVector];
-				Vector2 *paddleVector = [wall vector];
-				Vector2 *normal = [paddleVector rightHandNormal];
-				Vector2 *mirror = [collisionVector vectorByProjectingOnto:normal];
-				Vector2 *lefty = [collisionVector vectorBySubtractingVector:mirror];
-				Vector2 *righty = [lefty invertedVector];
-				Vector2 *outgoingVector = [mirror vectorByAddingVector:righty];
-				Vector2 *newBallPos = [collision vectorByAddingVector:outgoingVector];
-				bullet.position = newBallPos;
-				bullet.angle = [outgoingVector angle] - M_PI_2;
-				break;
-			}
-		}
-		
-		
-	}
+	for(TankPhysicalEntity *ent in physicalEntities)
+        [ent updatePropertiesFromPhysics];
   
   // Update enemies!!
   for (TankEnemyTank *enemyTank in self.enemyTanks) {
@@ -84,7 +67,8 @@
       bullet.collisionTTL = 2;
       [[self.currentLevel mutableArrayValueForKey:@"bullets"] addObject:bullet];
       bullet.position = enemyTank.position;
-      bullet.angle = enemyTank.turretRotation + enemyTank.rotation;
+      bullet.rotation = enemyTank.turretRotation + enemyTank.rotation;
+      [bullet updatePhysicsFromProperties];
       
       enemyTank.timeSinceFire = 0.0f;
     }
@@ -143,6 +127,7 @@
 	} added:^(TankPlayer *player) {
 		if (!player.tank) {
 			player.tank = [TankTank new];
+            [player.tank updatePhysicsFromProperties];
 			[[weakSelf.currentLevel mutableArrayValueForKey:@"tanks"] addObject:player.tank];
 		}
 	} initial:YES];
@@ -150,6 +135,7 @@
 	for(int i = 0; i < 2; i++) {
         TankEnemyTank *enemyTank = [[TankEnemyTank alloc] init];
         enemyTank.position = [Vector2 vectorWithX:300+(100*(i+1)) y:200+100*(i+1)];
+        [enemyTank updatePhysicsFromProperties];
 
 		[[self.currentLevel mutableArrayValueForKey:@"tanks"] addObject:enemyTank];
         [[self mutableArrayValueForKey:@"enemyTanks"] addObject:enemyTank];
@@ -167,7 +153,8 @@
 	bullet.speed = TankBulletStandardSpeed;
 	bullet.collisionTTL = 2;
 	bullet.position = player.tank.position;
-	bullet.angle = player.tank.turretRotation + player.tank.rotation;
+	bullet.rotation = player.tank.turretRotation + player.tank.rotation;
+    [bullet updatePhysicsFromProperties];
 	[[self.currentLevel mutableArrayValueForKey:@"bullets"] addObject:bullet];
 }
 
@@ -178,20 +165,20 @@
 	PlayerInputState *state = [[PlayerInputState alloc] initWithRep:args[@"state"]];
 	
     if (state.forward && !state.reverse)
-        playerTank.acceleration = [[Vector2 vectorWithX:0 y:5000] vectorByRotatingByRadians:playerTank.rotation];
+        playerTank.acceleration = [[Vector2 vectorWithX:0 y:100] vectorByRotatingByRadians:playerTank.rotation];
     
     if (state.reverse && !state.forward)
-        playerTank.acceleration = [[Vector2 vectorWithX:0 y:-5000] vectorByRotatingByRadians:playerTank.rotation];
+        playerTank.acceleration = [[Vector2 vectorWithX:0 y:-100] vectorByRotatingByRadians:playerTank.rotation];
     
     if (!state.reverse && !state.forward)
         playerTank.acceleration = [Vector2 zero];
     
     
     if (state.turnLeft && !state.turnRight)
-        playerTank.angularAcceleration = M_PI*80;
+        playerTank.angularAcceleration = 0.1;
     
     if (state.turnRight && !state.turnLeft)
-        playerTank.angularAcceleration = -M_PI*80;
+        playerTank.angularAcceleration = -0.1;
     
     if (!state.turnLeft && !state.turnRight)
         playerTank.angularAcceleration = 0;
