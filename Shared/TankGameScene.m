@@ -41,14 +41,12 @@
 
 @implementation TankGameScene
 {
-	TankGame *_game;
-	TankPlayer *_me;
-	SKSpriteNode *_meSprite;
-	SKSpriteNode *_turretSprite;
+    WorldGameClient *_client;
+	TankGame *_hackyServerGame;
+	PlayerInputState *_inputState;
     
     SKSpriteNode *_floor;
     SKNode *_map;
-}
 
 -(id)initWithSize:(CGSize)size gameClient:(WorldGameClient*)client
 {
@@ -98,11 +96,25 @@
             
             SKSpriteNode *n = [SKSpriteNode spriteNodeWithImageNamed:tex];
             n.size = CGSizeMake(30, 30);
-            n.position = CGPointMake(x* 30, y * 30);
+            n.position = CGPointMake(x* 30, - y) * 30);
             n.anchorPoint = CGPointMake(0, 0);
             [_map addChild:n];
         }
         [self addChild:_map];
+	  
+		
+		_tankSprites = [NSMutableDictionary new];
+		[_client sp_observe:@"game.currentLevel.tanks" removed:^(id tank) {
+			if(!tank) return;
+			TankNode *node = [weakSelf tankSprites][[tank identifier]];
+			[node removeFromParent];
+			[weakSelf.tankSprites removeObjectForKey:[tank identifier]];
+		} added:^(id tank) {
+			if(!tank) return;
+			TankNode *tankNode = [[TankNode alloc] initWithTank:tank];
+			[weakSelf addChild:tankNode];
+			[weakSelf tankSprites][[tank identifier]] = tankNode;
+		} initial:YES];
 	}
     return self;
 }
