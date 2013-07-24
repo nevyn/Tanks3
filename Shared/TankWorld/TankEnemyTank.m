@@ -24,13 +24,16 @@
 
 - (void) update:(float)delta game:(TankGame*)game {
 	
-	NSArray *playersInSight = [self playersInSight:[game.players valueForKeyPath:@"tank"] game:game];
-	if (playersInSight.count == 0) return;
+	TankTank *closestPlayer = [self closestPlayerToPosition:self.position players:[game.players valueForKeyPath:@"tank"]];
+	if (!closestPlayer) return;
 	
-	TankTank *closestPlayer = [self closestPlayerToPosition:self.position players:playersInSight];
-	if(!closestPlayer) return;
-	
-    self.aimingAt = closestPlayer.position;
+	TankTank *playerInSight = [self closestPlayerInSight:[game.players valueForKeyPath:@"tank"] game:game];
+	if (!playerInSight) {
+		if (closestPlayer) self.aimingAt = closestPlayer.position;
+		return;
+	}
+		
+    self.aimingAt = playerInSight.position;
     
     // Should fire?
     if (self.timeSinceFire > 2.f && [self.position distance:closestPlayer.position] < 250) {
@@ -64,7 +67,7 @@
 	return closestPlayer;
 }
 
-- (NSArray*) playersInSight:(NSArray*)allPlayers game:(TankGame*)game {
+- (TankTank*) closestPlayerInSight:(NSArray*)allPlayers game:(TankGame*)game {
 	
 	NSMutableArray *inSight = [NSMutableArray array];
 	
@@ -96,7 +99,7 @@
 		}
 	}
 	
-	return inSight;
+	return [self closestPlayerToPosition:self.position players:inSight];
 }
 
 @end
