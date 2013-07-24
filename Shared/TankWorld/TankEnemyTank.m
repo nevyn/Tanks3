@@ -31,14 +31,19 @@
 	
 	[self updateMovement:delta game:game target:playerInSight];
 	
+	[self updateFiring:delta game:game playerInSight:playerInSight closestPlayer:closestPlayer];
+}
+
+- (void) updateFiring:(float)delta game:(TankGame*)game playerInSight:(TankTank*)playerInSight closestPlayer:(TankTank*)closestPlayer {
+	
 	if (!playerInSight) {
 		if (closestPlayer) self.aimingAt = closestPlayer.position;
 		return;
 	}
-		
+	
     self.aimingAt = playerInSight.position;
-    
-    // Should fire?
+	
+	// Should fire?
     if (self.timeSinceFire > 2.f && [self.position distance:playerInSight.position] < 250) {
 		
 		TankBullet *bullet = [TankBullet new];
