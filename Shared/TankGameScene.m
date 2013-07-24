@@ -102,8 +102,18 @@
 }
 
 #if TARGET_OS_IPHONE
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	[self touchesMoved:touches withEvent:event];
 }
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	[self.game cmd_aimTankAt:[Vector2 vectorWithPoint:[[touches anyObject] locationInNode:self]]];
+	[self.game cmd_fire];
+
+}
+
 #else
 - (void)mouseMoved:(NSEvent *)theEvent
 {

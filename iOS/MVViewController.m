@@ -1,16 +1,10 @@
-//
-//  MVViewController.m
-//  Tanks3
-//
-//  Created by Joachim Bengtsson on 2013-07-21.
-//  Copyright (c) 2013 Mastervone. All rights reserved.
-//
-
 #import "MVViewController.h"
-#import "TankGameScene.h"
-#import "TankMenuScene.h"
+#import "TankSceneManager.h"
 
 @implementation MVViewController
+{
+	TankSceneManager *_sceneManager;
+}
 
 - (void)viewDidLoad
 {
@@ -18,16 +12,7 @@
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
-    
-    // Create and configure the scene.
-    TankMenuScene * scene = [TankMenuScene sceneWithSize:skView.bounds.size];
-	scene.delegate = self;
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    
-    // Present the scene.
-    [skView presentScene:scene];
+	_sceneManager = [[TankSceneManager alloc] initWithSpriteView:skView];
 }
 
 - (BOOL)shouldAutorotate
@@ -37,17 +22,7 @@
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return UIInterfaceOrientationMaskAllButUpsideDown;
-    } else {
-        return UIInterfaceOrientationMaskAll;
-    }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
+	return UIInterfaceOrientationMaskLandscape;
 }
 
 @end
