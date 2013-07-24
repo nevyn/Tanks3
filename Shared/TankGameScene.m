@@ -53,6 +53,8 @@ const static int tileSize = 30;
     // ...stuff around arena...
 
     SKNode *_map;   // Container for tilemap
+    
+    NSTrackingArea *_trackingArea;
 }
 
 -(id)initWithSize:(CGSize)size gameClient:(WorldGameClient*)client
@@ -142,15 +144,24 @@ const static int tileSize = 30;
 	return (id)_client.game;
 }
 
+- (void)willMoveFromView:(SKView *)view
+{
+#if !TARGET_OS_IPHONE
+    if(_trackingArea) {
+        [view removeTrackingArea:_trackingArea];
+        _trackingArea = nil;
+    }
+#endif
+}
+
 - (void)didMoveToView:(SKView *)view
 {
 #if !TARGET_OS_IPHONE
-	int opts = (NSTrackingActiveAlways | NSTrackingMouseMoved);
-	NSTrackingArea *area = [[NSTrackingArea alloc] initWithRect:CGRectMake(0, 0, self.size.width, self.size.height)
-                                                 options:opts
-                                                   owner:self
-                                                userInfo:nil];
-	[self.view addTrackingArea:area];
+    if(view) {
+        int opts = (NSTrackingActiveAlways | NSTrackingMouseMoved);
+        _trackingArea = [[NSTrackingArea alloc] initWithRect:CGRectMake(0, 0, self.size.width, self.size.height) options:opts owner:self userInfo:nil];
+        [self.view addTrackingArea:_trackingArea];
+    }
 #endif
 }
 
