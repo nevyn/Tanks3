@@ -1,10 +1,6 @@
 #define WORLD_WRITABLE_MODEL 1
 #import "TankPhysicalEntity.h"
-
-@interface SKPhysicsBody (Private)
-@property(nonatomic) CGPoint position;
-@property(nonatomic) double rotation;
-@end
+#import "SKPhysics+Private.h"
 
 @implementation TankPhysicalEntity
 - (id)init

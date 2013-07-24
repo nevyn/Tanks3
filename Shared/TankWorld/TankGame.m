@@ -8,15 +8,7 @@
 #import "TankLevel.h"
 #import "TankBullet.h"
 #import "BNZLine.h"
-
-@interface SKPhysicsWorld (Private)
-- (void)removeBody:(id)arg1;
-- (void)addBody:(id)arg1;
-- (BOOL)stepWithTime:(double)arg1 velocityIterations:(unsigned long long)arg2 positionIterations:(unsigned long long)arg3;
-@end
-@interface SKPhysicsBody (Private)
-@property(nonatomic) id _world;
-@end
+#import "SKPhysics+Private.h"
 
 @interface TankGame () <SKPhysicsContactDelegate>
 @property(nonatomic,strong) SKPhysicsWorld *world;

@@ -1,11 +1,7 @@
 #define WORLD_WRITABLE_MODEL 1
 #import "TankLevel.h"
 #import "BNZLine.h"
-
-@interface SKPhysicsWorld (Private)
-- (void)removeBody:(id)arg1;
-- (void)addBody:(id)arg1;
-@end
+#import "SKPhysics+Private.h"
 
 @implementation TankLevel
 - (id)init
