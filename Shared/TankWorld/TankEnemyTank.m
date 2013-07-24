@@ -10,6 +10,7 @@
 #import "TankGame.h"
 #import "TankBullet.h"
 #import "TankLevel.h"
+#import "SKPhysics+Private.h"
 
 @implementation TankEnemyTank
 
