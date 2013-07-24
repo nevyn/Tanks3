@@ -67,68 +67,73 @@
         _arena.position = CGPointMake((800 - 660) / 2, (600-480)/2); // Move up-right a bit
         [self addChild:_arena];
         
-		_bulletSprites = [NSMutableDictionary new];
-		__weak __typeof(self) weakSelf = self;
-		[_client sp_observe:@"game.currentLevel.bullets" removed:^(id bullet) {
-			if(!bullet) return;
-			[weakSelf.bulletSprites[[bullet identifier]] removeFromParent];
-			[weakSelf.bulletSprites removeObjectForKey:[bullet identifier]];
-		} added:^(id bullet) {
-			if(!bullet) return;
-			SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"bulleta"];
-			sprite.size = CGSizeMake(25, 15);
-			[weakSelf.arena addChild:sprite];
-			weakSelf.bulletSprites[[bullet identifier]] = sprite;
-		} initial:YES];
-        
-        //_floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor"];
-        //[self addChild:_floor];
-        
-        [self sp_addDependency:@"map" on:@[_client, @"game.currentLevel.map"] changed:^{
-            __strong __typeof(self) strongSelf = weakSelf;
-            [strongSelf->_map removeFromParent];
-            
-            strongSelf->_map = [SKNode node];
-            strongSelf->_map.position = CGPointMake(0, 0);
-            
-            int x = -1;
-            int y = 0;
-            for(NSNumber *n in strongSelf.game.currentLevel.map) {
-                x++;
-                if(x == 22) {
-                    x = 0;
-                    y++;
-                }
-
-                NSInteger val = [n integerValue];
-                if(val == 0) {
-                    continue;
-                }
-                NSString *tex = val == 1 ? @"wall" : @"breakable";
-                
-                SKSpriteNode *n = [SKSpriteNode spriteNodeWithImageNamed:tex];
-                n.size = CGSizeMake(30, 30);
-                n.position = CGPointMake(x * 30, y * 30);
-                n.anchorPoint = CGPointMake(0, 0);
-                [strongSelf->_map addChild:n];
-            }
-            [strongSelf.arena addChild:strongSelf->_map];
-        }];
-		
-		_tankSprites = [NSMutableDictionary new];
-		[_client sp_observe:@"game.currentLevel.tanks" removed:^(id tank) {
-			if(!tank) return;
-			TankNode *node = [weakSelf tankSprites][[tank identifier]];
-			[node removeFromParent];
-			[weakSelf.tankSprites removeObjectForKey:[tank identifier]];
-		} added:^(id tank) {
-			if(!tank) return;
-			TankNode *tankNode = [[TankNode alloc] initWithTank:tank];
-			[weakSelf.arena addChild:tankNode];
-			[weakSelf tankSprites][[tank identifier]] = tankNode;
-		} initial:YES];
+        [self bindUIToDataModel];
 	}
     return self;
+}
+
+- (void)bindUIToDataModel
+{
+    _bulletSprites = [NSMutableDictionary new];
+    __weak __typeof(self) weakSelf = self;
+    [_client sp_observe:@"game.currentLevel.bullets" removed:^(id bullet) {
+        if(!bullet) return;
+        [weakSelf.bulletSprites[[bullet identifier]] removeFromParent];
+        [weakSelf.bulletSprites removeObjectForKey:[bullet identifier]];
+    } added:^(id bullet) {
+        if(!bullet) return;
+        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"bulleta"];
+        sprite.size = CGSizeMake(25, 15);
+        [weakSelf.arena addChild:sprite];
+        weakSelf.bulletSprites[[bullet identifier]] = sprite;
+    } initial:YES];
+    
+    //_floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor"];
+    //[self addChild:_floor];
+    
+    [self sp_addDependency:@"map" on:@[_client, @"game.currentLevel.map"] changed:^{
+        __strong __typeof(self) strongSelf = weakSelf;
+        [strongSelf->_map removeFromParent];
+        
+        strongSelf->_map = [SKNode node];
+        strongSelf->_map.position = CGPointMake(0, 0);
+        
+        int x = -1;
+        int y = 0;
+        for(NSNumber *n in strongSelf.game.currentLevel.map) {
+            x++;
+            if(x == 22) {
+                x = 0;
+                y++;
+            }
+
+            NSInteger val = [n integerValue];
+            if(val == 0) {
+                continue;
+            }
+            NSString *tex = val == 1 ? @"wall" : @"breakable";
+            
+            SKSpriteNode *n = [SKSpriteNode spriteNodeWithImageNamed:tex];
+            n.size = CGSizeMake(30, 30);
+            n.position = CGPointMake(x * 30, y * 30);
+            n.anchorPoint = CGPointMake(0, 0);
+            [strongSelf->_map addChild:n];
+        }
+        [strongSelf.arena addChild:strongSelf->_map];
+    }];
+    
+    _tankSprites = [NSMutableDictionary new];
+    [_client sp_observe:@"game.currentLevel.tanks" removed:^(id tank) {
+        if(!tank) return;
+        TankNode *node = [weakSelf tankSprites][[tank identifier]];
+        [node removeFromParent];
+        [weakSelf.tankSprites removeObjectForKey:[tank identifier]];
+    } added:^(id tank) {
+        if(!tank) return;
+        TankNode *tankNode = [[TankNode alloc] initWithTank:tank];
+        [weakSelf.arena addChild:tankNode];
+        [weakSelf tankSprites][[tank identifier]] = tankNode;
+    } initial:YES];
 }
 
 - (TankGame*)game

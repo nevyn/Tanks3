@@ -7,7 +7,7 @@
 {
 	if(self = [super init]) {
 		_bullets = [NSMutableArray new];
-		float w = 800, h = 600;
+		float w = 660, h = 480;
 		_levelSize = CGSizeMake(w, h);
 		_walls = [@[
 			[BNZLine lineAt:[Vector2 vectorWithX:0 y:0] to:[Vector2 vectorWithX:w y:0]],
