@@ -9,16 +9,17 @@
 #import "TankBullet.h"
 #import "BNZLine.h"
 
-@implementation TankGame
-{
-    PKPhysicsWorld *_world;
-}
+@interface TankGame () <PKPhysicsContactDelegate>
+@property(nonatomic,strong) PKPhysicsWorld *world;
+@end
 
+@implementation TankGame
 - (id)init
 {
 	if(self = [super init]) {
 		_enemyTanks = [NSMutableArray array];
         _world = [[PKPhysicsWorld alloc] init];
+        _world.contactDelegate = self;
         _world.gravity = CGPointZero;
 	}
 	return self;
@@ -47,7 +48,7 @@
         [ent applyForces];
     }
     
-    [_world stepWithTime:delta velocityIterations:100 positionIterations:100];
+    [_world stepWithTime:delta velocityIterations:10 positionIterations:10];
 	
 	for(TankPhysicalEntity *ent in physicalEntities)
         [ent updatePropertiesFromPhysics];
@@ -111,6 +112,23 @@
 	}];
 }
 
+- (void)didBeginContact:(PKPhysicsContact *)contact
+{
+    NSArray *bullets = self.currentLevel.bullets;
+    NSArray *bulletBodies = [bullets valueForKeyPath:@"physicsBody"];
+    PKPhysicsBody *body = [contact bodyA];
+//    PKPhysicsBody *other = [contact bodyB];
+    if(![bulletBodies containsObject:body])
+        body = [contact bodyB];
+    if(![bulletBodies containsObject:body])
+        return;
+    
+    TankBullet *bullet = bullets[[bulletBodies indexOfObject:body]];
+    if(--bullet.collisionTTL == 0) {
+        [self.world removeBody:body];
+        [[self.currentLevel mutableArrayValueForKey:@"bullets"] removeObject:bullet];
+    }
+}
 
 @end
 
@@ -120,6 +138,7 @@
 	[super awakeFromPublish];
 	
 	self.currentLevel = [TankLevel new];
+    [self.currentLevel addWallsToPhysics:self.world];
     
 	__weak __typeof(self) weakSelf = self;
 	[self sp_observe:@"players" removed:^(TankPlayer *player) {

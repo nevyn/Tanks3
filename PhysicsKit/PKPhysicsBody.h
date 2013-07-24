@@ -3,9 +3,9 @@
 @class NSArray, NSMutableArray, PKPhysicsWorld;
 
 @interface PKPhysicsBody : NSObject <NSCopying, NSCoding>
-+ (id)bodyWithEdgeLoopFromPath:(struct CGPath *)arg1;
-+ (id)bodyWithEdgeChainFromPath:(struct CGPath *)arg1;
-+ (id)bodyWithPolygonFromPath:(struct CGPath *)arg1;
++ (id)bodyWithEdgeLoopFromPath:(CGPathRef)arg1;
++ (id)bodyWithEdgeChainFromPath:(CGPathRef)arg1;
++ (id)bodyWithPolygonFromPath:(CGPathRef)arg1;
 + (id)bodyWithEdgeFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
 + (id)bodyWithRectangleOfSize:(struct CGSize)arg1;
 + (id)bodyWithCircleOfRadius:(double)arg1;
@@ -44,9 +44,9 @@
 - (void)set_allowSleep:(BOOL)arg1;
 @property struct CGPoint position;
 @property __weak id <NSObject> representedObject;
-- (id)initWithEdgeLoopFromPath:(struct CGPath *)arg1;
-- (id)initWithEdgeChainFromPath:(struct CGPath *)arg1;
-- (id)initWithPolygonFromPath:(struct CGPath *)arg1;
+- (id)initWithEdgeLoopFromPath:(CGPathRef)arg1;
+- (id)initWithEdgeChainFromPath:(CGPathRef)arg1;
+- (id)initWithPolygonFromPath:(CGPathRef)arg1;
 - (id)initWithEdgeFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2;
 - (id)initWithRectangleOfSize:(struct CGSize)arg1;
 - (id)initWithCircleOfRadius:(double)arg1;
