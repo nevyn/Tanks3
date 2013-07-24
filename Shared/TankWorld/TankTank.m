@@ -17,6 +17,7 @@
 //        self.physicsBody.friction = 100;
 //        self.physicsBody.linearDamping = 0.0;
         self.physicsBody.angularDamping = 30;
+        self.physicsBody.allowsRotation = NO;
 	}
 	return self;
 }
