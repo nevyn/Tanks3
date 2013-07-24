@@ -178,26 +178,28 @@ const static int tileSize = 30;
 }
 - (void)keyDown:(NSEvent *)theEvent
 {
+    if([theEvent isARepeat]) return;
+    
 	if([[theEvent characters] isEqual:@"w"])
-		_inputState.forward = YES;
+		_inputState.up = YES;
 	if([[theEvent characters] isEqual:@"s"])
-		_inputState.reverse = YES;
+		_inputState.down = YES;
 	if([[theEvent characters] isEqual:@"a"])
-		_inputState.turnLeft = YES;
+		_inputState.left = YES;
 	if([[theEvent characters] isEqual:@"d"])
-		_inputState.turnRight = YES;
+		_inputState.right = YES;
 	[self.game cmd_moveTank:_inputState];
 }
 - (void)keyUp:(NSEvent *)theEvent
-{
+{    
 	if([[theEvent characters] isEqual:@"w"])
-		_inputState.forward = NO;
+		_inputState.up = NO;
 	if([[theEvent characters] isEqual:@"s"])
-		_inputState.reverse = NO;
+		_inputState.down = NO;
 	if([[theEvent characters] isEqual:@"a"])
-		_inputState.turnLeft = NO;
+		_inputState.left = NO;
 	if([[theEvent characters] isEqual:@"d"])
-		_inputState.turnRight = NO;
+		_inputState.right = NO;
 	[self.game cmd_moveTank:_inputState];
 }
 #endif

@@ -3,10 +3,10 @@
 static const int kTankServerPort = 29534;
 
 @interface PlayerInputState : NSObject
-@property (nonatomic, assign) BOOL forward;
-@property (nonatomic, assign) BOOL reverse;
-@property (nonatomic, assign) BOOL turnLeft;
-@property (nonatomic, assign) BOOL turnRight;
+@property (nonatomic, assign) BOOL up;
+@property (nonatomic, assign) BOOL right;
+@property (nonatomic, assign) BOOL down;
+@property (nonatomic, assign) BOOL left;
 - (NSDictionary*)rep;
 - (id)initWithRep:(NSDictionary*)rep;
 @end

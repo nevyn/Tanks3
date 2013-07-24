@@ -7,8 +7,9 @@
 {
 	if(self = [super init]) {
 		_position = [Vector2 vectorWithX:10 y:10];
-		_velocity = [Vector2 zero];
-		_acceleration  = [Vector2 zero];
+        _moveIntent = [Vector2 vectorWithX:0 y:0];
+//		_velocity = [Vector2 zero];
+//		_acceleration  = [Vector2 zero];
 		_aimingAt = [Vector2 zero];
 
 	}
@@ -19,11 +20,12 @@
 {
     return WorldDictAppend([super rep], @{
         @"position": _position.rep,
-		@"velocity": _velocity.rep,
-		@"acceleration": _acceleration.rep,
+        @"moveIntent": _moveIntent.rep,
+//		@"velocity": _velocity.rep,
+//		@"acceleration": _acceleration.rep,
 		@"rotation": @(_rotation),
-		@"angularVelocity": @(_angularVelocity),
-		@"angularAcceleration": @(_angularAcceleration),
+//		@"angularVelocity": @(_angularVelocity),
+//		@"angularAcceleration": @(_angularAcceleration),
 		@"aimingAt": _aimingAt.rep,
     });
 }
@@ -31,11 +33,12 @@
 {
     [super updateFromRep:rep fetcher:fetcher];
     WorldIf(rep, @"position", ^(id o) { self.position = [[Vector2 alloc] initWithRep:o]; });
-    WorldIf(rep, @"velocity", ^(id o) { self.velocity = [[Vector2 alloc] initWithRep:o]; });
-    WorldIf(rep, @"acceleration", ^(id o) { self.acceleration = [[Vector2 alloc] initWithRep:o]; });
+    WorldIf(rep, @"moveIntent", ^(id o) { self.moveIntent = [[Vector2 alloc] initWithRep:o]; });
+//    WorldIf(rep, @"velocity", ^(id o) { self.velocity = [[Vector2 alloc] initWithRep:o]; });
+//    WorldIf(rep, @"acceleration", ^(id o) { self.acceleration = [[Vector2 alloc] initWithRep:o]; });
     WorldIf(rep, @"rotation", ^(id o) { self.rotation = [o floatValue]; });
-    WorldIf(rep, @"angularVelocity", ^(id o) { self.angularVelocity = [o floatValue]; });
-    WorldIf(rep, @"angularAcceleration", ^(id o) { self.angularAcceleration = [o floatValue]; });
+//    WorldIf(rep, @"angularVelocity", ^(id o) { self.angularVelocity = [o floatValue]; });
+//    WorldIf(rep, @"angularAcceleration", ^(id o) { self.angularAcceleration = [o floatValue]; });
     WorldIf(rep, @"aimingAt", ^(id o) { self.aimingAt = [[Vector2 alloc] initWithRep:o]; });
 }
 

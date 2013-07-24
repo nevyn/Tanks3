@@ -34,10 +34,32 @@
 - (void)tick:(float)delta
 {
 	for(TankTank *tank in [self.players valueForKeyPath:@"tank"]) {
-		tank.velocity = [[tank.velocity vectorByAddingVector:[tank.acceleration vectorByMultiplyingWithScalar:delta]] vectorByMultiplyingWithScalar:0.9];
-		tank.position = [tank.position vectorByAddingVector:[tank.velocity vectorByMultiplyingWithScalar:delta]];
-		tank.angularVelocity = (tank.angularVelocity + tank.angularAcceleration*delta)*0.4;
-		tank.rotation = tank.rotation + tank.angularVelocity*delta;
+        if([tank.moveIntent length]) {
+            if(tank.canMove) {
+                tank.position = [tank.position vectorByAddingVector:[tank.moveIntent vectorByMultiplyingWithScalar:delta * tankMaxSpeed]];
+            } else {
+                // Rotate towards the intended direction
+                Vector2 *look = [[Vector2 vectorWithX:0 y:1] vectorByRotatingByRadians:tank.rotation];
+                
+                // Goals are relative to look dir!
+                
+                // Angle to move intent, from up
+                float goal1 = [look angleTo:tank.moveIntent];
+                
+                // Angle to inversed move intent, from up
+                float goal2 = [look angleTo:[tank.moveIntent invertedVector]];
+                
+                float goal = fabsf(goal1) < fabsf(goal2) ? goal1 : goal2;
+              
+                if(goal < 0)
+                    tank.rotation -= tankRotationSpeed * delta;
+                else
+                    tank.rotation += tankRotationSpeed * delta;
+                
+                if(goal > -0.001 && goal < 0.001)
+                    tank.canMove = YES;
+            }
+        }
 	}
 	
 	for(TankBullet *bullet in [self.currentLevel.bullets copy]) {
@@ -177,24 +199,26 @@
 	
 	PlayerInputState *state = [[PlayerInputState alloc] initWithRep:args[@"state"]];
 	
-    if (state.forward && !state.reverse)
-        playerTank.acceleration = [[Vector2 vectorWithX:0 y:5000] vectorByRotatingByRadians:playerTank.rotation];
+    if(state.up)
+        playerTank.moveIntent = [Vector2 vectorWithX:playerTank.moveIntent.x y:1.0f];
+    else if (state.down)
+        playerTank.moveIntent = [Vector2 vectorWithX:playerTank.moveIntent.x y:-1.0f];
+    else
+        playerTank.moveIntent = [Vector2 vectorWithX:playerTank.moveIntent.x y:0];
+
+    if(state.right)
+        playerTank.moveIntent = [Vector2 vectorWithX:1.0f y:playerTank.moveIntent.y];
+    else if(state.left)
+        playerTank.moveIntent = [Vector2 vectorWithX:-1.0f y:playerTank.moveIntent.y];
+    else
+        playerTank.moveIntent = [Vector2 vectorWithX:0 y:playerTank.moveIntent.y];
+
+    // Normalize so we don't go faster diagonally
+    if([playerTank.moveIntent length] > 0.0)
+        playerTank.moveIntent = [playerTank.moveIntent normalizedVector];
     
-    if (state.reverse && !state.forward)
-        playerTank.acceleration = [[Vector2 vectorWithX:0 y:-5000] vectorByRotatingByRadians:playerTank.rotation];
-    
-    if (!state.reverse && !state.forward)
-        playerTank.acceleration = [Vector2 zero];
-    
-    
-    if (state.turnLeft && !state.turnRight)
-        playerTank.angularAcceleration = M_PI*80;
-    
-    if (state.turnRight && !state.turnLeft)
-        playerTank.angularAcceleration = -M_PI*80;
-    
-    if (!state.turnLeft && !state.turnRight)
-        playerTank.angularAcceleration = 0;
+    // Something changed, so force recalc of canMove
+    playerTank.canMove = NO;
 }
 
 @end
@@ -203,19 +227,19 @@
 - (NSDictionary*)rep
 {
 	return @{
-		@"forward": @(_forward),
-		@"reverse": @(_reverse),
-		@"turnLeft": @(_turnLeft),
-		@"turnRight": @(_turnRight),
+		@"up": @(_up),
+		@"right": @(_right),
+		@"down": @(_down),
+		@"left": @(_left),
 	};
 }
 - (id)initWithRep:(NSDictionary*)rep
 {
 	if(self = [super init]) {
-		self.forward = [rep[@"forward"] boolValue];
-		self.reverse = [rep[@"reverse"] boolValue];
-		self.turnLeft = [rep[@"turnLeft"] boolValue];
-		self.turnRight = [rep[@"turnRight"] boolValue];
+		self.up = [rep[@"up"] boolValue];
+		self.right = [rep[@"right"] boolValue];
+		self.down = [rep[@"down"] boolValue];
+		self.left = [rep[@"left"] boolValue];
 	}
 	return self;
 }
