@@ -137,14 +137,15 @@
 	
 	self.currentLevel = [TankLevel new];
     
-	[self sp_addObserver:self forKeyPath:@"players" options:NSKeyValueObservingOptionInitial callback:^(NSDictionary *change, id object, NSString *keyPath) {
-		for(TankPlayer *player in [object players]) {
-			if (!player.tank) {
-				player.tank = [TankTank new];
-				[[self.currentLevel mutableArrayValueForKey:@"tanks"] addObject:player.tank];
-			}
+	__weak __typeof(self) weakSelf = self;
+	[self sp_observe:@"players" removed:^(TankPlayer *player) {
+		[[weakSelf.currentLevel mutableArrayValueForKey:@"tanks"] removeObject:player.tank];
+	} added:^(TankPlayer *player) {
+		if (!player.tank) {
+			player.tank = [TankTank new];
+			[[weakSelf.currentLevel mutableArrayValueForKey:@"tanks"] addObject:player.tank];
 		}
-	}];
+	} initial:YES];
 	
 	for(int i = 0; i < 2; i++) {
         TankEnemyTank *enemyTank = [[TankEnemyTank alloc] init];
