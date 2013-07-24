@@ -36,7 +36,7 @@
     self.aimingAt = playerInSight.position;
     
     // Should fire?
-    if (self.timeSinceFire > 2.f && [self.position distance:closestPlayer.position] < 250) {
+    if (self.timeSinceFire > 2.f && [self.position distance:playerInSight.position] < 250) {
 		
 		TankBullet *bullet = [TankBullet new];
 		bullet.speed = TankBulletStandardSpeed;
@@ -78,7 +78,6 @@
 		
 		[game.world enumerateBodiesAlongRayStart:self.position.point end:player.position.point usingBlock:^(SKPhysicsBody *body, CGPoint point, CGPoint normal, BOOL *stop) {
 			
-			// Do something here
 			id obstacle = SKPhysicsBodyGetUserData(body);
 			if (body == self.physicsBody || [obstacle isKindOfClass:[TankBullet class]]) return;
 			
