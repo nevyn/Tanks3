@@ -10,6 +10,7 @@
 #define TILE_SIZE 30
 
 @interface TankGameScene ()
+@property(nonatomic,readonly) SKSpriteNode *arena; // Main area, where the battle is!
 @property(nonatomic,readonly) NSMutableDictionary *bulletSprites;
 @property(nonatomic,readonly) NSMutableDictionary *tankSprites;
 @end
@@ -46,20 +47,26 @@
     WorldGameClient *_client;
 	TankGame *_hackyServerGame;
 	PlayerInputState *_inputState;
+
+    SKSpriteNode *_floor; // Background
     
-    SKSpriteNode *_floor;
-    SKNode *_map;
+    // ...stuff around arena...
+
+    SKNode *_map;   // Container for tilemap
 }
 
 -(id)initWithSize:(CGSize)size gameClient:(WorldGameClient*)client
 {
     if (self = [super initWithSize:size]) {
-        /* Setup your scene here */
-        
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
 		_client = client;
 		_inputState = [PlayerInputState new];
-		
+        
+        _arena = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.25 green:0.25 blue:0.5 alpha:1.0] size:CGSizeMake(660, 480)];
+        _arena.anchorPoint = CGPointMake(0, 0);
+        _arena.position = CGPointMake((800 - 660) / 2, (600-480)/2); // Move up-right a bit
+        [self addChild:_arena];
+        
 		_bulletSprites = [NSMutableDictionary new];
 		__weak __typeof(self) weakSelf = self;
 		[_client sp_observe:@"game.currentLevel.bullets" removed:^(id bullet) {
@@ -70,12 +77,12 @@
 			if(!bullet) return;
 			SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"bulleta"];
 			sprite.size = CGSizeMake(30, 30);
-			[weakSelf addChild:sprite];
+			[weakSelf.arena addChild:sprite];
 			weakSelf.bulletSprites[[bullet identifier]] = sprite;
 		} initial:YES];
         
-        _floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor"];
-        [self addChild:_floor];
+        //_floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor"];
+        //[self addChild:_floor];
         
         [self sp_addDependency:@"map" on:@[_client, @"game.currentLevel.map"] changed:^{
             __strong __typeof(self) strongSelf = weakSelf;
@@ -105,7 +112,7 @@
                 n.anchorPoint = CGPointMake(0, 0);
                 [strongSelf->_map addChild:n];
             }
-            [strongSelf addChild:strongSelf->_map];
+            [strongSelf.arena addChild:strongSelf->_map];
         }];
 		
 		_tankSprites = [NSMutableDictionary new];
@@ -117,7 +124,7 @@
 		} added:^(id tank) {
 			if(!tank) return;
 			TankNode *tankNode = [[TankNode alloc] initWithTank:tank];
-			[weakSelf addChild:tankNode];
+			[weakSelf.arena addChild:tankNode];
 			[weakSelf tankSprites][[tank identifier]] = tankNode;
 		} initial:YES];
 	}
