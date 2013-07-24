@@ -1,6 +1,6 @@
 #define WORLD_WRITABLE_MODEL 1
 #import <SPSuccinct/SPSuccinct.h>
-#import <PhysicsKit/PhysicsKit.h>
+#import <SpriteKit/SpriteKit.h>
 #import "TankGame.h"
 #import "TankPlayer.h"
 #import "TankTank.h"
@@ -9,8 +9,17 @@
 #import "TankBullet.h"
 #import "BNZLine.h"
 
-@interface TankGame () <PKPhysicsContactDelegate>
-@property(nonatomic,strong) PKPhysicsWorld *world;
+@interface SKPhysicsWorld (Private)
+- (void)removeBody:(id)arg1;
+- (void)addBody:(id)arg1;
+- (BOOL)stepWithTime:(double)arg1 velocityIterations:(unsigned long long)arg2 positionIterations:(unsigned long long)arg3;
+@end
+@interface SKPhysicsBody (Private)
+@property(nonatomic) id _world;
+@end
+
+@interface TankGame () <SKPhysicsContactDelegate>
+@property(nonatomic,strong) SKPhysicsWorld *world;
 @end
 
 @implementation TankGame
@@ -18,7 +27,7 @@
 {
 	if(self = [super init]) {
 		_enemyTanks = [NSMutableArray array];
-        _world = [[PKPhysicsWorld alloc] init];
+        _world = [[SKPhysicsWorld alloc] init];
         _world.contactDelegate = self;
         _world.gravity = CGPointZero;
 	}
@@ -112,11 +121,11 @@
 	}];
 }
 
-- (void)didBeginContact:(PKPhysicsContact *)contact
+- (void)didBeginContact:(SKPhysicsContact *)contact
 {
     NSArray *bullets = self.currentLevel.bullets;
     NSArray *bulletBodies = [bullets valueForKeyPath:@"physicsBody"];
-    PKPhysicsBody *body = [contact bodyA];
+    SKPhysicsBody *body = [contact bodyA];
 //    PKPhysicsBody *other = [contact bodyB];
     if(![bulletBodies containsObject:body])
         body = [contact bodyB];

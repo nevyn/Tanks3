@@ -5,7 +5,7 @@
 - (id)init
 {
     if(self = [super init]) {
-        self.physicsBody = [PKPhysicsBody bodyWithCircleOfRadius:2];
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:2];
         self.physicsBody.angularDamping = 100000;
     }
     return self;

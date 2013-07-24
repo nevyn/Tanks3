@@ -2,6 +2,11 @@
 #import "TankLevel.h"
 #import "BNZLine.h"
 
+@interface SKPhysicsWorld (Private)
+- (void)removeBody:(id)arg1;
+- (void)addBody:(id)arg1;
+@end
+
 @implementation TankLevel
 - (id)init
 {
@@ -36,10 +41,10 @@
 	return self;
 }
 
-- (void)addWallsToPhysics:(PKPhysicsWorld*)world
+- (void)addWallsToPhysics:(SKPhysicsWorld*)world
 {
     CGPathRef path = CGPathCreateWithRect((CGRect){.size=self.levelSize}, NULL);
-    PKPhysicsBody *body = [PKPhysicsBody bodyWithEdgeLoopFromPath:path];
+    SKPhysicsBody *body = [SKPhysicsBody bodyWithEdgeLoopFromPath:path];
     CGPathRelease(path);
     [world addBody:body];
 }

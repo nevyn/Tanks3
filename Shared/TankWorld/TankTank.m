@@ -8,7 +8,7 @@
 	if(self = [super init]) {
 		self.position = [Vector2 vectorWithX:10 y:10];
 		_aimingAt = [Vector2 zero];
-        self.physicsBody = [PKPhysicsBody bodyWithCircleOfRadius:25];
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:25];
         self.physicsBody.friction = 100;
         self.physicsBody.linearDamping = 10;
         self.physicsBody.angularDamping = 50;

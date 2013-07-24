@@ -1,5 +1,5 @@
 #import <WorldKit/Shared/Shared.h>
-#import <PhysicsKit/PhysicsKit.h>
+#import <SpriteKit/SpriteKit.h>
 
 // Tilemap size in tiles
 const static int arenaWidth = 22;
@@ -13,5 +13,5 @@ const static int arenaHeight = 16;
 // Ints (NSInteger). Remember that the first tile is the LOWER LEFT tile.
 @property(nonatomic,WORLD_WRITABLE) WORLD_ARRAY *map;
 
-- (void)addWallsToPhysics:(PKPhysicsWorld*)world;
+- (void)addWallsToPhysics:(SKPhysicsWorld*)world;
 @end
