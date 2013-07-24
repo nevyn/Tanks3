@@ -11,7 +11,7 @@
 #import "TankServer.h"
 #import <SPSuccinct/SPSuccinct.h>
 
-@interface TankMenuScene () <NSNetServiceBrowserDelegate>
+@interface TankMenuScene () <NSNetServiceBrowserDelegate, NSNetServiceDelegate>
 @property(nonatomic,readonly) NSMutableArray *serviceLabels;
 @property(nonatomic,readonly) NSMutableArray *foundServices;
 @end
@@ -46,6 +46,7 @@
 		_browser.delegate = self;
 		[_browser searchForServicesOfType:TankBonjourType inDomain:@""];
 		
+		_serviceLabels = [NSMutableArray new];
 		__weak __typeof(self) weakSelf = self;
 		[self sp_addDependency:@"labels" on:@[self, @"foundServices"] changed:^{
 			for(id label in weakSelf.serviceLabels)
@@ -81,7 +82,9 @@
 	for(SKLabelNode *label in _serviceLabels) {
 		if(hit == label) {
 			NSNetService *service = _foundServices[i];
-			[self.delegate tankMenu:self requestsConnectingToServerAtHost:service.hostName port:service.port];
+			service.delegate = self;
+			[service resolveWithTimeout:5.0];
+
 			return;
 		}
 		i++;
@@ -107,6 +110,20 @@
 - (void)netServiceBrowser:(NSNetServiceBrowser *)aNetServiceBrowser didRemoveService:(NSNetService *)aNetService moreComing:(BOOL)moreComing;
 {
 	[[self mutableArrayValueForKey:@"foundServices"] removeObject:aNetService];
+}
+
+- (void)netServiceDidResolveAddress:(NSNetService *)service;
+{
+	[self.delegate tankMenu:self requestsConnectingToServerAtHost:service.hostName port:service.port];
+}
+- (void)netService:(NSNetService *)sender didNotResolve:(NSDictionary *)errorDict;
+{
+#if TARGET_OS_IPHONE
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't resolve" message:@"Sorry, couldn't find the game you tapped." delegate:nil cancelButtonTitle:@"Bummer" otherButtonTitles:nil];
+	[alert show];
+#else
+	NSRunAlertPanel(@"Couldn't resolve", @"Sorry, couldn't resolve the domain of the instance you clicked.", @"Bummer", nil, nil);
+#endif
 }
 
 

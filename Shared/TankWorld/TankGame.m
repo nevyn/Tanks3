@@ -72,6 +72,8 @@
   // Update enemies!!
   for (TankEnemyTank *enemyTank in self.enemyTanks) {
     TankTank *closestPlayer = [self closestPlayerToPosition:enemyTank.position];
+	if(!closestPlayer)
+		continue;
     enemyTank.aimingAt = closestPlayer.position;
     
     // Should fire?
