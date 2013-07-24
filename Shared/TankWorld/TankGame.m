@@ -164,7 +164,7 @@
 - (void)commandFromPlayer:(TankPlayer*)player fire:(NSDictionary*)args
 {
 	TankBullet *bullet = [TankBullet new];
-	bullet.speed = 1000;
+	bullet.speed = 700;
 	bullet.collisionTTL = 2;
 	bullet.position = player.tank.position;
 	bullet.angle = player.tank.turretRotation + player.tank.rotation;

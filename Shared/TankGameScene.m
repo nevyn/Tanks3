@@ -28,10 +28,12 @@
 		self.tank = tank;
 		
 		_body = [SKSpriteNode spriteNodeWithImageNamed:@"Tank"];
-		_body.size = CGSizeMake(_body.size.width*0.3, _body.size.height*0.3);
+		_body.size = CGSizeMake(30, 45);
+        _body.anchorPoint = CGPointMake(0.5, 0.5);
 		_turret = [SKSpriteNode spriteNodeWithImageNamed:@"Turret"];
-		_turret.size = CGSizeMake(_turret.size.width*0.3, _turret.size.height*0.3);
-		_turret.anchorPoint = CGPointMake(0.5, 0.42);
+		_turret.size = CGSizeMake(20, 35);
+		_turret.position = CGPointMake(0, -7);
+		_turret.anchorPoint = CGPointMake(0.5, 0.25);
 		[_body addChild:_turret];
 		[self addChild:_body];
 	}
@@ -67,7 +69,7 @@
 		} added:^(id bullet) {
 			if(!bullet) return;
 			SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"bulleta"];
-			sprite.size = CGSizeMake(sprite.size.width*0.3, sprite.size.height*0.3);
+			sprite.size = CGSizeMake(30, 30);
 			[weakSelf addChild:sprite];
 			weakSelf.bulletSprites[[bullet identifier]] = sprite;
 		} initial:YES];
