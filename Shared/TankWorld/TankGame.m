@@ -149,7 +149,7 @@
 	
 	for(int i = 0; i < 2; i++) {
         TankEnemyTank *enemyTank = [[TankEnemyTank alloc] init];
-        enemyTank.position = [Vector2 vectorWithX:300+(200*(i+1)) y:300*(i+1)];
+        enemyTank.position = [Vector2 vectorWithX:300+(100*(i+1)) y:200+100*(i+1)];
 
 		[[self.currentLevel mutableArrayValueForKey:@"tanks"] addObject:enemyTank];
         [[self mutableArrayValueForKey:@"enemyTanks"] addObject:enemyTank];
