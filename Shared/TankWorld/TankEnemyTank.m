@@ -69,10 +69,31 @@
 	
 	for (TankTank *player in allPlayers) {
 		
+		//NSLog(@"Look for player number %lu", (unsigned long)[allPlayers indexOfObject:player]);
+		__block id closestObstacle = NULL;
+		__block float closestDistance = 0;
+		
 		[game.world enumerateBodiesAlongRayStart:self.position.point end:player.position.point usingBlock:^(SKPhysicsBody *body, CGPoint point, CGPoint normal, BOOL *stop) {
 			
 			// Do something here
+			id obstacle = SKPhysicsBodyGetUserData(body);
+			if (body == self.physicsBody || [obstacle isKindOfClass:[TankBullet class]]) return;
+			
+			float distance = [self.position distance:[Vector2 vectorWithPoint:body.position]];
+			
+			if (!closestObstacle || distance < closestDistance) {
+				closestObstacle = body;
+				closestDistance = distance;
+			}
 		}];
+		
+		id closestObstacleUserData = SKPhysicsBodyGetUserData(closestObstacle);
+		//NSLog(@"Closest obstacle: %@ (%@)", closestObstacleUserData, closestObstacle);
+		
+		if ([closestObstacleUserData isKindOfClass:[TankTank class]] && ![closestObstacleUserData isKindOfClass:[TankEnemyTank class]]) {
+			//NSLog(@"Player is in sight!");
+			[inSight addObject:closestObstacleUserData];
+		}
 	}
 	
 	return inSight;
