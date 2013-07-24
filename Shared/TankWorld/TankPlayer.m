@@ -2,6 +2,9 @@
 #import "TankPlayer.h"
 #import "TankTank.h"
 
+#define MOVE_SPEED = 100;
+#define ROTATE_SPEED = M_PI;
+
 @implementation TankPlayer
 - (NSDictionary*)rep
 {

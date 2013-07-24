@@ -1,8 +1,8 @@
 #import <WorldKit/Shared/Shared.h>
 
 // Tilemap size in tiles
-#define WIDTH = 22;
-#define HEIGHT = 16;
+const static int arenaWidth = 22;
+const static int arenaHeight = 16;
 
 @interface TankLevel : WorldEntity
 @property(nonatomic,readonly) WORLD_ARRAY *bullets;

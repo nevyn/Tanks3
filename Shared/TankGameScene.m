@@ -7,7 +7,7 @@
 #import "TankBullet.h"
 #import <SPSuccinct/SPSuccinct.h>
 
-#define TILE_SIZE 30
+const static int tileSize = 30;
 
 @interface TankGameScene ()
 @property(nonatomic,readonly) SKSpriteNode *arena; // Main area, where the battle is!
@@ -102,7 +102,7 @@
         int y = 0;
         for(NSNumber *n in strongSelf.game.currentLevel.map) {
             x++;
-            if(x == 22) {
+            if(x == arenaWidth) {
                 x = 0;
                 y++;
             }
@@ -114,11 +114,12 @@
             NSString *tex = val == 1 ? @"wall" : @"breakable";
             
             SKSpriteNode *n = [SKSpriteNode spriteNodeWithImageNamed:tex];
-            n.size = CGSizeMake(30, 30);
-            n.position = CGPointMake(x * 30, y * 30);
+            n.size = CGSizeMake(tileSize, tileSize);
+            n.position = CGPointMake(x * tileSize, y * tileSize);
             n.anchorPoint = CGPointMake(0, 0);
             [strongSelf->_map addChild:n];
         }
+    
         [strongSelf.arena addChild:strongSelf->_map];
     }];
     
