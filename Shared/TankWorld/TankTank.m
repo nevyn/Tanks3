@@ -13,7 +13,7 @@
         self.speed = 60;
 		
         _aimingAt = [Vector2 zero];
-        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:25];
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:20];
 //        self.physicsBody.friction = 100;
 //        self.physicsBody.linearDamping = 0.0;
         self.physicsBody.angularDamping = 30;

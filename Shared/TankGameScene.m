@@ -29,11 +29,11 @@ const static int tileSize = 30;
 		self.tank = tank;
 		
 		_body = [SKSpriteNode spriteNodeWithImageNamed:@"Tank"];
-		_body.size = CGSizeMake(30, 45);
+		_body.size = CGSizeMake(32, 39);
         _body.anchorPoint = CGPointMake(0.5, 0.5);
 		_turret = [SKSpriteNode spriteNodeWithImageNamed:@"Turret"];
-		_turret.size = CGSizeMake(20, 35);
-		_turret.position = CGPointMake(0, -7);
+		_turret.size = CGSizeMake(24.2f, 48.8f);
+		_turret.position = CGPointMake(0, 0);
 		_turret.anchorPoint = CGPointMake(0.5, 0.25);
 		[_body addChild:_turret];
 		[self addChild:_body];
