@@ -82,9 +82,14 @@
 			int x = (arc4random()%10)-5;
 			int y = (arc4random()%10)-5;
 			Vector2 *direction = [Vector2 vectorWithX:x y:y];
-			self.moveIntent = [[direction normalizedVector] vectorByMultiplyingWithScalar:0.2f];
 			
-			if (x != 0 && y != 0) self.canMove = NO;
+			if (x == 0 && y == 0) {
+				self.moveIntent = direction;
+			}
+			else {
+				self.moveIntent = [[direction normalizedVector] vectorByMultiplyingWithScalar:0.2f];
+				self.canMove = NO;
+			}
 		}
 	}
 	
