@@ -40,9 +40,14 @@
     });
 }
 
+- (NSArray*)physicalEntities
+{
+    return [self.currentLevel.tanks arrayByAddingObjectsFromArray:self.currentLevel.bullets];
+}
+
 - (void)tick:(float)delta
 {
-    NSArray *physicalEntities = [self.currentLevel.tanks arrayByAddingObjectsFromArray:self.currentLevel.bullets];
+    NSArray *physicalEntities = self.physicalEntities;
 	for(TankPhysicalEntity *ent in physicalEntities) {
         if(!ent.physicsBody._world)
             [_world addBody:ent.physicsBody];
