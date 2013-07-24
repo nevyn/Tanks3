@@ -27,7 +27,7 @@
 	object_setClass(self.skView, [TankSKView class]);
 	[self.window setAcceptsMouseMovedEvents:YES];
     /* Pick a size for the scene */
-    TankMenuScene *scene = [TankMenuScene sceneWithSize:CGSizeMake(1024, 768)];
+    TankMenuScene *scene = [TankMenuScene sceneWithSize:CGSizeMake(800, 600)];
     scene.delegate = self;
 
     /* Set the scale mode to scale to fit the window */

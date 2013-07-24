@@ -14,6 +14,8 @@
 #import "TankBullet.h"
 #import <SPSuccinct/SPSuccinct.h>
 
+#define TILE_SIZE 30
+
 @interface TankGameScene ()
 @property(nonatomic,readonly) NSMutableDictionary *bulletSprites;
 @end
@@ -65,25 +67,29 @@
         [self addChild:_floor];
         
         _map = [SKNode node];
+//        _map.position = CGPointMake(CGRectGetMidX(self.frame),
+ //                                   CGRectGetMidY(self.frame));
+        _map.position = CGPointMake(0, 0);
+        
         int x = -1;
-        int y = -1;
+        int y = 0;
         for(NSNumber *n in _game.currentLevel.map) {
-            NSInteger val = [n integerValue];
-            
             x++;
             if(x == 22) {
                 x = 0;
                 y++;
             }
-            
+
+            NSInteger val = [n integerValue];
             if(val == 0) {
                 continue;
             }
             NSString *tex = val == 1 ? @"wall" : @"breakable";
             
             SKSpriteNode *n = [SKSpriteNode spriteNodeWithImageNamed:tex];
-            n.size = CGSizeMake(50, 50);
-            n.position = CGPointMake(x * 50, y * 50);
+            n.size = CGSizeMake(30, 30);
+            n.position = CGPointMake(x* 30, y * 30);
+            n.anchorPoint = CGPointMake(0, 0);
             [_map addChild:n];
         }
         [self addChild:_map];

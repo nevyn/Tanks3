@@ -8,5 +8,7 @@
 @property(nonatomic,readonly) WORLD_ARRAY *bullets;
 @property(nonatomic,readonly) WORLD_ARRAY *walls; // BNZLines
 @property(nonatomic,WORLD_WRITABLE) CGSize levelSize;
-@property(nonatomic,WORLD_WRITABLE) WORLD_ARRAY *map;   // Ints
+
+// Ints (NSInteger). Remember that the first tile is the LOWER LEFT tile.
+@property(nonatomic,WORLD_WRITABLE) WORLD_ARRAY *map;
 @end
