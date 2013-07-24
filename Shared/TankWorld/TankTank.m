@@ -6,7 +6,7 @@
 - (id)init
 {
 	if(self = [super init]) {
-		_position = [Vector2 zero];
+		_position = [Vector2 vectorWithX:10 y:10];
 		_velocity = [Vector2 zero];
 		_acceleration  = [Vector2 zero];
 		_aimingAt = [Vector2 zero];

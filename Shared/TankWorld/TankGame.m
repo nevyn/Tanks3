@@ -105,6 +105,27 @@
   
   return closestPlayer;
 }
+
+- (void)cmd_aimTankAt:(Vector2*)aimAt;
+{
+	[self sendCommandToCounterpart:@"aimTankAt" arguments:@{
+		@"aimAt": aimAt.rep,
+	}];
+}
+
+- (void)cmd_fire
+{
+	[self sendCommandToCounterpart:@"fire" arguments:@{}];
+}
+
+- (void)cmd_moveTank:(PlayerInputState*)state
+{
+	[self sendCommandToCounterpart:@"moveTank" arguments:@{
+		@"state": state.rep,
+	}];
+}
+
+
 @end
 
 @implementation TankGameServer
@@ -131,4 +152,84 @@
         [[self mutableArrayValueForKey:@"enemyTanks"] addObject:enemyTank];
 	}
 }
+
+- (void)commandFromPlayer:(TankPlayer*)player aimTankAt:(NSDictionary*)args
+{
+	player.tank.aimingAt = [[Vector2 alloc] initWithRep:args[@"aimAt"]];
+}
+
+- (void)commandFromPlayer:(TankPlayer*)player fire:(NSDictionary*)args
+{
+	TankBullet *bullet = [TankBullet new];
+	bullet.speed = 1000;
+	bullet.collisionTTL = 2;
+	bullet.position = player.tank.position;
+	bullet.angle = player.tank.turretRotation + player.tank.rotation;
+	[[self.currentLevel mutableArrayValueForKey:@"bullets"] addObject:bullet];
+}
+
+	/*if([[theEvent characters] isEqual:@"w"])
+		_me.tank.acceleration = [[Vector2 vectorWithX:0 y:5000] vectorByRotatingByRadians:_me.tank.rotation];
+	if([[theEvent characters] isEqual:@"s"])
+		_me.tank.acceleration = [[Vector2 vectorWithX:0 y:-5000] vectorByRotatingByRadians:_me.tank.rotation];
+	if([[theEvent characters] isEqual:@"a"])
+		_me.tank.angularAcceleration = M_PI*80;
+	if([[theEvent characters] isEqual:@"d"])
+		_me.tank.angularAcceleration = -M_PI*80;*/
+
+	/*if(_me.tank.acceleration.length)
+		_me.tank.acceleration = [Vector2 zero];
+	else if(_me.tank.angularAcceleration)
+		_me.tank.angularAcceleration = 0;*/
+
+
+- (void)commandFromPlayer:(TankPlayer*)player moveTank:(NSDictionary*)args
+{
+	TankTank *playerTank = player.tank;
+	
+	PlayerInputState *state = [[PlayerInputState alloc] initWithRep:args[@"state"]];
+	
+    if (state.forward && !state.reverse)
+        playerTank.acceleration = [[Vector2 vectorWithX:0 y:5000] vectorByRotatingByRadians:playerTank.rotation];
+    
+    if (state.reverse && !state.forward)
+        playerTank.acceleration = [[Vector2 vectorWithX:0 y:-5000] vectorByRotatingByRadians:playerTank.rotation];
+    
+    if (!state.reverse && !state.forward)
+        playerTank.acceleration = [Vector2 zero];
+    
+    
+    if (state.turnLeft && !state.turnRight)
+        playerTank.angularAcceleration = M_PI*80;
+    
+    if (state.turnRight && !state.turnLeft)
+        playerTank.angularAcceleration = -M_PI*80;
+    
+    if (!state.turnLeft && !state.turnRight)
+        playerTank.angularAcceleration = 0;
+}
+
+@end
+
+@implementation PlayerInputState
+- (NSDictionary*)rep
+{
+	return @{
+		@"forward": @(_forward),
+		@"reverse": @(_reverse),
+		@"turnLeft": @(_turnLeft),
+		@"turnRight": @(_turnRight),
+	};
+}
+- (id)initWithRep:(NSDictionary*)rep
+{
+	if(self = [super init]) {
+		self.forward = [rep[@"forward"] boolValue];
+		self.reverse = [rep[@"reverse"] boolValue];
+		self.turnLeft = [rep[@"turnLeft"] boolValue];
+		self.turnRight = [rep[@"turnRight"] boolValue];
+	}
+	return self;
+}
+
 @end
