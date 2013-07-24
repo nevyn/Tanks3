@@ -18,6 +18,7 @@
 {
 	if(self = [super init]) {
 		_timeSinceFire = 0.0f;
+		_timeSinceMovement = 0.0f;
 	}
 	return self;
 }
@@ -25,9 +26,11 @@
 - (void) update:(float)delta game:(TankGame*)game {
 	
 	TankTank *closestPlayer = [self closestPlayerToPosition:self.position players:[game.players valueForKeyPath:@"tank"]];
-	if (!closestPlayer) return;
 	
 	TankTank *playerInSight = [self closestPlayerInSight:[game.players valueForKeyPath:@"tank"] game:game];
+	
+	[self updateMovement:delta game:game target:playerInSight];
+	
 	if (!playerInSight) {
 		if (closestPlayer) self.aimingAt = closestPlayer.position;
 		return;
@@ -50,6 +53,37 @@
     }
     
     _timeSinceFire += delta;
+}
+
+- (void) updateMovement:(float)delta game:(TankGame*)game target:(TankTank*)target {
+	
+	_timeSinceMovement += delta;
+	
+	if (_timeSinceMovement < 2.0f) return;
+	
+	_timeSinceMovement = 0.0f;
+	
+	if (target) {
+		Vector2 *direction = [[target.position vectorBySubtractingVector:self.position] normalizedVector];
+		self.moveIntent = [direction vectorByMultiplyingWithScalar:0.2f];
+		self.canMove = NO;
+	}
+	else {
+		
+		if (arc4random() % 100 > 75) {
+			self.moveIntent = [Vector2 vectorWithX:0 y:0];
+		}
+		else {
+			int x = (arc4random()%10)-5;
+			int y = (arc4random()%10)-5;
+			Vector2 *direction = [Vector2 vectorWithX:x y:y];
+			self.moveIntent = [[direction normalizedVector] vectorByMultiplyingWithScalar:0.2f];
+			
+			if (x != 0 && y != 0) self.canMove = NO;
+		}
+	}
+	
+	
 }
 
 - (TankTank*) closestPlayerToPosition:(Vector2*)pos players:(NSArray*)allPlayers {

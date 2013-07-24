@@ -14,6 +14,7 @@
 @interface TankEnemyTank : TankTank
 
 @property (nonatomic, assign) float timeSinceFire;
+@property (nonatomic, assign) float timeSinceMovement;
 
 - (void) update:(float)delta game:(TankGame*)game;
 
