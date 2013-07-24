@@ -9,7 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "TankTank.h"
 
+@class TankGame;
+
 @interface TankEnemyTank : TankTank
 
 @property (nonatomic, assign) float timeSinceFire;
+
+- (void) update:(float)delta game:(TankGame*)game;
+
 @end

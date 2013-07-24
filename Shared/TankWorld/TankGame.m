@@ -11,7 +11,7 @@
 #import "SKPhysics+Private.h"
 
 @interface TankGame () <SKPhysicsContactDelegate>
-@property(nonatomic,strong) SKPhysicsWorld *world;
+
 @end
 
 @implementation TankGame
@@ -90,42 +90,8 @@
   
   // Update enemies!!
   for (TankEnemyTank *enemyTank in self.enemyTanks) {
-    TankTank *closestPlayer = [self closestPlayerToPosition:enemyTank.position];
-	if(!closestPlayer)
-		continue;
-    enemyTank.aimingAt = closestPlayer.position;
-    
-    // Should fire?
-    if (enemyTank.timeSinceFire > 3.f && [enemyTank.position distance:closestPlayer.position] < 250) {
-      
-      TankBullet *bullet = [TankBullet new];
-      bullet.speed = TankBulletStandardSpeed;
-      bullet.collisionTTL = 2;
-      [[self.currentLevel mutableArrayValueForKey:@"bullets"] addObject:bullet];
-      bullet.position = enemyTank.position;
-      bullet.rotation = enemyTank.turretRotation + enemyTank.rotation;
-      [bullet updatePhysicsFromProperties];
-      
-      enemyTank.timeSinceFire = 0.0f;
-    }
-    
-    enemyTank.timeSinceFire += delta;
+	  [enemyTank update:delta game:self];
   }
-}
-
-- (TankTank*) closestPlayerToPosition:(Vector2*)pos {
-  
-  TankTank *closestPlayer = NULL;
-  float closestDistance = 0;
-  for (TankTank *tank in [self.players valueForKeyPath:@"tank"]) {
-    float distance = [pos distance:tank.position];
-    if (!closestPlayer || distance < closestDistance) {
-      closestPlayer = tank;
-      closestDistance = distance;
-    }
-  }
-  
-  return closestPlayer;
 }
 
 - (void)cmd_aimTankAt:(Vector2*)aimAt;

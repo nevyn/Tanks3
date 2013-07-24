@@ -11,10 +11,12 @@ static const int kTankServerPort = 29534;
 - (id)initWithRep:(NSDictionary*)rep;
 @end
 
+@class SKPhysicsWorld;
 
 @interface TankGame : WorldGame
 @property(nonatomic,WORLD_WRITABLE) TankLevel *currentLevel;
 @property(nonatomic,readonly) WORLD_ARRAY *enemyTanks;
+@property(nonatomic,strong) SKPhysicsWorld *world;
 
 - (void)tick:(float)delta;
 
