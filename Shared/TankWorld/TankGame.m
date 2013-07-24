@@ -47,7 +47,7 @@
 }
 + (NSSet*)keyPathsForValuesAffectingPhysicalEntities
 {
-    return [NSSet setWithArray:@[@"currentLevel.tanks", @"currentLevel.bullets"]];
+    return [NSSet setWithArray:@[@"currentLevel.tanks", @"currentLevel.bullets", @"currentLevel.mines"]];
 }
 
 - (void)tick:(float)delta
@@ -64,6 +64,10 @@
   for (TankEnemyTank *enemyTank in self.enemyTanks) {
 	  [enemyTank update:delta game:self];
   }
+    
+    for(TankMine *mine in [self.currentLevel.mines copy]) {
+        [mine update:delta game:self];
+    }
 }
 
 - (void)cmd_aimTankAt:(Vector2*)aimAt;
