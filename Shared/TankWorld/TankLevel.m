@@ -9,6 +9,7 @@
 {
 	if(self = [super init]) {
 		_bullets = [NSMutableArray new];
+        _mines = [NSMutableArray new];
 		float w = 660, h = 480;
 		_levelSize = CGSizeMake(w, h);
         

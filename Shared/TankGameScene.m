@@ -5,6 +5,7 @@
 #import "TankEnemyTank.h"
 #import "TankLevel.h"
 #import "TankBullet.h"
+#import "TankMine.h"
 #import <SPSuccinct/SPSuccinct.h>
 
 const static int tileSize = 30;
@@ -13,6 +14,7 @@ const static int tileSize = 30;
 @property(nonatomic,readonly) SKSpriteNode *arena; // Main area, where the battle is!
 @property(nonatomic,readonly) NSMutableDictionary *bulletSprites;
 @property(nonatomic,readonly) NSMutableDictionary *tankSprites;
+@property(nonatomic,readonly) NSMutableDictionary *mineSprites;
 @end
 
 @interface TankNode : SKNode
@@ -89,6 +91,24 @@ const static int tileSize = 30;
         [weakSelf.arena addChild:sprite];
         weakSelf.bulletSprites[[bullet identifier]] = sprite;
     } initial:YES];
+    
+    _mineSprites = [NSMutableDictionary new];
+    [_client sp_observe:@"game.currentLevel.mines" removed:^(id mine) {
+        if(!mine) return;
+        [weakSelf.mineSprites[[mine identifier]] removeFromParent];
+        [weakSelf.mineSprites removeObjectForKey:[mine identifier]];
+    } added:^(TankMine* mine) {
+        if(!mine) return;
+        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"mine"];
+        
+        //NSLog(@"Släpp en mina...");
+        //NSLog(@"Pos: %@ %f %f", [mine identifier], mine.position.x, mine.position.y);
+        
+        sprite.size = CGSizeMake(30,30);
+        sprite.position = [mine.position point];
+        [weakSelf.arena addChild:sprite];
+        weakSelf.mineSprites[[mine identifier]] = sprite;
+    }];
     
     //_floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor"];
     //[self addChild:_floor];
@@ -191,6 +211,11 @@ const static int tileSize = 30;
 {
     if([theEvent isARepeat]) return;
     
+    if([[theEvent characters] isEqual:@" "]) {
+        [self.game cmd_layMine];
+        return;
+    }
+    
 	if([[theEvent characters] isEqual:@"w"])
 		_inputState.up = YES;
 	if([[theEvent characters] isEqual:@"s"])
@@ -228,6 +253,11 @@ const static int tileSize = 30;
 		sprite.position = bullet.position.point;
 		sprite.zRotation = bullet.rotation;
 	}
+    
+    for(TankMine *mine in self.game.currentLevel.mines) {
+        SKSpriteNode *sprite = _mineSprites[mine.identifier];
+        sprite.position = mine.position.point;
+    }
 }
 
 @end

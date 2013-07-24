@@ -7,6 +7,7 @@
 #import "TankEnemyTank.h"
 #import "TankLevel.h"
 #import "TankBullet.h"
+#import "TankMine.h"
 #import "BNZLine.h"
 #import "SKPhysics+Private.h"
 
@@ -42,7 +43,7 @@
 
 - (NSArray*)physicalEntities
 {
-    return [self.currentLevel.tanks arrayByAddingObjectsFromArray:self.currentLevel.bullets];
+    return [[self.currentLevel.tanks arrayByAddingObjectsFromArray:self.currentLevel.bullets] arrayByAddingObjectsFromArray:self.currentLevel.mines];
 }
 + (NSSet*)keyPathsForValuesAffectingPhysicalEntities
 {
@@ -82,6 +83,11 @@
 	[self sendCommandToCounterpart:@"moveTank" arguments:@{
 		@"state": state.rep,
 	}];
+}
+
+-(void)cmd_layMine
+{
+    [self sendCommandToCounterpart:@"layMine" arguments:@{}];
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact
@@ -184,6 +190,18 @@
     
     // Something changed, so force recalc of canMove
     playerTank.canMove = NO;
+}
+
+-(void)commandFromPlayer:(TankPlayer*)player layMine:(NSDictionary*)args {
+    TankTank *playerTank = player.tank;
+    
+    TankMine *mine = [TankMine new];
+    mine.position = playerTank.position;
+    [mine updatePhysicsFromProperties];
+    
+//    NSLog(@"Skapa minan här: %@ %f %f", [mine identifier], mine.position.x, mine.position.y);
+    
+    [[self.currentLevel mutableArrayValueForKey:@"mines"] addObject:mine];
 }
 
 @end

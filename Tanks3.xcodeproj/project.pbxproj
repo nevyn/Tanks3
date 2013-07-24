@@ -71,6 +71,8 @@
 		05EDE1BD179EE2850051E7F6 /* Tank.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1B9179EE2850051E7F6 /* Tank.png */; };
 		05EDE1BF179EE3E40051E7F6 /* Turret.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1BE179EE3E40051E7F6 /* Turret.png */; };
 		05EDE1C0179EE3E40051E7F6 /* Turret.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1BE179EE3E40051E7F6 /* Turret.png */; };
+		1B712E3B17A0959E00A5E4D7 /* mine.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B712E3A17A0959E00A5E4D7 /* mine.png */; };
+		1B712E3C17A0959E00A5E4D7 /* mine.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B712E3A17A0959E00A5E4D7 /* mine.png */; };
 		1B78C9EA179F3F2400EC54C5 /* breakable.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B78C9E8179F3F2400EC54C5 /* breakable.png */; };
 		1B78C9EB179F3F2400EC54C5 /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B78C9E9179F3F2400EC54C5 /* wall.png */; };
 		1B78C9F0179F3F6000EC54C5 /* breakable.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B78C9E8179F3F2400EC54C5 /* breakable.png */; };
@@ -189,6 +191,7 @@
 		05EDE1B8179EE2850051E7F6 /* bulleta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulleta.png; sourceTree = "<group>"; };
 		05EDE1B9179EE2850051E7F6 /* Tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tank.png; sourceTree = "<group>"; };
 		05EDE1BE179EE3E40051E7F6 /* Turret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Turret.png; sourceTree = "<group>"; };
+		1B712E3A17A0959E00A5E4D7 /* mine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine.png; sourceTree = "<group>"; };
 		1B78C9E8179F3F2400EC54C5 /* breakable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = breakable.png; sourceTree = "<group>"; };
 		1B78C9E9179F3F2400EC54C5 /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wall.png; sourceTree = "<group>"; };
 		1B78C9F2179F43AB00EC54C5 /* floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = floor.png; sourceTree = "<group>"; };
@@ -404,6 +407,7 @@
 		05EDE1B7179EE2850051E7F6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1B712E3A17A0959E00A5E4D7 /* mine.png */,
 				1BE88FE317A0434E006109C3 /* arrow.png */,
 				1B78C9F2179F43AB00EC54C5 /* floor.png */,
 				1B78C9E8179F3F2400EC54C5 /* breakable.png */,
@@ -555,6 +559,7 @@
 				051BCBB6179C24440065B55D /* InfoPlist.strings in Resources */,
 				05EDE1BD179EE2850051E7F6 /* Tank.png in Resources */,
 				05EDE1C0179EE3E40051E7F6 /* Turret.png in Resources */,
+				1B712E3C17A0959E00A5E4D7 /* mine.png in Resources */,
 				051BCBBC179C24440065B55D /* Credits.rtf in Resources */,
 				1B78C9F4179F43AB00EC54C5 /* floor.png in Resources */,
 				051BCBBE179C24440065B55D /* MainMenu.xib in Resources */,
@@ -573,6 +578,7 @@
 				059CD609179C233E00B5981C /* Images.xcassets in Resources */,
 				05EDE1BC179EE2850051E7F6 /* Tank.png in Resources */,
 				05EDE1BF179EE3E40051E7F6 /* Turret.png in Resources */,
+				1B712E3B17A0959E00A5E4D7 /* mine.png in Resources */,
 				059CD608179C233E00B5981C /* InfoPlist.strings in Resources */,
 				1B78C9F3179F43AB00EC54C5 /* floor.png in Resources */,
 				059CD606179C233E00B5981C /* Main_iPad.storyboard in Resources */,

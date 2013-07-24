@@ -28,6 +28,10 @@
 
 /** When called client-side, changes the movement settings for the calling player's tank. */
 - (void)cmd_moveTank:(PlayerInputState*)state;
+
+/** When called client-side, lays a mine under the calling player's tank */
+- (void)cmd_layMine;
+
 @end
 
 @interface TankGameServer : TankGame

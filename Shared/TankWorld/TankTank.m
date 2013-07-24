@@ -16,10 +16,8 @@
         self.speed = TankMaxSpeed;
 		
         _aimingAt = [Vector2 zero];
+
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:TankCollisionRadius];
-//        self.physicsBody.friction = 100;
-//        self.physicsBody.linearDamping = 0.0;
-        self.physicsBody.angularDamping = 30;
         self.physicsBody.allowsRotation = NO;
         self.physicsBody.categoryBitMask = TankGamePhysicsCategoryTank | TankGamePhysicsCategoryMakesBulletExplode;
 	}
@@ -29,14 +27,12 @@
 - (NSDictionary*)rep
 {
     return WorldDictAppend([super rep], @{
-//        @"moveIntent": _moveIntent.rep,
 		@"aimingAt": _aimingAt.rep,
     });
 }
 - (void)updateFromRep:(NSDictionary*)rep fetcher:(WorldEntityFetcher)fetcher
 {
     [super updateFromRep:rep fetcher:fetcher];
-//    WorldIf(rep, @"moveIntent", ^(id o) { self.moveIntent = [[Vector2 alloc] initWithRep:o]; });
     WorldIf(rep, @"aimingAt", ^(id o) { self.aimingAt = [[Vector2 alloc] initWithRep:o]; });
 }
 
@@ -66,8 +62,6 @@
     }
 
     if(!self.canMove) {
-        // Rotate
-        
         // Rotate towards the intended direction
         Vector2 *look = [[Vector2 vectorWithX:0 y:1] vectorByRotatingByRadians:self.rotation];
         
@@ -81,11 +75,12 @@
         
         float goal = fabsf(goal1) < fabsf(goal2) ? goal1 : goal2;
         
-        
         self.physicsBody.velocity = CGPointZero;
         self.physicsBody.angularVelocity = TankRotationSpeed * (goal < 0 ? -1 : 1);
         
         if(goal > -0.1 && goal < 0.1) {
+            // Should snap rotation to correct angle... but that's not good for the
+            // physics engine...
             self.physicsBody.rotation += goal;
             self.physicsBody.angularVelocity = 0;
             self.canMove = YES;
