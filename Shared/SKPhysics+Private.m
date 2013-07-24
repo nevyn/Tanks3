@@ -1,9 +1,15 @@
-//
-//  SKPhysicsBody+SKPhysicsPrivate.m
-//  Tanks3
-//
-//  Created by Joachim Bengtsson on 2013-07-24.
-//  Copyright (c) 2013 Mastervone. All rights reserved.
-//
-
 #import "SKPhysics+Private.h"
+#import <objc/runtime.h>
+
+@implementation SKPhysicsBody (TankUserData)
+static const void *const key = &key;
+- (id)tank_userdata
+{
+    return objc_getAssociatedObject(self, key);
+}
+
+- (void)setTank_userdata:(id)tank_userdata
+{
+    objc_setAssociatedObject(self, key, tank_userdata, OBJC_ASSOCIATION_ASSIGN);
+}
+@end

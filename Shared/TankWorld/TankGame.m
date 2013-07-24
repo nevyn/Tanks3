@@ -40,6 +40,11 @@
     });
 }
 
+- (NSArray*)physicalEntities
+{
+    return [self.currentLevel.tanks arrayByAddingObjectsFromArray:self.currentLevel.bullets];
+}
+
 - (void)tick:(float)delta
 {
 	for(TankTank *tank in [self.players valueForKeyPath:@"tank"]) {
@@ -71,7 +76,7 @@
         }
 	}
 
-    NSArray *physicalEntities = [self.currentLevel.tanks arrayByAddingObjectsFromArray:self.currentLevel.bullets];
+    NSArray *physicalEntities = self.physicalEntities;
 	for(TankPhysicalEntity *ent in physicalEntities) {
         if(!ent.physicsBody._world)
             [_world addBody:ent.physicsBody];

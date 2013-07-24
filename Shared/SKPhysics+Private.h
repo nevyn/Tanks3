@@ -11,3 +11,7 @@
 @property(nonatomic) CGPoint position;
 @property(nonatomic) double rotation;
 @end
+
+@interface SKPhysicsBody (TankUserData)
+@property(nonatomic,unsafe_unretained) id tank_userdata;
+@end
