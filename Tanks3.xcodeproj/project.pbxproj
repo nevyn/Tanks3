@@ -16,6 +16,8 @@
 		051BCBC3179C24440065B55D /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 051BCBC2179C24440065B55D /* MVAppDelegate.m */; };
 		051BCBC8179C24440065B55D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 051BCBC7179C24440065B55D /* Images.xcassets */; };
 		051BCBE0179C248F0065B55D /* TankGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* TankGameScene.m */; };
+		0527DA1517A031E200731529 /* TankPhysicalEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527DA1417A031E200731529 /* TankPhysicalEntity.m */; };
+		0527DA1617A031E200731529 /* TankPhysicalEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527DA1417A031E200731529 /* TankPhysicalEntity.m */; };
 		055549C7179F54F7006E4BC1 /* TankSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 055549C6179F54F7006E4BC1 /* TankSceneManager.m */; };
 		055549C8179F54F7006E4BC1 /* TankSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 055549C6179F54F7006E4BC1 /* TankSceneManager.m */; };
 		0598EEEA179EAAF700EAD12D /* libWorldKitClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE8179EAABE00EAD12D /* libWorldKitClient.a */; };
@@ -61,6 +63,8 @@
 		059CD60B179C233E00B5981C /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FD179C233E00B5981C /* MVAppDelegate.m */; };
 		059CD60C179C233E00B5981C /* MVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FF179C233E00B5981C /* MVViewController.m */; };
 		059CD60E179C233E00B5981C /* TankGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* TankGameScene.m */; };
+		05C5F66417A054FD0028EDCB /* SKPhysics+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */; };
+		05C5F66517A054FD0028EDCB /* SKPhysics+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */; };
 		05EDE1BA179EE2850051E7F6 /* bulleta.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1B8179EE2850051E7F6 /* bulleta.png */; };
 		05EDE1BB179EE2850051E7F6 /* bulleta.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1B8179EE2850051E7F6 /* bulleta.png */; };
 		05EDE1BC179EE2850051E7F6 /* Tank.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1B9179EE2850051E7F6 /* Tank.png */; };
@@ -131,6 +135,8 @@
 		051BCBC2179C24440065B55D /* MVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVAppDelegate.m; sourceTree = "<group>"; };
 		051BCBC4179C24440065B55D /* MVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVAppDelegate.h; sourceTree = "<group>"; };
 		051BCBC7179C24440065B55D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0527DA1317A031E200731529 /* TankPhysicalEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankPhysicalEntity.h; sourceTree = "<group>"; };
+		0527DA1417A031E200731529 /* TankPhysicalEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankPhysicalEntity.m; sourceTree = "<group>"; };
 		055549C5179F54F7006E4BC1 /* TankSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankSceneManager.h; sourceTree = "<group>"; };
 		055549C6179F54F7006E4BC1 /* TankSceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankSceneManager.m; sourceTree = "<group>"; };
 		0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WorldKit.xcodeproj; path = Vendor/WorldKit/WorldKit.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -177,6 +183,8 @@
 		059CD601179C233E00B5981C /* Tanks3-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tanks3-Prefix.pch"; sourceTree = "<group>"; };
 		059CD603179C233E00B5981C /* TankGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankGameScene.h; sourceTree = "<group>"; };
 		059CD604179C233E00B5981C /* TankGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankGameScene.m; sourceTree = "<group>"; };
+		05C5F66217A054FD0028EDCB /* SKPhysics+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKPhysics+Private.h"; sourceTree = "<group>"; };
+		05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKPhysics+Private.m"; sourceTree = "<group>"; };
 		05EDE1B8179EE2850051E7F6 /* bulleta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulleta.png; sourceTree = "<group>"; };
 		05EDE1B9179EE2850051E7F6 /* Tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tank.png; sourceTree = "<group>"; };
 		05EDE1BE179EE3E40051E7F6 /* Turret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Turret.png; sourceTree = "<group>"; };
@@ -277,6 +285,8 @@
 			children = (
 				0598EEF1179EB18600EAD12D /* TankGame.h */,
 				0598EEF2179EB18600EAD12D /* TankGame.m */,
+				0527DA1317A031E200731529 /* TankPhysicalEntity.h */,
+				0527DA1417A031E200731529 /* TankPhysicalEntity.m */,
 				0598EEFA179EB94E00EAD12D /* TankPlayer.h */,
 				0598EEFB179EB94E00EAD12D /* TankPlayer.m */,
 				0598EF02179EB97400EAD12D /* TankTank.h */,
@@ -383,6 +393,8 @@
 				059CD604179C233E00B5981C /* TankGameScene.m */,
 				055549C5179F54F7006E4BC1 /* TankSceneManager.h */,
 				055549C6179F54F7006E4BC1 /* TankSceneManager.m */,
+				05C5F66217A054FD0028EDCB /* SKPhysics+Private.h */,
+				05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -587,8 +599,10 @@
 				0598EEFD179EB94E00EAD12D /* TankPlayer.m in Sources */,
 				0598EEF4179EB18600EAD12D /* TankGame.m in Sources */,
 				0598EF0D179EBC5C00EAD12D /* TankServer.m in Sources */,
+				0527DA1617A031E200731529 /* TankPhysicalEntity.m in Sources */,
 				0598EF05179EB97400EAD12D /* TankTank.m in Sources */,
 				051BCBB8179C24440065B55D /* main.m in Sources */,
+				05C5F66517A054FD0028EDCB /* SKPhysics+Private.m in Sources */,
 				0598EF16179EC0BD00EAD12D /* TankMenuScene.m in Sources */,
 				38ED071A179F354F001D8294 /* TankEnemyTank.m in Sources */,
 				0598EF20179ED40C00EAD12D /* Vector2.m in Sources */,
@@ -614,10 +628,12 @@
 				0598EF15179EC0BD00EAD12D /* TankMenuScene.m in Sources */,
 				0598EF08179EB9D200EAD12D /* TankLevel.m in Sources */,
 				0598EEF3179EB18600EAD12D /* TankGame.m in Sources */,
+				05C5F66417A054FD0028EDCB /* SKPhysics+Private.m in Sources */,
 				059CD60C179C233E00B5981C /* MVViewController.m in Sources */,
 				059CD60B179C233E00B5981C /* MVAppDelegate.m in Sources */,
 				0598EF26179ED61900EAD12D /* TankMine.m in Sources */,
 				0598EF19179ED39300EAD12D /* TankBullet.m in Sources */,
+				0527DA1517A031E200731529 /* TankPhysicalEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,6 +715,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -726,6 +743,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Xcode5-DP3.app/Contents/Developer/Library/Frameworks",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -774,6 +792,7 @@
 				HEADER_SEARCH_PATHS = (
 					Vendor/WorldKit/Interface,
 					Vendor/WorldKit/Libraries/SPSuccinct,
+					.,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -811,6 +830,7 @@
 				HEADER_SEARCH_PATHS = (
 					Vendor/WorldKit/Interface,
 					Vendor/WorldKit/Libraries/SPSuccinct,
+					.,
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
@@ -825,6 +845,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shared/Tanks3-Prefix.pch";
 				INFOPLIST_FILE = "iOS/Tanks3-Info.plist";
@@ -839,6 +863,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shared/Tanks3-Prefix.pch";
 				INFOPLIST_FILE = "iOS/Tanks3-Info.plist";

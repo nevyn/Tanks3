@@ -6,12 +6,16 @@
 - (id)init
 {
 	if(self = [super init]) {
-		_position = [Vector2 vectorWithX:10 y:10];
-        _moveIntent = [Vector2 vectorWithX:0 y:0];
-//		_velocity = [Vector2 zero];
-//		_acceleration  = [Vector2 zero];
-		_aimingAt = [Vector2 zero];
-
+		self.position = [Vector2 vectorWithX:10 y:10];
+        self.moveIntent = [Vector2 vectorWithX:0 y:0];
+        
+        self.speed = 60;
+		
+        _aimingAt = [Vector2 zero];
+        self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:25];
+//        self.physicsBody.friction = 100;
+//        self.physicsBody.linearDamping = 0.0;
+        self.physicsBody.angularDamping = 50;
 	}
 	return self;
 }
@@ -19,31 +23,36 @@
 - (NSDictionary*)rep
 {
     return WorldDictAppend([super rep], @{
-        @"position": _position.rep,
-        @"moveIntent": _moveIntent.rep,
-//		@"velocity": _velocity.rep,
-//		@"acceleration": _acceleration.rep,
-		@"rotation": @(_rotation),
-//		@"angularVelocity": @(_angularVelocity),
-//		@"angularAcceleration": @(_angularAcceleration),
+//        @"moveIntent": _moveIntent.rep,
 		@"aimingAt": _aimingAt.rep,
     });
 }
 - (void)updateFromRep:(NSDictionary*)rep fetcher:(WorldEntityFetcher)fetcher
 {
     [super updateFromRep:rep fetcher:fetcher];
-    WorldIf(rep, @"position", ^(id o) { self.position = [[Vector2 alloc] initWithRep:o]; });
-    WorldIf(rep, @"moveIntent", ^(id o) { self.moveIntent = [[Vector2 alloc] initWithRep:o]; });
-//    WorldIf(rep, @"velocity", ^(id o) { self.velocity = [[Vector2 alloc] initWithRep:o]; });
-//    WorldIf(rep, @"acceleration", ^(id o) { self.acceleration = [[Vector2 alloc] initWithRep:o]; });
-    WorldIf(rep, @"rotation", ^(id o) { self.rotation = [o floatValue]; });
-//    WorldIf(rep, @"angularVelocity", ^(id o) { self.angularVelocity = [o floatValue]; });
-//    WorldIf(rep, @"angularAcceleration", ^(id o) { self.angularAcceleration = [o floatValue]; });
+//    WorldIf(rep, @"moveIntent", ^(id o) { self.moveIntent = [[Vector2 alloc] initWithRep:o]; });
     WorldIf(rep, @"aimingAt", ^(id o) { self.aimingAt = [[Vector2 alloc] initWithRep:o]; });
 }
 
 - (float)turretRotation
 {
-	return [[[[BNZLine alloc] initAt:_position to:_aimingAt] vector] angle] - _rotation - M_PI_2;
+	return [[[[BNZLine alloc] initAt:self.position to:_aimingAt] vector] angle] - self.rotation - M_PI_2;
+}
+
+-(void)applyForces; {
+    if(self.canMove) {
+        //self.acceleration = [self.moveIntent vectorByMultiplyingWithScalar:tankMaxSpeed];
+        self.physicsBody.velocity = [[[self moveIntent] vectorByMultiplyingWithScalar:self.speed] point];
+    } else {
+        //self.acceleration = [Vector2 vector];
+        self.physicsBody.velocity = CGPointMake(0, 0);
+        
+        if([self.moveIntent length]) {
+            self.angularAcceleration = tankRotationSpeed;
+        } else {
+            self.angularAcceleration = 0;
+        }
+    }
+    [super applyForces];
 }
 @end
