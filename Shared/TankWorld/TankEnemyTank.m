@@ -24,13 +24,16 @@
 
 - (void) update:(float)delta game:(TankGame*)game {
 	
-	TankTank *closestPlayer = [self closestPlayerToPosition:self.position players:[game.players valueForKeyPath:@"tank"]];
+	NSArray *playersInSight = [self playersInSight:[game.players valueForKeyPath:@"tank"] game:game];
+	if (playersInSight.count == 0) return;
+	
+	TankTank *closestPlayer = [self closestPlayerToPosition:self.position players:playersInSight];
 	if(!closestPlayer) return;
 	
     self.aimingAt = closestPlayer.position;
     
     // Should fire?
-    if (self.timeSinceFire > 3.f && [self.position distance:closestPlayer.position] < 250) {
+    if (self.timeSinceFire > 2.f && [self.position distance:closestPlayer.position] < 250) {
 		
 		TankBullet *bullet = [TankBullet new];
 		bullet.speed = TankBulletStandardSpeed;
@@ -44,8 +47,6 @@
     }
     
     _timeSinceFire += delta;
-	
-	[self playersInSight:[game.players valueForKeyPath:@"tank"] game:game];
 }
 
 - (TankTank*) closestPlayerToPosition:(Vector2*)pos players:(NSArray*)allPlayers {
@@ -69,7 +70,6 @@
 	
 	for (TankTank *player in allPlayers) {
 		
-		//NSLog(@"Look for player number %lu", (unsigned long)[allPlayers indexOfObject:player]);
 		__block id closestObstacle = NULL;
 		__block float closestDistance = 0;
 		
