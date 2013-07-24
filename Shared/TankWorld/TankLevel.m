@@ -52,7 +52,7 @@
 		int tile = [_map[i] intValue];
 		if (tile != 0) {
 			
-			PKPhysicsBody *tileBody = [PKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(tileWidth, tileHeight)];
+			SKPhysicsBody *tileBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(tileWidth, tileHeight)];
 			tileBody.position = CGPointMake(((i%arenaWidth)*tileWidth)+tileWidth/2, (floor(i/arenaWidth)*tileHeight)+tileHeight/2);
 			tileBody.mass = 100000;
 			[world addBody:tileBody];
