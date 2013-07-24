@@ -47,6 +47,7 @@
     
     SKSpriteNode *_floor;
     SKNode *_map;
+}
 
 -(id)initWithSize:(CGSize)size gameClient:(WorldGameClient*)client
 {
@@ -74,34 +75,36 @@
         _floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor"];
         [self addChild:_floor];
         
-        _map = [SKNode node];
-//        _map.position = CGPointMake(CGRectGetMidX(self.frame),
- //                                   CGRectGetMidY(self.frame));
-        _map.position = CGPointMake(0, 0);
-        
-        int x = -1;
-        int y = 0;
-        for(NSNumber *n in _game.currentLevel.map) {
-            x++;
-            if(x == 22) {
-                x = 0;
-                y++;
-            }
-
-            NSInteger val = [n integerValue];
-            if(val == 0) {
-                continue;
-            }
-            NSString *tex = val == 1 ? @"wall" : @"breakable";
+        [self sp_addDependency:@"map" on:@[_client, @"game.currentLevel.map"] changed:^{
+            __strong __typeof(self) strongSelf = weakSelf;
+            [strongSelf->_map removeFromParent];
             
-            SKSpriteNode *n = [SKSpriteNode spriteNodeWithImageNamed:tex];
-            n.size = CGSizeMake(30, 30);
-            n.position = CGPointMake(x* 30, - y) * 30);
-            n.anchorPoint = CGPointMake(0, 0);
-            [_map addChild:n];
-        }
-        [self addChild:_map];
-	  
+            strongSelf->_map = [SKNode node];
+            strongSelf->_map.position = CGPointMake(0, 0);
+            
+            int x = -1;
+            int y = 0;
+            for(NSNumber *n in strongSelf.game.currentLevel.map) {
+                x++;
+                if(x == 22) {
+                    x = 0;
+                    y++;
+                }
+
+                NSInteger val = [n integerValue];
+                if(val == 0) {
+                    continue;
+                }
+                NSString *tex = val == 1 ? @"wall" : @"breakable";
+                
+                SKSpriteNode *n = [SKSpriteNode spriteNodeWithImageNamed:tex];
+                n.size = CGSizeMake(30, 30);
+                n.position = CGPointMake(x * 30, y * 30);
+                n.anchorPoint = CGPointMake(0, 0);
+                [strongSelf->_map addChild:n];
+            }
+            [strongSelf addChild:strongSelf->_map];
+        }];
 		
 		_tankSprites = [NSMutableDictionary new];
 		[_client sp_observe:@"game.currentLevel.tanks" removed:^(id tank) {

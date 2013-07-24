@@ -19,7 +19,7 @@
 	if(self = [super init]) {
 		self.skView = view;
 		
-		TankMenuScene *scene = [TankMenuScene sceneWithSize:CGSizeMake(1024, 768)];
+		TankMenuScene *scene = [TankMenuScene sceneWithSize:CGSizeMake(800, 600)];
 		scene.delegate = self;
 		scene.scaleMode = SKSceneScaleModeAspectFit;
 		[self.skView presentScene:scene];
