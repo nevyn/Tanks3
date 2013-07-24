@@ -77,10 +77,10 @@
     enemyTank.aimingAt = closestPlayer.position;
     
     // Should fire?
-    if (enemyTank.timeSinceFire > 0.25f && [enemyTank.position distance:closestPlayer.position] < 500) {
+    if (enemyTank.timeSinceFire > 3.f && [enemyTank.position distance:closestPlayer.position] < 250) {
       
       TankBullet *bullet = [TankBullet new];
-      bullet.speed = 1000;
+      bullet.speed = TankBulletStandardSpeed;
       bullet.collisionTTL = 2;
       [[self.currentLevel mutableArrayValueForKey:@"bullets"] addObject:bullet];
       bullet.position = enemyTank.position;
@@ -164,27 +164,12 @@
 - (void)commandFromPlayer:(TankPlayer*)player fire:(NSDictionary*)args
 {
 	TankBullet *bullet = [TankBullet new];
-	bullet.speed = 700;
+	bullet.speed = TankBulletStandardSpeed;
 	bullet.collisionTTL = 2;
 	bullet.position = player.tank.position;
 	bullet.angle = player.tank.turretRotation + player.tank.rotation;
 	[[self.currentLevel mutableArrayValueForKey:@"bullets"] addObject:bullet];
 }
-
-	/*if([[theEvent characters] isEqual:@"w"])
-		_me.tank.acceleration = [[Vector2 vectorWithX:0 y:5000] vectorByRotatingByRadians:_me.tank.rotation];
-	if([[theEvent characters] isEqual:@"s"])
-		_me.tank.acceleration = [[Vector2 vectorWithX:0 y:-5000] vectorByRotatingByRadians:_me.tank.rotation];
-	if([[theEvent characters] isEqual:@"a"])
-		_me.tank.angularAcceleration = M_PI*80;
-	if([[theEvent characters] isEqual:@"d"])
-		_me.tank.angularAcceleration = -M_PI*80;*/
-
-	/*if(_me.tank.acceleration.length)
-		_me.tank.acceleration = [Vector2 zero];
-	else if(_me.tank.angularAcceleration)
-		_me.tank.angularAcceleration = 0;*/
-
 
 - (void)commandFromPlayer:(TankPlayer*)player moveTank:(NSDictionary*)args
 {

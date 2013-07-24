@@ -76,7 +76,7 @@
 		} added:^(id bullet) {
 			if(!bullet) return;
 			SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"bulleta"];
-			sprite.size = CGSizeMake(30, 30);
+			sprite.size = CGSizeMake(25, 15);
 			[weakSelf.arena addChild:sprite];
 			weakSelf.bulletSprites[[bullet identifier]] = sprite;
 		} initial:YES];
@@ -156,7 +156,7 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	[self.game cmd_aimTankAt:[Vector2 vectorWithPoint:[[touches anyObject] locationInNode:self]]];
+	[self.game cmd_aimTankAt:[Vector2 vectorWithPoint:[[touches anyObject] locationInNode:_arena]]];
 	[self.game cmd_fire];
 
 }
@@ -164,7 +164,7 @@
 #else
 - (void)mouseMoved:(NSEvent *)theEvent
 {
-	[self.game cmd_aimTankAt:[Vector2 vectorWithPoint:[theEvent locationInNode:self]]];
+	[self.game cmd_aimTankAt:[Vector2 vectorWithPoint:[theEvent locationInNode:_arena]]];
 }
 - (void)mouseDown:(NSEvent *)theEvent
 {
