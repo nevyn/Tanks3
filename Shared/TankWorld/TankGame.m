@@ -44,6 +44,10 @@
 {
     return [self.currentLevel.tanks arrayByAddingObjectsFromArray:self.currentLevel.bullets];
 }
++ (NSSet*)keyPathsForValuesAffectingPhysicalEntities
+{
+    return [NSSet setWithArray:@[@"currentLevel.tanks", @"currentLevel.bullets"]];
+}
 
 - (void)tick:(float)delta
 {
@@ -76,16 +80,12 @@
         }
 	}
 
-    NSArray *physicalEntities = self.physicalEntities;
-	for(TankPhysicalEntity *ent in physicalEntities) {
-        if(!ent.physicsBody._world)
-            [_world addBody:ent.physicsBody];
+	for(TankPhysicalEntity *ent in self.physicalEntities)
         [ent applyForces];
-    }
     
     [_world stepWithTime:delta velocityIterations:10 positionIterations:10];
 	
-	for(TankPhysicalEntity *ent in physicalEntities)
+	for(TankPhysicalEntity *ent in self.physicalEntities)
         [ent updatePropertiesFromPhysics];
   
   // Update enemies!!
@@ -160,6 +160,26 @@
 		[[self.currentLevel mutableArrayValueForKey:@"tanks"] addObject:enemyTank];
         [[self mutableArrayValueForKey:@"enemyTanks"] addObject:enemyTank];
 	}
+    
+    [self sp_addObserver:self forKeyPath:@"physicalEntities" options:NSKeyValueObservingOptionOld selector:@selector(setupPhysicsBodiesWithChange:)];
+}
+
+- (void)setupPhysicsBodiesWithChange:(NSDictionary*)change
+{
+    NSArray *olds = change[NSKeyValueChangeOldKey];
+    NSArray *news = [self physicalEntities];
+    for(TankPhysicalEntity *old in olds) {
+        if(![news containsObject:old] && old.physicsBody) {
+            [self.world removeBody:old.physicsBody];
+            SKPhysicsBodySetUserData(old.physicsBody, nil);
+        }
+    }
+    for(TankPhysicalEntity *new in news) {
+        if(new.physicsBody && !new.physicsBody._world) {
+            [self.world addBody:new.physicsBody];
+            SKPhysicsBodySetUserData(new.physicsBody, new);
+        }
+    }
 }
 
 - (void)commandFromPlayer:(TankPlayer*)player aimTankAt:(NSDictionary*)args

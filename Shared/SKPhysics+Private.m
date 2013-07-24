@@ -1,15 +1,21 @@
 #import "SKPhysics+Private.h"
 #import <objc/runtime.h>
 
-@implementation SKPhysicsBody (TankUserData)
+@interface PKPhysicsBody : NSObject
+@end
+@interface PKPhysicsBody (TankUserData)
+@property(nonatomic,unsafe_unretained) id tank_userdata;
+@end
+
 static const void *const key = &key;
-- (id)tank_userdata
+id SKPhysicsBodyGetUserData(SKPhysicsBody *body)
 {
-    return objc_getAssociatedObject(self, key);
+    if(!body) return nil;
+    return objc_getAssociatedObject(body, key);
 }
 
-- (void)setTank_userdata:(id)tank_userdata
+void SKPhysicsBodySetUserData(SKPhysicsBody *body, id userdata)
 {
-    objc_setAssociatedObject(self, key, tank_userdata, OBJC_ASSOCIATION_ASSIGN);
+    if(!body) return;
+    objc_setAssociatedObject(body, key, userdata, OBJC_ASSOCIATION_ASSIGN);
 }
-@end

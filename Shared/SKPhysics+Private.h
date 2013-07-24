@@ -12,6 +12,6 @@
 @property(nonatomic) double rotation;
 @end
 
-@interface SKPhysicsBody (TankUserData)
-@property(nonatomic,unsafe_unretained) id tank_userdata;
-@end
+// Can't add categories to SKPhysicsData because it *is* an PKPhysicsData :(
+id SKPhysicsBodyGetUserData(SKPhysicsBody *body);
+void SKPhysicsBodySetUserData(SKPhysicsBody *body, id userdata);
