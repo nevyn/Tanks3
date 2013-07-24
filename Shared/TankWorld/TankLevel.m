@@ -43,6 +43,21 @@
     SKPhysicsBody *body = [SKPhysicsBody bodyWithEdgeLoopFromPath:path];
     CGPathRelease(path);
     [world addBody:body];
+	
+	float tileWidth = _levelSize.width/arenaWidth;
+	float tileHeight = _levelSize.height/arenaHeight;
+	
+	for (int i = 0; i < _map.count; i++) {
+		
+		int tile = [_map[i] intValue];
+		if (tile != 0) {
+			
+			PKPhysicsBody *tileBody = [PKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(tileWidth, tileHeight)];
+			tileBody.position = CGPointMake(((i%arenaWidth)*tileWidth)+tileWidth/2, (floor(i/arenaWidth)*tileHeight)+tileHeight/2);
+			tileBody.mass = 100000;
+			[world addBody:tileBody];
+		}
+	}
 }
 
 + (NSSet*)observableToManyAttributes
