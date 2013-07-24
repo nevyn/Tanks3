@@ -5,7 +5,7 @@
 const static float tankMaxSpeed = 60;
 
 // Radians per second
-const static float tankRotationSpeed = M_PI;
+const static float tankRotationSpeed = M_PI*2;
 
 
 @interface TankTank : TankPhysicalEntity

@@ -51,35 +51,6 @@
 
 - (void)tick:(float)delta
 {
-	for(TankTank *tank in [self.players valueForKeyPath:@"tank"]) {
-        if([tank.moveIntent length]) {
-            if(!tank.canMove) {
-                // Rotate
-                
-                // Rotate towards the intended direction
-                Vector2 *look = [[Vector2 vectorWithX:0 y:1] vectorByRotatingByRadians:tank.rotation];
-                
-                // Goals are relative to look dir!
-                
-                // Angle to move intent, from up
-                float goal1 = [look angleTo:tank.moveIntent];
-                
-                // Angle to inversed move intent, from up
-                float goal2 = [look angleTo:[tank.moveIntent invertedVector]];
-                
-                float goal = fabsf(goal1) < fabsf(goal2) ? goal1 : goal2;
-              
-                if(goal < 0)
-                    tank.rotation -= tankRotationSpeed * delta;
-                else
-                    tank.rotation += tankRotationSpeed * delta;
-                
-                if(goal > -0.001 && goal < 0.001)
-                    tank.canMove = YES;
-            }
-        }
-	}
-
 	for(TankPhysicalEntity *ent in self.physicalEntities)
         [ent applyForces];
     
