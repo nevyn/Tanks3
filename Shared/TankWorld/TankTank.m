@@ -46,9 +46,9 @@
 	TankBullet *bullet = [TankBullet new];
 	bullet.speed = TankBulletStandardSpeed;
 	bullet.collisionTTL = 2;
-    Vector2 *offset = [[Vector2 vectorWithX:0 y:TankCollisionRadius*1.1] vectorByRotatingByRadians:self.turretRotation];
-	bullet.position = [self.position vectorByAddingVector:offset];
 	bullet.rotation = self.turretRotation + self.rotation;
+    Vector2 *offset = [[Vector2 vectorWithX:0 y:TankCollisionRadius*1.5] vectorByRotatingByRadians:bullet.rotation];
+	bullet.position = [self.position vectorByAddingVector:offset];
     [bullet updatePhysicsFromProperties];
 	[[level mutableArrayValueForKey:@"bullets"] addObject:bullet];
 }
