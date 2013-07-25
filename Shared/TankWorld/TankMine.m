@@ -19,6 +19,7 @@
     _timer -= delta;
     
     if(_timer <= 0.0f) {
+        [game explosionAt:self.position];
         [self removeFromParent];
     }
 }

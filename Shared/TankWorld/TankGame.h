@@ -10,14 +10,29 @@
 - (id)initWithRep:(NSDictionary*)rep;
 @end
 
+typedef enum {
+    TankGameStateLoading = 0,   // Loading the next level
+    TankGameStateSplash,        // Next level is loaded, show quick info
+    TankGameStateInGame,        // BATTLE!
+    TankGameStateWin,           // Win, show results
+    TankGameStateGameOver       // Game over
+} TankGameState;
+
 @class SKPhysicsWorld;
 
 @interface TankGame : WorldGame
+@property(nonatomic,WORLD_WRITABLE) TankGameState state;
 @property(nonatomic,WORLD_WRITABLE) TankLevel *currentLevel;
+
+
+// Move these to level?
+// Or maybe move more stuff here from level?
 @property(nonatomic,readonly) WORLD_ARRAY *enemyTanks;
 @property(nonatomic,strong) SKPhysicsWorld *world;
 
 - (void)tick:(float)delta;
+
+-(void)explosionAt:(Vector2*)position;
 
 /** When called client-side, updates the calling player's tank at the given
 	world coordinate. */
@@ -35,4 +50,7 @@
 @end
 
 @interface TankGameServer : TankGame
+
+- (void)startLevel:(int)levelNumber;
+
 @end

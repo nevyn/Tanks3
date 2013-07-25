@@ -30,12 +30,14 @@
 - (NSDictionary*)rep
 {
     return WorldDictAppend([super rep], @{
+        @"state": @(self.state),
 		@"currentLevel": self.currentLevel.identifier ?: [NSNull null],
 	});
 }
 - (void)updateFromRep:(NSDictionary*)rep fetcher:(WorldEntityFetcher)fetcher
 {
     [super updateFromRep:rep fetcher:fetcher];
+    WorldIf(rep, @"state", ^(id o) { self.state = [o intValue]; });
     WorldIf(rep, @"currentLevel", ^(id o) {
 		self.currentLevel = [o isEqual:[NSNull null]] ? nil : fetcher(o, [TankLevel class], NO);
     });
@@ -49,6 +51,7 @@
 {
     return [NSSet setWithArray:@[@"currentLevel.tanks", @"currentLevel.bullets", @"currentLevel.mines"]];
 }
+
 
 - (void)tick:(float)delta
 {
@@ -68,6 +71,9 @@
     for(TankMine *mine in [self.currentLevel.mines copy]) {
         [mine update:delta game:self];
     }
+}
+
+-(void)explosionAt:(Vector2*)position; {
 }
 
 - (void)cmd_aimTankAt:(Vector2*)aimAt;
@@ -127,8 +133,9 @@
 {
 	[super awakeFromPublish];
 	
-	self.currentLevel = [TankLevel new];
-    [self.currentLevel addWallsToPhysics:self.world];
+    [self startLevel:0];
+
+    // Set up observers.
     
 	__weak __typeof(self) weakSelf = self;
 	[self sp_observe:@"players" removed:^(TankPlayer *player) {
@@ -151,7 +158,21 @@
 	}
     
     [self sp_addObserver:self forKeyPath:@"physicalEntities" options:NSKeyValueObservingOptionOld selector:@selector(setupPhysicsBodiesWithChange:)];
+    
 }
+
+
+- (void)startLevel:(int)levelNumber {
+    self.currentLevel = [TankLevel new];
+    [self.currentLevel addWallsToPhysics:self.world];
+    
+    // Add tanks for the players
+    for(TankPlayer *player in self.players) {
+        
+    }
+}
+
+
 
 - (void)setupPhysicsBodiesWithChange:(NSDictionary*)change
 {
