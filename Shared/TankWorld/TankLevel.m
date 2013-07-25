@@ -9,6 +9,7 @@
 #import "TankEnemyTank.h"
 #import "TankMine.h"
 #import "TankPlayer.h"
+#import "TankStartLocation.h"
 
 @interface TankLevelServer : TankLevel
 @end
@@ -93,9 +94,14 @@
         if([entity respondsToSelector:@selector(updatePhysicsFromProperties)])
             [(TankPhysicalEntity*)entity updatePhysicsFromProperties];
         
-        // TODO: Insert into correct array
-        [[self mutableArrayValueForKey:@"tanks"] addObject:entity];
-        [[self mutableArrayValueForKey:@"enemyTanks"] addObject:entity];
+        if([entity isKindOfClass:[TankEnemyTank class]]) {
+            [[self mutableArrayValueForKey:@"tanks"] addObject:entity];
+            [[self mutableArrayValueForKey:@"enemyTanks"] addObject:entity];
+        } else if([entity isKindOfClass:[TankStartLocation class]]) {
+            [[self mutableArrayValueForKey:@"startLocations"] addObject:entity];
+        } else {
+            NSAssert(NO, @"Sorry, don't know what to do with an %@ entity.", klass);
+        }
     }
 }
 
@@ -135,6 +141,7 @@
     // Add tanks for players in the level
     for(TankPlayer *player in players) {
         player.tank = [TankTank new];
+        player.tank.position = [(TankStartLocation*)self.startLocations[[players indexOfObject:player] % self.startLocations.count] position];
         [player.tank updatePhysicsFromProperties];
         [[self mutableArrayValueForKey:@"tanks"] addObject:player.tank];
     }

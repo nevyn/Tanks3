@@ -14,6 +14,7 @@
 @property(nonatomic,readonly) WORLD_ARRAY *tanks;
 @property(nonatomic,readonly) WORLD_ARRAY *mines;
 @property(nonatomic,readonly) WORLD_ARRAY *enemyTanks;
+@property(nonatomic,readonly) WORLD_ARRAY *startLocations;
 @property(nonatomic,WORLD_WRITABLE) TankLevelMap *map;
 
 @property(nonatomic,strong) SKPhysicsWorld *world;

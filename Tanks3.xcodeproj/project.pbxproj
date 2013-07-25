@@ -71,6 +71,8 @@
 		059CD60B179C233E00B5981C /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FD179C233E00B5981C /* MVAppDelegate.m */; };
 		059CD60C179C233E00B5981C /* MVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FF179C233E00B5981C /* MVViewController.m */; };
 		059CD60E179C233E00B5981C /* TankGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* TankGameScene.m */; };
+		05A5BE5B17A1C51D000A0EAF /* TankStartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */; };
+		05A5BE5C17A1C51D000A0EAF /* TankStartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */; };
 		05C5F66417A054FD0028EDCB /* SKPhysics+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */; };
 		05C5F66517A054FD0028EDCB /* SKPhysics+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */; };
 		05EDE1BA179EE2850051E7F6 /* bulleta.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1B8179EE2850051E7F6 /* bulleta.png */; };
@@ -200,6 +202,8 @@
 		059CD601179C233E00B5981C /* Tanks3-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tanks3-Prefix.pch"; sourceTree = "<group>"; };
 		059CD603179C233E00B5981C /* TankGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankGameScene.h; sourceTree = "<group>"; };
 		059CD604179C233E00B5981C /* TankGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankGameScene.m; sourceTree = "<group>"; };
+		05A5BE5917A1C51D000A0EAF /* TankStartLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankStartLocation.h; sourceTree = "<group>"; };
+		05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankStartLocation.m; sourceTree = "<group>"; };
 		05C5F66217A054FD0028EDCB /* SKPhysics+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKPhysics+Private.h"; sourceTree = "<group>"; };
 		05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKPhysics+Private.m"; sourceTree = "<group>"; };
 		05EDE1B8179EE2850051E7F6 /* bulleta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulleta.png; sourceTree = "<group>"; };
@@ -328,6 +332,8 @@
 				0598EF25179ED61900EAD12D /* TankMine.m */,
 				38ED0716179F354F001D8294 /* TankEnemyTank.h */,
 				38ED0717179F354F001D8294 /* TankEnemyTank.m */,
+				05A5BE5917A1C51D000A0EAF /* TankStartLocation.h */,
+				05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */,
 			);
 			path = TankWorld;
 			sourceTree = "<group>";
@@ -647,6 +653,7 @@
 				05C5F66517A054FD0028EDCB /* SKPhysics+Private.m in Sources */,
 				0598EF16179EC0BD00EAD12D /* TankMenuScene.m in Sources */,
 				38ED071A179F354F001D8294 /* TankEnemyTank.m in Sources */,
+				05A5BE5C17A1C51D000A0EAF /* TankStartLocation.m in Sources */,
 				0598EF20179ED40C00EAD12D /* Vector2.m in Sources */,
 				055549C8179F54F7006E4BC1 /* TankSceneManager.m in Sources */,
 				0598EF22179ED40C00EAD12D /* BNZLine.m in Sources */,
@@ -668,6 +675,7 @@
 				0598EEFC179EB94E00EAD12D /* TankPlayer.m in Sources */,
 				0598EF1F179ED40C00EAD12D /* Vector2.m in Sources */,
 				0598EF15179EC0BD00EAD12D /* TankMenuScene.m in Sources */,
+				05A5BE5B17A1C51D000A0EAF /* TankStartLocation.m in Sources */,
 				0598EF08179EB9D200EAD12D /* TankLevel.m in Sources */,
 				0540B06E17A14A0800163AB8 /* TankSplashScene.m in Sources */,
 				0598EEF3179EB18600EAD12D /* TankGame.m in Sources */,
