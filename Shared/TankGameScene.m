@@ -50,6 +50,7 @@ const static int tileSize = 30;
     TankLevel *_currentLevel;
     
 	PlayerInputState *_inputState;
+    NSTimeInterval _tankTickSoundDuration;
 
     SKSpriteNode *_floor; // Background
     

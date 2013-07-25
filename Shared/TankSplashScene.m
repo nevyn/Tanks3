@@ -45,6 +45,7 @@
         _stateLabel.text = @"...";
     } else if(self.game.state == TankGameStateSplash) {
         _stateLabel.text = [NSString stringWithFormat:@"Prepare for level %d!", self.game.levelNumber+1];
+        [self runAction:[SKAction playSoundFileNamed:@"splash.m4a" waitForCompletion:NO]];
     } else if(self.game.state == TankGameStateInGame) {
         _stateLabel.text = @"FIGHT!";
     } else if(self.game.state == TankGameStateWin) {
