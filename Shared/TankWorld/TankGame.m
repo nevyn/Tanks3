@@ -16,21 +16,12 @@
 @end
 
 @implementation TankGame
-- (id)init
-{
-	if(self = [super init]) {
-		_enemyTanks = [NSMutableArray array];
-        _world = [[SKPhysicsWorld alloc] init];
-        _world.contactDelegate = self;
-        _world.gravity = CGPointZero;
-	}
-	return self;
-}
 
 - (NSDictionary*)rep
 {
     return WorldDictAppend([super rep], @{
         @"state": @(self.state),
+        @"levelNumber": @(self.levelNumber),
 		@"currentLevel": self.currentLevel.identifier ?: [NSNull null],
 	});
 }
@@ -38,39 +29,16 @@
 {
     [super updateFromRep:rep fetcher:fetcher];
     WorldIf(rep, @"state", ^(id o) { self.state = [o intValue]; });
+    WorldIf(rep, @"levelNumber", ^(id o) { self.levelNumber = [o intValue]; });
     WorldIf(rep, @"currentLevel", ^(id o) {
 		self.currentLevel = [o isEqual:[NSNull null]] ? nil : fetcher(o, [TankLevel class], NO);
     });
 }
 
-- (NSArray*)physicalEntities
-{
-    return [[self.currentLevel.tanks arrayByAddingObjectsFromArray:self.currentLevel.bullets] arrayByAddingObjectsFromArray:self.currentLevel.mines];
-}
-+ (NSSet*)keyPathsForValuesAffectingPhysicalEntities
-{
-    return [NSSet setWithArray:@[@"currentLevel.tanks", @"currentLevel.bullets", @"currentLevel.mines"]];
-}
-
 
 - (void)tick:(float)delta
 {
-	for(TankPhysicalEntity *ent in self.physicalEntities)
-        [ent applyForces];
-    
-    [_world stepWithTime:delta velocityIterations:10 positionIterations:10];
-	
-	for(TankPhysicalEntity *ent in self.physicalEntities)
-        [ent updatePropertiesFromPhysics];
-  
-  // Update enemies!!
-  for (TankEnemyTank *enemyTank in self.enemyTanks) {
-	  [enemyTank update:delta game:self];
-  }
-    
-    for(TankMine *mine in [self.currentLevel.mines copy]) {
-        [mine update:delta game:self];
-    }
+    [self.currentLevel tick:delta inGame:self];
 }
 
 -(void)explosionAt:(Vector2*)position; {
@@ -100,97 +68,26 @@
     [self sendCommandToCounterpart:@"layMine" arguments:@{}];
 }
 
-- (void)didBeginContact:(SKPhysicsContact *)contact
+- (void)cmd_advanceGameState
 {
-    SKPhysicsBody *a = contact.bodyA;
-    WorldEntity *ae = SKPhysicsBodyGetUserData(a);
-    SKPhysicsBody *b = contact.bodyB;
-    WorldEntity *be = SKPhysicsBodyGetUserData(b);
-    
-    if([ae respondsToSelector:@selector(collided:withBody:entity:inGame:)])
-        [(id)ae collided:contact withBody:b entity:be inGame:self];
-    if([be respondsToSelector:@selector(collided:withBody:entity:inGame:)])
-        [(id)be collided:contact withBody:a entity:ae inGame:self];
+    [self sendCommandToCounterpart:@"advanceGameState" arguments:@{}];
 }
-
-- (void)didEndContact:(SKPhysicsContact *)contact
-{
-    SKPhysicsBody *a = contact.bodyA;
-    WorldEntity *ae = SKPhysicsBodyGetUserData(a);
-    SKPhysicsBody *b = contact.bodyB;
-    WorldEntity *be = SKPhysicsBodyGetUserData(b);
-    
-    if([ae respondsToSelector:@selector(endedColliding:withBody:entity:inGame:)])
-        [(id)ae endedColliding:contact withBody:b entity:be inGame:self];
-    if([be respondsToSelector:@selector(endedColliding:withBody:entity:inGame:)])
-        [(id)be endedColliding:contact withBody:a entity:ae inGame:self];
-}
-
 @end
 
 @implementation TankGameServer
 - (void)awakeFromPublish
 {
 	[super awakeFromPublish];
-	
-    [self startLevel:0];
-
-    // Set up observers.
-    
-	__weak __typeof(self) weakSelf = self;
-	[self sp_observe:@"players" removed:^(TankPlayer *player) {
-		[[weakSelf.currentLevel mutableArrayValueForKey:@"tanks"] removeObject:player.tank];
-	} added:^(TankPlayer *player) {
-		if (!player.tank) {
-			player.tank = [TankTank new];
-            [player.tank updatePhysicsFromProperties];
-			[[weakSelf.currentLevel mutableArrayValueForKey:@"tanks"] addObject:player.tank];
-		}
-	} initial:YES];
-	
-	for(int i = 0; i < 2; i++) {
-        TankEnemyTank *enemyTank = [[TankEnemyTank alloc] init];
-        enemyTank.position = [Vector2 vectorWithX:300+(100*(i+1)) y:200+100*(i+1)];
-        [enemyTank updatePhysicsFromProperties];
-
-		[[self.currentLevel mutableArrayValueForKey:@"tanks"] addObject:enemyTank];
-        [[self mutableArrayValueForKey:@"enemyTanks"] addObject:enemyTank];
-	}
-    
-    [self sp_addObserver:self forKeyPath:@"physicalEntities" options:NSKeyValueObservingOptionOld selector:@selector(setupPhysicsBodiesWithChange:)];
-    
 }
 
 
-- (void)startLevel:(int)levelNumber {
-    self.currentLevel = [TankLevel new];
-    [self.currentLevel addWallsToPhysics:self.world];
-    
-    // Add tanks for the players
-    for(TankPlayer *player in self.players) {
-        
-    }
-}
-
-
-
-- (void)setupPhysicsBodiesWithChange:(NSDictionary*)change
+- (void)startLevel:(int)levelNumber
 {
-    NSArray *olds = change[NSKeyValueChangeOldKey];
-    NSArray *news = [self physicalEntities];
-    for(TankPhysicalEntity *old in olds) {
-        if(![news containsObject:old] && old.physicsBody) {
-            [self.world removeBody:old.physicsBody];
-            SKPhysicsBodySetUserData(old.physicsBody, nil);
-        }
-    }
-    for(TankPhysicalEntity *new in news) {
-        if(new.physicsBody && !new.physicsBody._world) {
-            [self.world addBody:new.physicsBody];
-            SKPhysicsBodySetUserData(new.physicsBody, new);
-        }
-    }
+    self.currentLevel = [TankLevel new];
+    self.levelNumber = self.currentLevel.levelNumber = levelNumber;
+    [self.currentLevel startWithPlayers:self.players];
 }
+
 
 - (void)commandFromPlayer:(TankPlayer*)player aimTankAt:(NSDictionary*)args
 {
@@ -232,6 +129,14 @@
 
 -(void)commandFromPlayer:(TankPlayer*)player layMine:(NSDictionary*)args {
     [player.tank layMineIntoLevel:self.currentLevel];
+}
+
+- (void)commandFromPlayer:(TankPlayer*)player advanceGameState:(NSDictionary*)args
+{
+    if(self.state == TankGameStateInGame)
+        return;
+    int nextLevel = self.state == TankGameStateWin ? self.levelNumber + 1 : 0;
+    [self startLevel:nextLevel];
 }
 
 @end

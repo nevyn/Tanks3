@@ -122,7 +122,7 @@ const static int tileSize = 30;
         
         int x = -1;
         int y = 0;
-        for(NSNumber *n in strongSelf.game.currentLevel.map) {
+        for(NSNumber *n in strongSelf.game.currentLevel.map.map) {
             x++;
             if(x == arenaWidth) {
                 x = 0;

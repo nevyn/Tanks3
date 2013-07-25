@@ -90,7 +90,7 @@
 		CGPoint startPoint2 = [self.position vectorByAddingVector:[[[currentMoveDirection normalizedVector] vectorByRotatingByRadians:-M_PI_2] vectorByMultiplyingWithScalar:20]].point;
 		
 		int i = 0;
-		while ([game.world bodyAlongRayStart:startPoint1 end:endPoint] && [game.world bodyAlongRayStart:startPoint2 end:endPoint] && i < 100) {
+		while ([game.currentLevel.world bodyAlongRayStart:startPoint1 end:endPoint] && [game.currentLevel.world bodyAlongRayStart:startPoint2 end:endPoint] && i < 100) {
 			
 			Vector2 *direction = [[closestPlayer.position vectorBySubtractingVector:self.position] normalizedVector];
 			
@@ -148,7 +148,7 @@
 		__block id closestObstacle = NULL;
 		__block float closestDistance = 0;
 		
-		[game.world enumerateBodiesAlongRayStart:self.position.point end:player.position.point usingBlock:^(SKPhysicsBody *body, CGPoint point, CGPoint normal, BOOL *stop) {
+		[game.currentLevel.world enumerateBodiesAlongRayStart:self.position.point end:player.position.point usingBlock:^(SKPhysicsBody *body, CGPoint point, CGPoint normal, BOOL *stop) {
 			
 			id obstacle = SKPhysicsBodyGetUserData(body);
 			if (body == self.physicsBody || [obstacle isKindOfClass:[TankBullet class]]) return;

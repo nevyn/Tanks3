@@ -1,18 +1,19 @@
 #import <WorldKit/Shared/Shared.h>
 #import <SpriteKit/SpriteKit.h>
-
-// Tilemap size in tiles
-const static int arenaWidth = 22;
-const static int arenaHeight = 16;
+#import "TankLevelMap.h"
+@class TankGame;
 
 @interface TankLevel : WorldEntity
+@property(nonatomic,WORLD_WRITABLE) int levelNumber;
 @property(nonatomic,readonly) WORLD_ARRAY *bullets;
 @property(nonatomic,readonly) WORLD_ARRAY *tanks;
 @property(nonatomic,readonly) WORLD_ARRAY *mines;
-@property(nonatomic,WORLD_WRITABLE) CGSize levelSize;
+@property(nonatomic,readonly) WORLD_ARRAY *enemyTanks;
+@property(nonatomic,WORLD_WRITABLE) TankLevelMap *map;
 
-// Ints (NSInteger). Remember that the first tile is the LOWER LEFT tile.
-@property(nonatomic,WORLD_WRITABLE) WORLD_ARRAY *map;
+@property(nonatomic,strong) SKPhysicsWorld *world;
 
-- (void)addWallsToPhysics:(SKPhysicsWorld*)world;
+- (void)startWithPlayers:(NSArray*)players;
+
+- (void)tick:(float)delta inGame:(TankGame*)game;
 @end

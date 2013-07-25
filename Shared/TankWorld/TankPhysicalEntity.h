@@ -1,6 +1,6 @@
 #import <WorldKit/Shared/Shared.h>
 #import <SpriteKit/SpriteKit.h>
-@class TankGame;
+@class TankLevel;
 
 @interface TankPhysicalEntity : WorldEntity
 @property(nonatomic,WORLD_WRITABLE) Vector2 *position;
@@ -13,6 +13,6 @@
 - (void)updatePhysicsFromProperties;
 - (void)applyForces;
 
-- (void)collided:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame*)game;
-- (void)endedColliding:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame*)game;
+- (void)collided:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inLevel:(TankLevel*)level;
+- (void)endedColliding:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inLevel:(TankLevel*)level;
 @end

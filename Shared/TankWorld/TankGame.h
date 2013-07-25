@@ -11,8 +11,7 @@
 @end
 
 typedef enum {
-    TankGameStateLoading = 0,   // Loading the next level
-    TankGameStateSplash,        // Next level is loaded, show quick info
+    TankGameStateSplash,        // Prepare for next level
     TankGameStateInGame,        // BATTLE!
     TankGameStateWin,           // Win, show results
     TankGameStateGameOver       // Game over
@@ -23,12 +22,7 @@ typedef enum {
 @interface TankGame : WorldGame
 @property(nonatomic,WORLD_WRITABLE) TankGameState state;
 @property(nonatomic,WORLD_WRITABLE) TankLevel *currentLevel;
-
-
-// Move these to level?
-// Or maybe move more stuff here from level?
-@property(nonatomic,readonly) WORLD_ARRAY *enemyTanks;
-@property(nonatomic,strong) SKPhysicsWorld *world;
+@property(nonatomic,WORLD_WRITABLE) int levelNumber;
 
 - (void)tick:(float)delta;
 
@@ -46,6 +40,9 @@ typedef enum {
 
 /** When called client-side, lays a mine under the calling player's tank */
 - (void)cmd_layMine;
+
+/** When called client-side and game state is NOT InGame, make server load next level or otherwise progress game state. */
+- (void)cmd_advanceGameState;
 
 @end
 
