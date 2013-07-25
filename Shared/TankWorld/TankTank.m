@@ -2,9 +2,12 @@
 #import "TankTank.h"
 #import "TankLevel.h"
 #import "TankBullet.h"
+#import "TankGame.h"
+#import "TankPlayer.h"
+#import "TankMine.h"
+#import "TankTypes.h"
 #import "BNZLine.h"
 #import "SKPhysics+Private.h"
-#import "TankTypes.h"
 
 @implementation TankTank
 - (id)init
@@ -20,6 +23,7 @@
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:TankCollisionRadius];
         self.physicsBody.allowsRotation = NO;
         self.physicsBody.categoryBitMask = TankGamePhysicsCategoryTank | TankGamePhysicsCategoryMakesBulletExplode;
+        self.physicsBody.contactTestBitMask = TankGamePhysicsCategoryBullet | TankGamePhysicsCategoryMine;
 	}
 	return self;
 }
@@ -51,6 +55,17 @@
 	bullet.position = [self.position vectorByAddingVector:offset];
     [bullet updatePhysicsFromProperties];
 	[[level mutableArrayValueForKey:@"bullets"] addObject:bullet];
+}
+
+- (void)layMineIntoLevel:(TankLevel *)level
+{
+    TankMine *mine = [TankMine new];
+    Vector2 *offset = [[Vector2 vectorWithX:0 y:TankCollisionRadius*2.1] vectorByRotatingByRadians:self.rotation+M_PI];
+	mine.position = [self.position vectorByAddingVector:offset];
+
+    [mine updatePhysicsFromProperties];
+    
+    [[level mutableArrayValueForKey:@"mines"] addObject:mine];
 }
 
 -(void)applyForces
@@ -91,4 +106,18 @@
         self.physicsBody.velocity = [[[self moveIntent] vectorByMultiplyingWithScalar:self.speed] point];
     }
 }
+
+- (void)collided:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame*)game
+{
+    if(body.categoryBitMask & (TankGamePhysicsCategoryBullet | TankGamePhysicsCategoryMine)) {
+        // This would be a good time for 'removeFromParent' to work when you're in multiple relationships...
+        [[[game currentLevel] mutableArrayValueForKey:@"tanks"] removeObject:self];
+        [[game mutableArrayValueForKey:@"enemyTanks"] removeObject:self];
+        for(TankPlayer *player in game.players) {
+            if(player.tank == self)
+                player.tank = nil;
+        }
+    }
+}
+
 @end

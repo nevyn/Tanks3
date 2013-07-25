@@ -121,9 +121,12 @@
 
 - (TankTank*) closestPlayerToPosition:(Vector2*)pos players:(NSArray*)allPlayers {
 	
-	TankTank *closestPlayer = NULL;
+	TankTank *closestPlayer = nil;
 	float closestDistance = 0;
 	for (TankTank *player in allPlayers) {
+        if([player isEqual:[NSNull null]])
+            continue;
+        
 		float distance = [pos distance:player.position];
 		if (!closestPlayer || distance < closestDistance) {
 			closestPlayer = player;
@@ -139,6 +142,8 @@
 	NSMutableArray *inSight = [NSMutableArray array];
 	
 	for (TankTank *player in allPlayers) {
+        if([player isEqual:[NSNull null]])
+            continue;
 		
 		__block id closestObstacle = NULL;
 		__block float closestDistance = 0;

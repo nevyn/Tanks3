@@ -2,6 +2,7 @@
 #import "TankMine.h"
 #import "SKPhysics+Private.h"
 #import "TankGame.h"
+#import "TankTypes.h"
 
 @implementation TankMine
 
@@ -9,6 +10,7 @@
     if(self = [super init]) {
         _timer = 2.0f;
         self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:20];
+        self.physicsBody.categoryBitMask = TankGamePhysicsCategoryMine;
     }
     return self;
 }

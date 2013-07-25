@@ -21,4 +21,5 @@ const static float TankRotationSpeed = M_PI*2;
 
 - (float)turretRotation;
 - (void)fireBulletIntoLevel:(TankLevel*)level;
+- (void)layMineIntoLevel:(TankLevel*)level;
 @end
