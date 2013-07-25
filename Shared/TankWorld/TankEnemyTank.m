@@ -152,8 +152,8 @@
 			
 			id obstacle = SKPhysicsBodyGetUserData(body);
 			if (body == self.physicsBody || [obstacle isKindOfClass:[TankBullet class]]) return;
-			
-			float distance = [self.position distance:[Vector2 vectorWithPoint:body.position]];
+						
+			float distance = [self.position distance:[Vector2 vectorWithPoint:point]];
 			
 			if (!closestObstacle || distance < closestDistance) {
 				closestObstacle = body;
