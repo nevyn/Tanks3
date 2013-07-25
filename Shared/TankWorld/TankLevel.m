@@ -98,10 +98,10 @@
     SKPhysicsBody *b = contact.bodyB;
     WorldEntity *be = SKPhysicsBodyGetUserData(b);
     
-    if([ae respondsToSelector:@selector(collided:withBody:entity:inLevel:)])
-        [(id)ae collided:contact withBody:b entity:be inLevel:self];
-    if([be respondsToSelector:@selector(collided:withBody:entity:inLevel:)])
-        [(id)be collided:contact withBody:a entity:ae inLevel:self];
+    if([ae respondsToSelector:@selector(collided:withBody:entity:inGame:)])
+        [(id)ae collided:contact withBody:b entity:be inGame:self.parent];
+    if([be respondsToSelector:@selector(collided:withBody:entity:inGame:)])
+        [(id)be collided:contact withBody:a entity:ae inGame:self.parent];
 }
 
 - (void)didEndContact:(SKPhysicsContact *)contact
@@ -111,10 +111,10 @@
     SKPhysicsBody *b = contact.bodyB;
     WorldEntity *be = SKPhysicsBodyGetUserData(b);
     
-    if([ae respondsToSelector:@selector(endedColliding:withBody:entity:inLevel:)])
-        [(id)ae endedColliding:contact withBody:b entity:be inLevel:self];
-    if([be respondsToSelector:@selector(endedColliding:withBody:entity:inLevel:)])
-        [(id)be endedColliding:contact withBody:a entity:ae inLevel:self];
+    if([ae respondsToSelector:@selector(endedColliding:withBody:entity:inGame:)])
+        [(id)ae endedColliding:contact withBody:b entity:be inGame:self.parent];
+    if([be respondsToSelector:@selector(endedColliding:withBody:entity:inGame:)])
+        [(id)be endedColliding:contact withBody:a entity:ae inGame:self.parent];
 }
 
 @end
@@ -122,9 +122,6 @@
 @implementation TankLevelServer
 - (void)awakeFromPublish
 {
-
-    // Set up observers.
-	
 	for(int i = 0; i < 2; i++) {
         TankEnemyTank *enemyTank = [[TankEnemyTank alloc] init];
         enemyTank.position = [Vector2 vectorWithX:300+(100*(i+1)) y:200+100*(i+1)];
@@ -135,6 +132,7 @@
 	}
     
     [self sp_addObserver:self forKeyPath:@"physicalEntities" options:NSKeyValueObservingOptionOld selector:@selector(setupPhysicsBodiesWithChange:)];
+    [super awakeFromPublish];
 }
 
 - (void)setupPhysicsBodiesWithChange:(NSDictionary*)change

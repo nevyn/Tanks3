@@ -20,6 +20,8 @@
 		0527DA1617A031E200731529 /* TankPhysicalEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527DA1417A031E200731529 /* TankPhysicalEntity.m */; };
 		0540B06617A13EA800163AB8 /* TankLevelMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 0540B06517A13EA800163AB8 /* TankLevelMap.m */; };
 		0540B06717A13EA800163AB8 /* TankLevelMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 0540B06517A13EA800163AB8 /* TankLevelMap.m */; };
+		0540B06E17A14A0800163AB8 /* TankSplashScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0540B06D17A14A0800163AB8 /* TankSplashScene.m */; };
+		0540B06F17A14A0800163AB8 /* TankSplashScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0540B06D17A14A0800163AB8 /* TankSplashScene.m */; };
 		055549C7179F54F7006E4BC1 /* TankSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 055549C6179F54F7006E4BC1 /* TankSceneManager.m */; };
 		055549C8179F54F7006E4BC1 /* TankSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 055549C6179F54F7006E4BC1 /* TankSceneManager.m */; };
 		0598EEEA179EAAF700EAD12D /* libWorldKitClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE8179EAABE00EAD12D /* libWorldKitClient.a */; };
@@ -144,6 +146,8 @@
 		0540B05D17A092EC00163AB8 /* TankTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TankTypes.h; sourceTree = "<group>"; };
 		0540B06417A13EA800163AB8 /* TankLevelMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankLevelMap.h; sourceTree = "<group>"; };
 		0540B06517A13EA800163AB8 /* TankLevelMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankLevelMap.m; sourceTree = "<group>"; };
+		0540B06C17A14A0800163AB8 /* TankSplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankSplashScene.h; sourceTree = "<group>"; };
+		0540B06D17A14A0800163AB8 /* TankSplashScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankSplashScene.m; sourceTree = "<group>"; };
 		055549C5179F54F7006E4BC1 /* TankSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankSceneManager.h; sourceTree = "<group>"; };
 		055549C6179F54F7006E4BC1 /* TankSceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankSceneManager.m; sourceTree = "<group>"; };
 		0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WorldKit.xcodeproj; path = Vendor/WorldKit/WorldKit.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -402,6 +406,8 @@
 				0598EF14179EC0BD00EAD12D /* TankMenuScene.m */,
 				059CD603179C233E00B5981C /* TankGameScene.h */,
 				059CD604179C233E00B5981C /* TankGameScene.m */,
+				0540B06C17A14A0800163AB8 /* TankSplashScene.h */,
+				0540B06D17A14A0800163AB8 /* TankSplashScene.m */,
 				055549C5179F54F7006E4BC1 /* TankSceneManager.h */,
 				055549C6179F54F7006E4BC1 /* TankSceneManager.m */,
 				05C5F66217A054FD0028EDCB /* SKPhysics+Private.h */,
@@ -611,6 +617,7 @@
 				0598EF27179ED61900EAD12D /* TankMine.m in Sources */,
 				0598EF09179EB9D200EAD12D /* TankLevel.m in Sources */,
 				0598EEFD179EB94E00EAD12D /* TankPlayer.m in Sources */,
+				0540B06F17A14A0800163AB8 /* TankSplashScene.m in Sources */,
 				0598EEF4179EB18600EAD12D /* TankGame.m in Sources */,
 				0598EF0D179EBC5C00EAD12D /* TankServer.m in Sources */,
 				0540B06717A13EA800163AB8 /* TankLevelMap.m in Sources */,
@@ -642,6 +649,7 @@
 				0598EF1F179ED40C00EAD12D /* Vector2.m in Sources */,
 				0598EF15179EC0BD00EAD12D /* TankMenuScene.m in Sources */,
 				0598EF08179EB9D200EAD12D /* TankLevel.m in Sources */,
+				0540B06E17A14A0800163AB8 /* TankSplashScene.m in Sources */,
 				0598EEF3179EB18600EAD12D /* TankGame.m in Sources */,
 				05C5F66417A054FD0028EDCB /* SKPhysics+Private.m in Sources */,
 				059CD60C179C233E00B5981C /* MVViewController.m in Sources */,

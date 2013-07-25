@@ -1,16 +1,22 @@
 #import "TankSceneManager.h"
+#import <SPSuccinct/SPSuccinct.h>
 #import "TankMenuScene.h"
 #import "TankGameScene.h"
 #import "TankServer.h"
+#import "TankSplashScene.h"
+
+static const CGSize kSceneSize = {800, 600};
+
+static const float kTransitionDuration = 0.6;
 
 @interface TankSceneManager () <TankMenuSceneDelegate, WorldMasterClientDelegate>
 {
 	TankServer *_server;
-	WorldMasterClient *_client;
+	WorldMasterClient *_master;
+    WorldGameClient *_gameClient;
 	NSString *_destinationHost;
 	NSInteger _destinationPort;
 }
-
 @end
 
 @implementation TankSceneManager
@@ -19,7 +25,7 @@
 	if(self = [super init]) {
 		self.skView = view;
 		
-		TankMenuScene *scene = [TankMenuScene sceneWithSize:CGSizeMake(800, 600)];
+		TankMenuScene *scene = [TankMenuScene sceneWithSize:kSceneSize];
 		scene.delegate = self;
 		scene.scaleMode = SKSceneScaleModeAspectFit;
 		[self.skView presentScene:scene];
@@ -41,7 +47,8 @@
 {
 	_destinationHost = hostName;
 	_destinationPort = port;
-	_client = [[WorldMasterClient alloc] initWithDelegate:self];
+	_master = [[WorldMasterClient alloc] initWithDelegate:self];
+    [self.skView presentScene:[[TankTextScene alloc] initWithSize:kSceneSize text:@"Connecting..."] transition:[SKTransition crossFadeWithDuration:kTransitionDuration]];
 }
 
 - (NSString*)nextMasterHostForMasterClient:(WorldMasterClient*)mc port:(int*)port
@@ -50,27 +57,76 @@
 	return _destinationHost;
 }
 
--(void)masterClient:(WorldMasterClient*)mc wasDisconnectedWithReason:(NSString*)reason redirect:(NSURL*)url {}
+-(void)masterClient:(WorldMasterClient*)mc wasDisconnectedWithReason:(NSString*)reason redirect:(NSURL*)url
+{
+    [self returnToMenu];
+}
 
--(void)masterClient:(WorldMasterClient *)mc failedGameCreationWithReason:(NSString*)reason {}
--(void)masterClient:(WorldMasterClient *)mc failedGameJoinWithReason:(NSString*)reason {}
+-(void)masterClient:(WorldMasterClient *)mc failedGameCreationWithReason:(NSString*)reason
+{
+    [self returnToMenu];
+}
+-(void)masterClient:(WorldMasterClient *)mc failedGameJoinWithReason:(NSString*)reason
+{
+    [self returnToMenu];
+}
 
 -(void)masterClient:(WorldMasterClient *)mc isNowInGame:(WorldGameClient*)gameClient
 {
-	TankGameScene *gameScene = [[TankGameScene alloc] initWithSize:self.skView.scene.size gameClient:(id)gameClient];
-	[self.skView presentScene:gameScene transition:[SKTransition doorsOpenHorizontalWithDuration:0.35]];
+    _gameClient = gameClient;
+    [self sp_addDependency:@"state" on:@[_gameClient, @"game.state"] target:self action:@selector(stateChanged)];
 }
 
 -(void)masterClientLeftCurrentGame:(WorldMasterClient *)mc
 {
-	[_client disconnect];
-	_client = nil;
+    [self returnToMenu];
+}
+
+- (TankGame*)game
+{
+    return (id)_gameClient.game;
+}
+
+- (void)stateChanged
+{
+    // Wait for the game to arrive
+    if(!self.game)
+        return;
+    
+    // Switch to game scene if it's appropriate, and it's not already presented. Ditto for splash.
+    SKScene *currentScene = self.skView.scene;
+    if([self.game state] == TankGameStateInGame) {
+        TankGameScene *gameScene = [currentScene isKindOfClass:[TankGameScene class]] ? (id)currentScene : nil;
+        if(!gameScene || gameScene.level != self.game.currentLevel) {
+            TankGameScene *gameScene = [[TankGameScene alloc] initWithSize:kSceneSize gameClient:_gameClient];
+            [self.skView presentScene:gameScene transition:[SKTransition doorsOpenHorizontalWithDuration:kTransitionDuration]];
+        }
+    } else {
+        if(![currentScene isKindOfClass:[TankSplashScene class]]) {
+            TankSplashScene *splash = [[TankSplashScene alloc] initWithSize:kSceneSize gameClient:_gameClient];
+            [self.skView presentScene:splash
+             transition:[SKTransition moveInWithDirection:SKTransitionDirectionUp duration:kTransitionDuration]];
+        }
+    }
+}
+
+- (void)returnToMenu
+{
+	[_master disconnect];
+	_master = nil;
+    _gameClient = nil;
+    
+    if([self.skView.scene isKindOfClass:[TankMenuScene class]])
+        return;
 	
-    TankMenuScene *scene = [TankMenuScene sceneWithSize:CGSizeMake(1024, 768)];
+    TankMenuScene *scene = [TankMenuScene sceneWithSize:kSceneSize];
     scene.delegate = self;
     scene.scaleMode = SKSceneScaleModeAspectFit;
-
-    [self.skView presentScene:scene transition:[SKTransition doorsCloseHorizontalWithDuration:0.35]];
+    
+    SKTransition *transition = [self.skView.scene isKindOfClass:[TankTextScene class]] ?
+        [SKTransition crossFadeWithDuration:kTransitionDuration] :
+        [SKTransition doorsCloseHorizontalWithDuration:kTransitionDuration];
+    [self.skView presentScene:scene transition:transition];
 }
 
 @end

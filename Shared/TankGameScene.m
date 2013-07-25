@@ -47,7 +47,8 @@ const static int tileSize = 30;
 @implementation TankGameScene
 {
     WorldGameClient *_client;
-	TankGame *_hackyServerGame;
+    TankLevel *_currentLevel;
+    
 	PlayerInputState *_inputState;
 
     SKSpriteNode *_floor; // Background
@@ -55,8 +56,10 @@ const static int tileSize = 30;
     // ...stuff around arena...
 
     SKNode *_map;   // Container for tilemap
-    
+
+#if !TARGET_OS_IPHONE
     NSTrackingArea *_trackingArea;
+#endif
 }
 
 -(id)initWithSize:(CGSize)size gameClient:(WorldGameClient*)client
@@ -65,6 +68,7 @@ const static int tileSize = 30;
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
 		_client = client;
 		_inputState = [PlayerInputState new];
+        _currentLevel = [self game].currentLevel;
         
         _arena = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.25 green:0.25 blue:0.5 alpha:1.0] size:CGSizeMake(660, 480)];
         _arena.anchorPoint = CGPointMake(0, 0);
@@ -74,6 +78,11 @@ const static int tileSize = 30;
         [self bindUIToDataModel];
 	}
     return self;
+}
+
+- (TankLevel*)level;
+{
+    return _currentLevel;
 }
 
 - (void)bindUIToDataModel

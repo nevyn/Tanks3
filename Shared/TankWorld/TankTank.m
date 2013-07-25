@@ -107,12 +107,12 @@
     }
 }
 
-- (void)collided:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame*)game
+- (void)collided:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame *)game
 {
     if(body.categoryBitMask & (TankGamePhysicsCategoryBullet | TankGamePhysicsCategoryMine)) {
         // This would be a good time for 'removeFromParent' to work when you're in multiple relationships...
         [[[game currentLevel] mutableArrayValueForKey:@"tanks"] removeObject:self];
-        [[game mutableArrayValueForKey:@"enemyTanks"] removeObject:self];
+        [[[game currentLevel] mutableArrayValueForKey:@"enemyTanks"] removeObject:self];
         for(TankPlayer *player in game.players) {
             if(player.tank == self)
                 player.tank = nil;

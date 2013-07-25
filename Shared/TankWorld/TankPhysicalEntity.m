@@ -57,6 +57,6 @@
     }
 }
 
-- (void)collided:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inLevel:(TankLevel *)level {}
-- (void)endedColliding:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inLevel:(TankLevel *)level {}
+- (void)collided:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame *)game {}
+- (void)endedColliding:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame *)game {}
 @end

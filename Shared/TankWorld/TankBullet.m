@@ -56,7 +56,7 @@
     self.rotation = [[Vector2 vectorWithPoint:self.physicsBody.velocity] angle] - M_PI_2;
 }
 
-- (void)collided:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inLevel:(TankLevel *)level
+- (void)collided:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame *)game
 {
     if([body categoryBitMask] & TankGamePhysicsCategoryMakesBulletBounce) {
         if(body == _lastBounce)
@@ -77,7 +77,7 @@
     }
 }
 
-- (void)endedColliding:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inLevel:(TankLevel *)level
+- (void)endedColliding:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame *)game
 {
 
 }

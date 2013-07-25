@@ -77,6 +77,7 @@
 @implementation TankGameServer
 - (void)awakeFromPublish
 {
+    self.state = TankGameStateSplash;
 	[super awakeFromPublish];
 }
 
@@ -86,6 +87,7 @@
     self.currentLevel = [TankLevel new];
     self.levelNumber = self.currentLevel.levelNumber = levelNumber;
     [self.currentLevel startWithPlayers:self.players];
+    self.state = TankGameStateInGame;
 }
 
 

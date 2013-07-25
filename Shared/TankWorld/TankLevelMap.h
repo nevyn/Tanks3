@@ -8,7 +8,7 @@ const static int arenaHeight = 16;
 @interface TankLevelMap : WorldEntity
 @property(nonatomic,WORLD_WRITABLE) CGSize levelSize;
 
-// Ints (NSInteger). Remember that the first tile is the LOWER LEFT tile.
+// Ints (NSNumber). Remember that the first tile is the LOWER LEFT tile.
 @property(nonatomic,WORLD_WRITABLE) WORLD_ARRAY *map;
 - (void)addWallsToPhysics:(SKPhysicsWorld*)world;
 @end

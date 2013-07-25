@@ -11,6 +11,7 @@
 @end
 
 typedef enum {
+    TankGameStateUnknown,
     TankGameStateSplash,        // Prepare for next level
     TankGameStateInGame,        // BATTLE!
     TankGameStateWin,           // Win, show results

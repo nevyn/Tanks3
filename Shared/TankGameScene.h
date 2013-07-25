@@ -9,7 +9,9 @@
 #import <SpriteKit/SpriteKit.h>
 #import "TankWorld/TankGame.h"
 @class WorldGameClient;
+@class TankLevel;
 
 @interface TankGameScene : SKScene
--(id)initWithSize:(CGSize)size gameClient:(WorldGameClient*)game;
+- (id)initWithSize:(CGSize)size gameClient:(WorldGameClient*)game;
+- (TankLevel*)level;
 @end

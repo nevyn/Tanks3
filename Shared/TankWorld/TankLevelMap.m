@@ -40,7 +40,6 @@
 {
     NSMutableSet *s = [[super observableToManyAttributes] mutableCopy];
     [s removeObject:@"map"];
-    [s removeObject:@"walls"];
     return s;
 }
 

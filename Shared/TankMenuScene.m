@@ -52,13 +52,14 @@
 			for(id label in weakSelf.serviceLabels)
 				[label removeFromParent];
 			[weakSelf.serviceLabels removeAllObjects];
-			CGPoint pen = CGPointMake(450, weakSelf.frame.size.height-300);
+			CGPoint pen = CGPointMake(350, weakSelf.frame.size.height-300);
 			for(NSNetService *service in weakSelf.foundServices) {
 				SKLabelNode *serviceLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
 				serviceLabel.fontColor = [SKColor whiteColor];
 				serviceLabel.text = service.name;
 				serviceLabel.fontSize = 30;
 				serviceLabel.position = pen;
+                serviceLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
 				pen.y -= 70;
 				[weakSelf addChild:serviceLabel];
 				[weakSelf.serviceLabels addObject:serviceLabel];
