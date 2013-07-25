@@ -39,6 +39,14 @@
 - (void)tick:(float)delta
 {
     [self.currentLevel tick:delta inGame:self];
+    
+    if(self.state == TankGameStateInGame) {
+        if(self.currentLevel.enemyTanks.count == 0) {
+            self.state = TankGameStateWin;
+        } else if([[self.players valueForKeyPath:@"tank"] sp_all:^BOOL(id obj) { return [obj isEqual:[NSNull null]]; }]) {
+            self.state = TankGameStateGameOver;
+        }
+    }
 }
 
 -(void)explosionAt:(Vector2*)position; {
