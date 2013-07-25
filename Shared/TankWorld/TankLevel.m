@@ -71,13 +71,20 @@
     NSAssert([json[@"height"] intValue] == arenaHeight, @"Wrong height");
     
     NSArray *tileLayer = json[@"layers"][0][@"data"];
-    self.map.map = [tileLayer mutableCopy];
+    NSMutableArray *reversedTileLayer = [NSMutableArray arrayWithCapacity:tileLayer.count];
+    for(int y = 1; y < arenaHeight+1; y++) {
+        for(int x = 0; x < arenaWidth; x++) {
+            [reversedTileLayer addObject:tileLayer[(arenaHeight-y)*arenaWidth + x]];
+        }
+    }
+    self.map.map = reversedTileLayer;
     
     for(NSDictionary *object in json[@"layers"][1][@"objects"]) {
         Class klass = NSClassFromString(object[@"type"]);
         WorldEntity *entity = [klass new];
         if([entity respondsToSelector:@selector(setPosition:)]) {
-            Vector2 *pos = [Vector2 vectorWithX:[object[@"x"] floatValue] y:[object[@"y"] floatValue]];
+            MutableVector2 *pos = [MutableVector2 vectorWithX:[object[@"x"] floatValue] y:[object[@"y"] floatValue]];
+            pos.y = ArenaSizeInPixels.height - pos.y;
             [(TankPhysicalEntity*)entity setPosition:pos];
         }
         for(id key in object[@"properties"])

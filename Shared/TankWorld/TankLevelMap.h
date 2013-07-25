@@ -5,6 +5,8 @@
 const static int arenaWidth = 22;
 const static int arenaHeight = 16;
 
+const static CGSize ArenaSizeInPixels = {660, 480};
+
 typedef enum {
     TankLevelMapTileTypeNothing,
     TankLevelMapTileTypeFloor,
