@@ -101,10 +101,10 @@
     SKPhysicsBody *b = contact.bodyB;
     WorldEntity *be = SKPhysicsBodyGetUserData(b);
     
-    if([ae respondsToSelector:@selector(collidedWithBody:entity:inGame:)])
-        [(id)ae collidedWithBody:b entity:be inGame:self];
-    if([be respondsToSelector:@selector(collidedWithBody:entity:inGame:)])
-        [(id)be collidedWithBody:a entity:ae inGame:self];
+    if([ae respondsToSelector:@selector(collided:withBody:entity:inGame:)])
+        [(id)ae collided:contact withBody:b entity:be inGame:self];
+    if([be respondsToSelector:@selector(collided:withBody:entity:inGame:)])
+        [(id)be collided:contact withBody:a entity:ae inGame:self];
 }
 
 @end

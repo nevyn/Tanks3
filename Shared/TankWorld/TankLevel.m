@@ -44,6 +44,9 @@
     CGPathRef path = CGPathCreateWithRect((CGRect){.size=self.levelSize}, NULL);
     SKPhysicsBody *body = [SKPhysicsBody bodyWithEdgeLoopFromPath:path];
     body.categoryBitMask = TankGamePhysicsCategoryWall | TankGamePhysicsCategoryMakesBulletBounce;
+    body.restitution = 0;
+    body.friction = 1;
+
     CGPathRelease(path);
     [world addBody:body];
 	
@@ -55,10 +58,10 @@
 		int tile = [_map[i] intValue];
 		if (tile != 0) {
 			
-			SKPhysicsBody *tileBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(tileWidth, tileHeight)];
-			tileBody.position = CGPointMake(((i%arenaWidth)*tileWidth)+tileWidth/2, (floor(i/arenaWidth)*tileHeight)+tileHeight/2);
+			SKPhysicsBody *tileBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(((i%arenaWidth)*tileWidth), (floor(i/arenaWidth)*tileHeight), tileWidth, tileHeight)];
             tileBody.categoryBitMask = TankGamePhysicsCategoryWall | TankGamePhysicsCategoryMakesBulletBounce;
-			tileBody.mass = 100000;
+			tileBody.restitution = 0;
+            tileBody.friction = 1;
 			[world addBody:tileBody];
 		}
 	}
