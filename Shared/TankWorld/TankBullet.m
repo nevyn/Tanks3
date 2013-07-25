@@ -77,4 +77,9 @@
     }
 }
 
+- (void)endedColliding:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame*)game
+{
+
+}
+
 @end

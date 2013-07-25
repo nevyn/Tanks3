@@ -107,6 +107,19 @@
         [(id)be collided:contact withBody:a entity:ae inGame:self];
 }
 
+- (void)didEndContact:(SKPhysicsContact *)contact
+{
+    SKPhysicsBody *a = contact.bodyA;
+    WorldEntity *ae = SKPhysicsBodyGetUserData(a);
+    SKPhysicsBody *b = contact.bodyB;
+    WorldEntity *be = SKPhysicsBodyGetUserData(b);
+    
+    if([ae respondsToSelector:@selector(endedColliding:withBody:entity:inGame:)])
+        [(id)ae endedColliding:contact withBody:b entity:be inGame:self];
+    if([be respondsToSelector:@selector(endedColliding:withBody:entity:inGame:)])
+        [(id)be endedColliding:contact withBody:a entity:ae inGame:self];
+}
+
 @end
 
 @implementation TankGameServer
