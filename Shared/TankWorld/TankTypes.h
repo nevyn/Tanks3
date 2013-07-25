@@ -6,6 +6,7 @@ typedef enum {
     TankGamePhysicsCategoryDestructableWall = 1 << 3,
     TankGamePhysicsCategoryTank = 1 << 4,
     TankGamePhysicsCategoryMine = 1 << 5,
+    TankGamePhysicsCategoryHole = 1 << 6,
     
     TankGamePhysicsCategoryMakesBulletBounce = 1 << 10,
     TankGamePhysicsCategoryMakesBulletExplode = 1 << 11,

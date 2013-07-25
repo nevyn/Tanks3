@@ -5,7 +5,6 @@
 
 @implementation TankBullet
 {
-    __weak SKPhysicsBody *_lastBounce;
 }
 - (id)init
 {
@@ -16,6 +15,7 @@
         self.physicsBody.friction = 1.0;
         self.physicsBody.usesPreciseCollisionDetection = YES;
         self.physicsBody.categoryBitMask = TankGamePhysicsCategoryBullet | TankGamePhysicsCategoryMakesBulletExplode;
+        self.physicsBody.collisionBitMask = TankGamePhysicsCategoryMakesBulletBounce;
         self.physicsBody.contactTestBitMask = TankGamePhysicsCategoryBullet | TankGamePhysicsCategoryWall | TankGamePhysicsCategoryDestructableWall | TankGamePhysicsCategoryTank | TankGamePhysicsCategoryMine;
         self.speed = TankBulletStandardSpeed;
     }
@@ -59,9 +59,6 @@
 - (void)collided:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame *)game
 {
     if([body categoryBitMask] & TankGamePhysicsCategoryMakesBulletBounce) {
-        if(body == _lastBounce)
-            return;
-        _lastBounce = body;
         
         if(--self.collisionTTL == 0) {
             [self removeFromParent];

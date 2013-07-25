@@ -92,8 +92,8 @@
 
 - (void)startLevel:(int)levelNumber
 {
-    self.currentLevel = [TankLevel new];
-    self.levelNumber = self.currentLevel.levelNumber = levelNumber;
+    self.currentLevel = [[TankLevel alloc] initWithLevel:levelNumber];
+    self.levelNumber = self.currentLevel.levelNumber;
     [self.currentLevel startWithPlayers:self.players];
     self.state = TankGameStateInGame;
 }

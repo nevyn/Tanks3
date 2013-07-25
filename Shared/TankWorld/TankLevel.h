@@ -4,6 +4,11 @@
 @class TankGame;
 
 @interface TankLevel : WorldEntity
+// Clean slate. Implicitly called by WorldKit.
+- (id)init;
+// Loads a level from disk. Call this from server code.
+- (id)initWithLevel:(int)levelNumber;
+
 @property(nonatomic,WORLD_WRITABLE) int levelNumber;
 @property(nonatomic,readonly) WORLD_ARRAY *bullets;
 @property(nonatomic,readonly) WORLD_ARRAY *tanks;

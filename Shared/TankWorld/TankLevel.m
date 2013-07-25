@@ -31,6 +31,22 @@
 	return self;
 }
 
+- (id)initWithLevel:(int)levelNumber
+{
+    if(self = [self init]) {
+        _levelNumber = levelNumber;
+        
+        NSString *levelPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"level_%d", levelNumber] ofType:@"json"];
+        NSError *err;
+        id levelJSON = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:levelPath] options:0 error:&err];
+        if(!levelJSON) {
+            NSLog(@"Failed to read level JSON: %@", levelPath);
+        }
+        [self loadLevelFromJSON:levelJSON];
+    }
+    return self;
+}
+
 - (NSDictionary*)rep
 {
     return WorldDictAppend([super rep], @{
@@ -45,6 +61,35 @@
     WorldIf(rep, @"map", ^(id o) {
 		self.map = [o isEqual:[NSNull null]] ? nil : fetcher(o, [TankLevelMap class], NO);
     });
+}
+
+- (void)loadLevelFromJSON:(NSDictionary*)json
+{
+    NSAssert([json[@"tilewidth"] intValue] == 30, @"Wrong tileheight");
+    NSAssert([json[@"tileheight"] intValue] == 30, @"Wrong tileheight");
+    NSAssert([json[@"width"] intValue] == arenaWidth, @"Wrong width");
+    NSAssert([json[@"height"] intValue] == arenaHeight, @"Wrong height");
+    
+    NSArray *tileLayer = json[@"layers"][0][@"data"];
+    self.map.map = [tileLayer mutableCopy];
+    
+    for(NSDictionary *object in json[@"layers"][1][@"objects"]) {
+        Class klass = NSClassFromString(object[@"type"]);
+        WorldEntity *entity = [klass new];
+        if([entity respondsToSelector:@selector(setPosition:)]) {
+            Vector2 *pos = [Vector2 vectorWithX:[object[@"x"] floatValue] y:[object[@"y"] floatValue]];
+            [(TankPhysicalEntity*)entity setPosition:pos];
+        }
+        for(id key in object[@"properties"])
+            [entity setValue:object[@"properties"][key] forKey:key];
+        
+        if([entity respondsToSelector:@selector(updatePhysicsFromProperties)])
+            [(TankPhysicalEntity*)entity updatePhysicsFromProperties];
+        
+        // TODO: Insert into correct array
+        [[self mutableArrayValueForKey:@"tanks"] addObject:entity];
+        [[self mutableArrayValueForKey:@"enemyTanks"] addObject:entity];
+    }
 }
 
 
@@ -122,15 +167,6 @@
 @implementation TankLevelServer
 - (void)awakeFromPublish
 {
-	for(int i = 0; i < 2; i++) {
-        TankEnemyTank *enemyTank = [[TankEnemyTank alloc] init];
-        enemyTank.position = [Vector2 vectorWithX:300+(100*(i+1)) y:200+100*(i+1)];
-        [enemyTank updatePhysicsFromProperties];
-
-		[[self mutableArrayValueForKey:@"tanks"] addObject:enemyTank];
-        [[self mutableArrayValueForKey:@"enemyTanks"] addObject:enemyTank];
-	}
-    
     [self sp_addObserver:self forKeyPath:@"physicalEntities" options:NSKeyValueObservingOptionOld selector:@selector(setupPhysicsBodiesWithChange:)];
     [super awakeFromPublish];
 }

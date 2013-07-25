@@ -1,3 +1,4 @@
+#define WORLD_WRITABLE_MODEL 1
 #import "TankLevelMap.h"
 #import "TankTypes.h"
 #import "SKPhysics+Private.h"
@@ -11,29 +12,27 @@
 		_levelSize = CGSizeMake(w, h);
         
         // Original maps are 22 x 16 tiles, so ours are too!
-        _map = [@[
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @1, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @2, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @2, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-            @1, @0, @0, @0, @0, @1, @1, @0, @0, @0, @0, @0, @0, @0, @1, @1, @0, @0, @0, @0, @0, @1,
-            @0, @0, @0, @0, @0, @1, @1, @0, @0, @0, @0, @0, @0, @0, @1, @1, @0, @0, @0, @0, @0, @0,
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @2, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @2, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0,
-            
-            @0, @0, @0, @0, @0, @0, @0, @0, @0, @1, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0, @0
-        ] mutableCopy];
+        _map = [NSMutableArray array];
+        for(int i = 0; i < arenaWidth*arenaHeight; i++)
+            [_map addObject:@0];
     }
     return self;
+}
+
+- (NSDictionary*)rep
+{
+    return WorldDictAppend([super rep], @{
+        @"levelSize": @{@"width":@(self.levelSize.width), @"height": @(self.levelSize.height)},
+		@"map": self.map,
+	});
+}
+- (void)updateFromRep:(NSDictionary*)rep fetcher:(WorldEntityFetcher)fetcher
+{
+    [super updateFromRep:rep fetcher:fetcher];
+    WorldIf(rep, @"levelSize", ^(id o) {
+        self.levelSize = CGSizeMake([o[@"width"] floatValue], [o[@"height"] floatValue]);
+    });
+    WorldIf(rep, @"map", ^(id o) { self.map = o; });
 }
 
 + (NSSet*)observableToManyAttributes
@@ -60,10 +59,14 @@
 	for (int i = 0; i < _map.count; i++) {
 		
 		int tile = [_map[i] intValue];
-		if (tile != 0) {
+		if (tile > TankLevelMapTileTypeFloor) {
 			
 			SKPhysicsBody *tileBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(((i%arenaWidth)*tileWidth), (floor(i/arenaWidth)*tileHeight), tileWidth, tileHeight)];
             tileBody.categoryBitMask = TankGamePhysicsCategoryWall | TankGamePhysicsCategoryMakesBulletBounce;
+            if(tile == TankLevelMapTileTypeBreakable)
+                tileBody.categoryBitMask |= TankGamePhysicsCategoryDestructableWall;
+            else if(tile == TankLevelMapTileTypeHole)
+                tileBody.categoryBitMask = TankGamePhysicsCategoryHole;
 			tileBody.restitution = 0;
             tileBody.friction = 1;
 			[world addBody:tileBody];

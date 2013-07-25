@@ -122,11 +122,12 @@ const static int tileSize = 30;
     //_floor = [SKSpriteNode spriteNodeWithImageNamed:@"floor"];
     //[self addChild:_floor];
     
-    [self sp_addDependency:@"map" on:@[_client, @"game.currentLevel.map"] changed:^{
+    [self sp_addDependency:@"map" on:@[_client, @"game.currentLevel.map.map"] changed:^{
         __strong __typeof(self) strongSelf = weakSelf;
         [strongSelf->_map removeFromParent];
         
         strongSelf->_map = [SKNode node];
+        strongSelf->_map.zPosition = 1;
         strongSelf->_map.position = CGPointMake(0, 0);
         
         int x = -1;
@@ -142,7 +143,7 @@ const static int tileSize = 30;
             if(val == 0) {
                 continue;
             }
-            NSString *tex = val == 1 ? @"wall" : @"breakable";
+            NSString *tex = @[@"floor", @"wall", @"breakable", @"hole"][val-1];
             
             SKSpriteNode *n = [SKSpriteNode spriteNodeWithImageNamed:tex];
             n.size = CGSizeMake(tileSize, tileSize);
@@ -151,7 +152,7 @@ const static int tileSize = 30;
             [strongSelf->_map addChild:n];
         }
     
-        [strongSelf.arena addChild:strongSelf->_map];
+        [strongSelf.arena insertChild:strongSelf->_map atIndex:0];
     }];
     
     _tankSprites = [NSMutableDictionary new];

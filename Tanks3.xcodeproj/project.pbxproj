@@ -22,6 +22,10 @@
 		0540B06717A13EA800163AB8 /* TankLevelMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 0540B06517A13EA800163AB8 /* TankLevelMap.m */; };
 		0540B06E17A14A0800163AB8 /* TankSplashScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0540B06D17A14A0800163AB8 /* TankSplashScene.m */; };
 		0540B06F17A14A0800163AB8 /* TankSplashScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0540B06D17A14A0800163AB8 /* TankSplashScene.m */; };
+		0540B07217A1995B00163AB8 /* level_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 0540B07117A1995B00163AB8 /* level_0.json */; };
+		0540B07317A1995B00163AB8 /* level_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 0540B07117A1995B00163AB8 /* level_0.json */; };
+		0540B07517A1A16A00163AB8 /* hole.png in Resources */ = {isa = PBXBuildFile; fileRef = 0540B07417A1A16A00163AB8 /* hole.png */; };
+		0540B07617A1A16A00163AB8 /* hole.png in Resources */ = {isa = PBXBuildFile; fileRef = 0540B07417A1A16A00163AB8 /* hole.png */; };
 		055549C7179F54F7006E4BC1 /* TankSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 055549C6179F54F7006E4BC1 /* TankSceneManager.m */; };
 		055549C8179F54F7006E4BC1 /* TankSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 055549C6179F54F7006E4BC1 /* TankSceneManager.m */; };
 		0598EEEA179EAAF700EAD12D /* libWorldKitClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE8179EAABE00EAD12D /* libWorldKitClient.a */; };
@@ -148,6 +152,8 @@
 		0540B06517A13EA800163AB8 /* TankLevelMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankLevelMap.m; sourceTree = "<group>"; };
 		0540B06C17A14A0800163AB8 /* TankSplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankSplashScene.h; sourceTree = "<group>"; };
 		0540B06D17A14A0800163AB8 /* TankSplashScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankSplashScene.m; sourceTree = "<group>"; };
+		0540B07117A1995B00163AB8 /* level_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level_0.json; sourceTree = "<group>"; };
+		0540B07417A1A16A00163AB8 /* hole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hole.png; sourceTree = "<group>"; };
 		055549C5179F54F7006E4BC1 /* TankSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankSceneManager.h; sourceTree = "<group>"; };
 		055549C6179F54F7006E4BC1 /* TankSceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankSceneManager.m; sourceTree = "<group>"; };
 		0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WorldKit.xcodeproj; path = Vendor/WorldKit/WorldKit.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -279,6 +285,14 @@
 				051BCBBA179C24440065B55D /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0540B07017A1995B00163AB8 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				0540B07117A1995B00163AB8 /* level_0.json */,
+			);
+			path = Levels;
 			sourceTree = "<group>";
 		};
 		0598EEDB179EAABE00EAD12D /* Products */ = {
@@ -419,9 +433,11 @@
 		05EDE1B7179EE2850051E7F6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0540B07017A1995B00163AB8 /* Levels */,
 				1B712E3A17A0959E00A5E4D7 /* mine.png */,
 				1BE88FE317A0434E006109C3 /* arrow.png */,
 				1B78C9F2179F43AB00EC54C5 /* floor.png */,
+				0540B07417A1A16A00163AB8 /* hole.png */,
 				1B78C9E8179F3F2400EC54C5 /* breakable.png */,
 				1B78C9E9179F3F2400EC54C5 /* wall.png */,
 				05EDE1B8179EE2850051E7F6 /* bulleta.png */,
@@ -566,9 +582,11 @@
 				051BCBC8179C24440065B55D /* Images.xcassets in Resources */,
 				1B78C9F0179F3F6000EC54C5 /* breakable.png in Resources */,
 				1BE88FE517A0434E006109C3 /* arrow.png in Resources */,
+				0540B07617A1A16A00163AB8 /* hole.png in Resources */,
 				1B78C9F1179F3F6700EC54C5 /* wall.png in Resources */,
 				05EDE1BB179EE2850051E7F6 /* bulleta.png in Resources */,
 				051BCBB6179C24440065B55D /* InfoPlist.strings in Resources */,
+				0540B07317A1995B00163AB8 /* level_0.json in Resources */,
 				05EDE1BD179EE2850051E7F6 /* Tank.png in Resources */,
 				05EDE1C0179EE3E40051E7F6 /* Turret.png in Resources */,
 				1B712E3C17A0959E00A5E4D7 /* mine.png in Resources */,
@@ -585,9 +603,11 @@
 				059CD607179C233E00B5981C /* Main_iPhone.storyboard in Resources */,
 				1B78C9EA179F3F2400EC54C5 /* breakable.png in Resources */,
 				1BE88FE417A0434E006109C3 /* arrow.png in Resources */,
+				0540B07517A1A16A00163AB8 /* hole.png in Resources */,
 				1B78C9EB179F3F2400EC54C5 /* wall.png in Resources */,
 				05EDE1BA179EE2850051E7F6 /* bulleta.png in Resources */,
 				059CD609179C233E00B5981C /* Images.xcassets in Resources */,
+				0540B07217A1995B00163AB8 /* level_0.json in Resources */,
 				05EDE1BC179EE2850051E7F6 /* Tank.png in Resources */,
 				05EDE1BF179EE3E40051E7F6 /* Turret.png in Resources */,
 				1B712E3B17A0959E00A5E4D7 /* mine.png in Resources */,

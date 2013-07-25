@@ -5,6 +5,14 @@
 const static int arenaWidth = 22;
 const static int arenaHeight = 16;
 
+typedef enum {
+    TankLevelMapTileTypeNothing,
+    TankLevelMapTileTypeFloor,
+    TankLevelMapTileTypeWall,
+    TankLevelMapTileTypeBreakable,
+    TankLevelMapTileTypeHole,
+} TankLevelMapTileType;
+
 @interface TankLevelMap : WorldEntity
 @property(nonatomic,WORLD_WRITABLE) CGSize levelSize;
 
