@@ -15,6 +15,7 @@
 
 @property (nonatomic, assign) float timeSinceFire;
 @property (nonatomic, assign) float timeSinceMovement;
+@property (nonatomic, assign) float timeSinceDirectionUpdate;
 
 - (void) update:(float)delta game:(TankGame*)game;
 

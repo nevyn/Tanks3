@@ -19,6 +19,7 @@
 	if(self = [super init]) {
 		_timeSinceFire = 0.0f;
 		_timeSinceMovement = 0.0f;
+		_timeSinceDirectionUpdate = 0.0f;
 	}
 	return self;
 }
@@ -29,7 +30,7 @@
 	
 	TankTank *playerInSight = [self closestPlayerInSight:[game.players valueForKeyPath:@"tank"] game:game];
 	
-	[self updateMovement:delta game:game target:playerInSight];
+	[self updateMovement:delta game:game playerInSight:playerInSight closestPlayer:closestPlayer];
 	
 	[self updateFiring:delta game:game playerInSight:playerInSight closestPlayer:closestPlayer];
 }
@@ -53,37 +54,66 @@
     _timeSinceFire += delta;
 }
 
-- (void) updateMovement:(float)delta game:(TankGame*)game target:(TankTank*)target {
+- (void) updateMovement:(float)delta game:(TankGame*)game playerInSight:(TankTank*)playerInSight closestPlayer:(TankTank*)closestPlayer {
 	
 	_timeSinceMovement += delta;
+	_timeSinceDirectionUpdate += delta;
 	
-	if (_timeSinceMovement < 2.0f) return;
+	if (_timeSinceMovement < 0.5f) return;
 	
 	_timeSinceMovement = 0.0f;
 	
-	if (target) {
-		Vector2 *direction = [[target.position vectorBySubtractingVector:self.position] normalizedVector];
-		self.moveIntent = [direction vectorByMultiplyingWithScalar:0.2f];
-		self.canMove = NO;
-	}
-	else {
+	if (playerInSight) {
 		
-		if (arc4random() % 100 > 75) {
-			self.moveIntent = [Vector2 vectorWithX:0 y:0];
+		if ([playerInSight.position distance:self.position] > 100.0f) {
+			Vector2 *direction = [[playerInSight.position vectorBySubtractingVector:self.position] normalizedVector];
+			self.moveIntent = [direction vectorByMultiplyingWithScalar:0.2f];
+			self.canMove = NO;
 		}
 		else {
-			int x = (arc4random()%10)-5;
-			int y = (arc4random()%10)-5;
-			Vector2 *direction = [Vector2 vectorWithX:x y:y];
+			self.moveIntent = [Vector2 vectorWithX:0 y:0];
+		}
+		
+	}
+	else if (closestPlayer) {
+		
+		Vector2 *currentMoveDirection = self.moveIntent;
+		
+		if (_timeSinceDirectionUpdate > 4.0f || (currentMoveDirection.x == 0 && currentMoveDirection.y == 0)) {
+			currentMoveDirection = [[[closestPlayer.position vectorBySubtractingVector:self.position] normalizedVector] vectorByMultiplyingWithScalar:0.2f];
+			_timeSinceDirectionUpdate = 0.0f;
+		}
+		
+		CGPoint endPoint = [self.position vectorByAddingVector:[currentMoveDirection vectorByMultiplyingWithScalar:800]].point;
+		
+		CGPoint startPoint1 = [self.position vectorByAddingVector:[[[currentMoveDirection normalizedVector] vectorByRotatingByRadians:M_PI_2] vectorByMultiplyingWithScalar:20]].point;
+		CGPoint startPoint2 = [self.position vectorByAddingVector:[[[currentMoveDirection normalizedVector] vectorByRotatingByRadians:-M_PI_2] vectorByMultiplyingWithScalar:20]].point;
+		
+		int i = 0;
+		while ([game.world bodyAlongRayStart:startPoint1 end:endPoint] && [game.world bodyAlongRayStart:startPoint2 end:endPoint] && i < 100) {
+			
+			Vector2 *direction = [[closestPlayer.position vectorBySubtractingVector:self.position] normalizedVector];
+			
+			float x = direction.x + ((float)(arc4random()%24)-12)/10.0f;
+			float y = direction.y + ((float)(arc4random()%24)-12)/10.0f;
 			
 			if (x == 0 && y == 0) {
-				self.moveIntent = direction;
+				x = 1;
+				y = 1;
 			}
-			else {
-				self.moveIntent = [[direction normalizedVector] vectorByMultiplyingWithScalar:0.2f];
-				self.canMove = NO;
+			
+			Vector2 *randomDirection = [[Vector2 vectorWithX:x y:y] normalizedVector];
+			currentMoveDirection = [randomDirection vectorByMultiplyingWithScalar:0.2f];
+			endPoint = [self.position vectorByAddingVector:[currentMoveDirection vectorByMultiplyingWithScalar:800]].point;
+			
+			i++;
+			if (i == 100) {
+				currentMoveDirection = [currentMoveDirection vectorByMultiplyingWithScalar:-1.0f]; // failsafe
 			}
 		}
+		
+		self.moveIntent = currentMoveDirection;
+		self.canMove = NO;
 	}
 	
 	
