@@ -83,6 +83,10 @@
 		05AA2D0517A1F3D5005D0AF5 /* step2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CFE17A1F3D5005D0AF5 /* step2.wav */; };
 		05AA2D0617A1F3D5005D0AF5 /* step3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CFF17A1F3D5005D0AF5 /* step3.wav */; };
 		05AA2D0717A1F3D5005D0AF5 /* step3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CFF17A1F3D5005D0AF5 /* step3.wav */; };
+		05AA2D0E17A1FF03005D0AF5 /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2D0C17A1FF03005D0AF5 /* shoot.wav */; };
+		05AA2D0F17A1FF03005D0AF5 /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2D0C17A1FF03005D0AF5 /* shoot.wav */; };
+		05AA2D1017A1FF03005D0AF5 /* shoot_enemy.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2D0D17A1FF03005D0AF5 /* shoot_enemy.wav */; };
+		05AA2D1117A1FF03005D0AF5 /* shoot_enemy.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2D0D17A1FF03005D0AF5 /* shoot_enemy.wav */; };
 		05C5F66417A054FD0028EDCB /* SKPhysics+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */; };
 		05C5F66517A054FD0028EDCB /* SKPhysics+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */; };
 		05EDE1BA179EE2850051E7F6 /* bulleta.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1B8179EE2850051E7F6 /* bulleta.png */; };
@@ -219,6 +223,8 @@
 		05AA2CFD17A1F3D5005D0AF5 /* step1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = step1.wav; sourceTree = "<group>"; };
 		05AA2CFE17A1F3D5005D0AF5 /* step2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = step2.wav; sourceTree = "<group>"; };
 		05AA2CFF17A1F3D5005D0AF5 /* step3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = step3.wav; sourceTree = "<group>"; };
+		05AA2D0C17A1FF03005D0AF5 /* shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shoot.wav; sourceTree = "<group>"; };
+		05AA2D0D17A1FF03005D0AF5 /* shoot_enemy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shoot_enemy.wav; sourceTree = "<group>"; };
 		05C5F66217A054FD0028EDCB /* SKPhysics+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKPhysics+Private.h"; sourceTree = "<group>"; };
 		05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKPhysics+Private.m"; sourceTree = "<group>"; };
 		05EDE1B8179EE2850051E7F6 /* bulleta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulleta.png; sourceTree = "<group>"; };
@@ -454,6 +460,8 @@
 		05A5BE6117A1D840000A0EAF /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				05AA2D0C17A1FF03005D0AF5 /* shoot.wav */,
+				05AA2D0D17A1FF03005D0AF5 /* shoot_enemy.wav */,
 				05A5BE6217A1D840000A0EAF /* splash.m4a */,
 				05AA2CFC17A1F3D5005D0AF5 /* step0.wav */,
 				05AA2CFD17A1F3D5005D0AF5 /* step1.wav */,
@@ -619,6 +627,7 @@
 				0540B07617A1A16A00163AB8 /* hole.png in Resources */,
 				1B78C9F1179F3F6700EC54C5 /* wall.png in Resources */,
 				05AA2D0117A1F3D5005D0AF5 /* step0.wav in Resources */,
+				05AA2D1117A1FF03005D0AF5 /* shoot_enemy.wav in Resources */,
 				05EDE1BB179EE2850051E7F6 /* bulleta.png in Resources */,
 				051BCBB6179C24440065B55D /* InfoPlist.strings in Resources */,
 				0540B07317A1995B00163AB8 /* level_0.json in Resources */,
@@ -631,6 +640,7 @@
 				1B712E3C17A0959E00A5E4D7 /* mine.png in Resources */,
 				051BCBBC179C24440065B55D /* Credits.rtf in Resources */,
 				1B78C9F4179F43AB00EC54C5 /* floor.png in Resources */,
+				05AA2D0F17A1FF03005D0AF5 /* shoot.wav in Resources */,
 				051BCBBE179C24440065B55D /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -645,6 +655,7 @@
 				0540B07517A1A16A00163AB8 /* hole.png in Resources */,
 				1B78C9EB179F3F2400EC54C5 /* wall.png in Resources */,
 				05AA2D0017A1F3D5005D0AF5 /* step0.wav in Resources */,
+				05AA2D1017A1FF03005D0AF5 /* shoot_enemy.wav in Resources */,
 				05EDE1BA179EE2850051E7F6 /* bulleta.png in Resources */,
 				059CD609179C233E00B5981C /* Images.xcassets in Resources */,
 				0540B07217A1995B00163AB8 /* level_0.json in Resources */,
@@ -657,6 +668,7 @@
 				1B712E3B17A0959E00A5E4D7 /* mine.png in Resources */,
 				059CD608179C233E00B5981C /* InfoPlist.strings in Resources */,
 				1B78C9F3179F43AB00EC54C5 /* floor.png in Resources */,
+				05AA2D0E17A1FF03005D0AF5 /* shoot.wav in Resources */,
 				059CD606179C233E00B5981C /* Main_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
