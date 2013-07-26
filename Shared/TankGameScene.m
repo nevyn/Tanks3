@@ -72,10 +72,15 @@ const static int tileSize = 30;
 		_inputState = [PlayerInputState new];
         for(int i = 0; i < 64; i++) _tankTickSoundDuration[i] = arc4random_uniform(100)/1000.;
         
-        _arena = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.25 green:0.25 blue:0.5 alpha:1.0] size:CGSizeMake(660, 480)];
+        SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"floor.png"];
+        background.size = CGSizeMake(size.width*2, size.height*2);
+        [self addChild:background];
+        
+        _arena = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.15 green:0.15 blue:0.15 alpha:0.05] size:CGSizeMake(660, 480)];
         _arena.anchorPoint = CGPointMake(0, 0);
         _arena.position = CGPointMake((800 - 660) / 2, (600-480)/2); // Move up-right a bit
         [self addChild:_arena];
+        
         
         [self performSelector:@selector(bindUIToDataModel) withObject:nil afterDelay:0];
 	}
