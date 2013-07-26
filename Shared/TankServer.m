@@ -11,6 +11,7 @@
 
 @implementation TankServer {
 	NSNetService *_publisher;
+    NSTimer *_tickTimer;
 }
 
 - (id)init
@@ -34,9 +35,16 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(unpublish) name:NSApplicationWillTerminateNotification object:nil];
 #endif
     
-    [NSTimer scheduledTimerWithTimeInterval:1/60. target:self selector:@selector(tick) userInfo:nil repeats:YES];
+    _tickTimer = [NSTimer scheduledTimerWithTimeInterval:1/60. target:self selector:@selector(tick) userInfo:nil repeats:YES];
     
     return self;
+}
+
+- (void)stop
+{
+    [self unpublish];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [_tickTimer invalidate];
 }
 
 - (WorldGameServer*)masterServer:(WorldMasterServer*)master createGameForRequest:(NSDictionary*)dict error:(NSError**)err;

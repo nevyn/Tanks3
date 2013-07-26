@@ -50,8 +50,10 @@
         _stateLabel.text = @"FIGHT!";
     } else if(self.game.state == TankGameStateWin) {
         _stateLabel.text = [NSString stringWithFormat:@"Victory!\nPrepare for level %d!", self.game.levelNumber + 2];
+    } else if(self.game.state == TankGameStateCompleteWin) {
+        _stateLabel.text = [NSString stringWithFormat:@"You win!!!"];
     } else if(self.game.state == TankGameStateGameOver) {
-        _stateLabel.text = @"Game Over";
+        _stateLabel.text = @"Game Over!\nTry again?";
     } else {
         _stateLabel.text = @"???";
     }
@@ -64,6 +66,9 @@
 
 - (void)advanceGameState
 {
+    if(self.game.state == TankGameStateCompleteWin) {
+        [_client leave];
+    }
     [(id)_client.game cmd_advanceGameState];
 }
 

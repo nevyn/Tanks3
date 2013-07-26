@@ -32,12 +32,22 @@
 	return self;
 }
 
++ (NSString*)levelPathForLevel:(int)levelNumber
+{
+    return [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"level_%d", levelNumber] ofType:@"json"];
+}
+
++ (BOOL)isLastLevel:(int)levelNumber
+{
+    return [self levelPathForLevel:levelNumber+1] == nil;
+}
+
 - (id)initWithLevel:(int)levelNumber
 {
     if(self = [self init]) {
         _levelNumber = levelNumber;
         
-        NSString *levelPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"level_%d", levelNumber] ofType:@"json"];
+        NSString *levelPath = [[self class] levelPathForLevel:levelNumber];
         NSError *err;
         id levelJSON = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:levelPath] options:0 error:&err];
         if(!levelJSON) {

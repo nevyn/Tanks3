@@ -15,6 +15,7 @@ typedef enum {
     TankGameStateSplash,        // Prepare for next level
     TankGameStateInGame,        // BATTLE!
     TankGameStateWin,           // Win, show results
+    TankGameStateCompleteWin,   // Win, no more levels available
     TankGameStateGameOver       // Game over
 } TankGameState;
 

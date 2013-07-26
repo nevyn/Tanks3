@@ -42,7 +42,7 @@
     
     if(self.state == TankGameStateInGame) {
         if(self.currentLevel.enemyTanks.count == 0) {
-            self.state = TankGameStateWin;
+            self.state = [TankLevel isLastLevel:self.currentLevel.levelNumber] ? TankGameStateCompleteWin : TankGameStateWin;
         } else if([[self.players valueForKeyPath:@"tank"] sp_all:^BOOL(id obj) { return [obj isEqual:[NSNull null]]; }]) {
             self.state = TankGameStateGameOver;
         }

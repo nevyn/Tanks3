@@ -116,6 +116,9 @@ static const float kTransitionDuration = 0.6;
 	_master = nil;
     _gameClient = nil;
     
+    [_server stop];
+    _server = nil;
+    
     if([self.skView.scene isKindOfClass:[TankMenuScene class]])
         return;
 	

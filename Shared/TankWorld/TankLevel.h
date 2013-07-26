@@ -9,6 +9,8 @@
 // Loads a level from disk. Call this from server code.
 - (id)initWithLevel:(int)levelNumber;
 
++ (BOOL)isLastLevel:(int)levelNumber;
+
 @property(nonatomic,WORLD_WRITABLE) int levelNumber;
 @property(nonatomic,readonly) WORLD_ARRAY *bullets;
 @property(nonatomic,readonly) WORLD_ARRAY *tanks;
