@@ -71,6 +71,7 @@ const static int tileSize = 30;
 		_client = client;
 		_inputState = [PlayerInputState new];
         _currentLevel = [self game].currentLevel;
+        for(int i = 0; i < 64; i++) _tankTickSoundDuration[i] = arc4random_uniform(100)/1000.;
         
         _arena = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.25 green:0.25 blue:0.5 alpha:1.0] size:CGSizeMake(660, 480)];
         _arena.anchorPoint = CGPointMake(0, 0);
@@ -265,7 +266,8 @@ const static int tileSize = 30;
 		tankNode.turret.zRotation = tank.turretRotation;
         
         _tankTickSoundDuration[i] += delta;
-        if(_tankTickSoundDuration[i] > 0.075 && tank.velocity.length > 0) {
+        float movementSpeedRatio = tank.velocity.length/TankMaxSpeed;
+        if(_tankTickSoundDuration[i] > 0.075/movementSpeedRatio && tank.velocity.length > 0) {
             [tankNode runAction:[SKAction playSoundFileNamed:[NSString stringWithFormat:@"step%d.wav", arc4random_uniform(4)] waitForCompletion:NO]];
             _tankTickSoundDuration[i] = 0;
         }
