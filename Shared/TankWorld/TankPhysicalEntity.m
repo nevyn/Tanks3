@@ -7,6 +7,7 @@
 {
     if(self = [super init]) {
         self.position = [Vector2 zero];
+        self.velocity = [Vector2 zero];
         self.acceleration = [Vector2 zero];
         self.speed = 0.0f;
     }
@@ -17,6 +18,7 @@
 {
     return WorldDictAppend([super rep], @{
         @"position": _position.rep,
+        @"velocity": _velocity.rep,
         @"acceleration": _acceleration.rep,
         @"speed": @(_speed),
 		@"rotation": @(_rotation),
@@ -27,6 +29,7 @@
 {
     [super updateFromRep:rep fetcher:fetcher];
     WorldIf(rep, @"position", ^(id o) { self.position = [[Vector2 alloc] initWithRep:o]; });
+    WorldIf(rep, @"velocity", ^(id o) { self.velocity = [[Vector2 alloc] initWithRep:o]; });
     WorldIf(rep, @"acceleration", ^(id o) { self.acceleration = [[Vector2 alloc] initWithRep:o]; });
     WorldIf(rep, @"speed", ^(id o) { self.speed = [o floatValue]; });
     WorldIf(rep, @"rotation", ^(id o) { self.rotation = [o floatValue]; });
@@ -36,6 +39,7 @@
 - (void)updatePropertiesFromPhysics
 {
     self.position = [Vector2 vectorWithPoint:self.physicsBody.position];
+    self.velocity = [Vector2 vectorWithPoint:self.physicsBody.velocity];
     self.rotation = self.physicsBody.rotation;
 }
 

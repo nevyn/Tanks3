@@ -75,14 +75,14 @@
 		05A5BE5C17A1C51D000A0EAF /* TankStartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */; };
 		05A5BE6317A1D840000A0EAF /* splash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 05A5BE6217A1D840000A0EAF /* splash.m4a */; };
 		05A5BE6417A1D840000A0EAF /* splash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 05A5BE6217A1D840000A0EAF /* splash.m4a */; };
-		05AA2CEF17A1DFC7005D0AF5 /* step0.aif in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CEB17A1DFC7005D0AF5 /* step0.aif */; };
-		05AA2CF017A1DFC7005D0AF5 /* step0.aif in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CEB17A1DFC7005D0AF5 /* step0.aif */; };
-		05AA2CF117A1DFC7005D0AF5 /* step1.aif in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CEC17A1DFC7005D0AF5 /* step1.aif */; };
-		05AA2CF217A1DFC7005D0AF5 /* step1.aif in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CEC17A1DFC7005D0AF5 /* step1.aif */; };
-		05AA2CF317A1DFC7005D0AF5 /* step2.aif in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CED17A1DFC7005D0AF5 /* step2.aif */; };
-		05AA2CF417A1DFC7005D0AF5 /* step2.aif in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CED17A1DFC7005D0AF5 /* step2.aif */; };
-		05AA2CF517A1DFC7005D0AF5 /* step3.aif in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CEE17A1DFC7005D0AF5 /* step3.aif */; };
-		05AA2CF617A1DFC7005D0AF5 /* step3.aif in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CEE17A1DFC7005D0AF5 /* step3.aif */; };
+		05AA2D0017A1F3D5005D0AF5 /* step0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CFC17A1F3D5005D0AF5 /* step0.wav */; };
+		05AA2D0117A1F3D5005D0AF5 /* step0.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CFC17A1F3D5005D0AF5 /* step0.wav */; };
+		05AA2D0217A1F3D5005D0AF5 /* step1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CFD17A1F3D5005D0AF5 /* step1.wav */; };
+		05AA2D0317A1F3D5005D0AF5 /* step1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CFD17A1F3D5005D0AF5 /* step1.wav */; };
+		05AA2D0417A1F3D5005D0AF5 /* step2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CFE17A1F3D5005D0AF5 /* step2.wav */; };
+		05AA2D0517A1F3D5005D0AF5 /* step2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CFE17A1F3D5005D0AF5 /* step2.wav */; };
+		05AA2D0617A1F3D5005D0AF5 /* step3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CFF17A1F3D5005D0AF5 /* step3.wav */; };
+		05AA2D0717A1F3D5005D0AF5 /* step3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 05AA2CFF17A1F3D5005D0AF5 /* step3.wav */; };
 		05C5F66417A054FD0028EDCB /* SKPhysics+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */; };
 		05C5F66517A054FD0028EDCB /* SKPhysics+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */; };
 		05EDE1BA179EE2850051E7F6 /* bulleta.png in Resources */ = {isa = PBXBuildFile; fileRef = 05EDE1B8179EE2850051E7F6 /* bulleta.png */; };
@@ -215,10 +215,10 @@
 		05A5BE5917A1C51D000A0EAF /* TankStartLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankStartLocation.h; sourceTree = "<group>"; };
 		05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankStartLocation.m; sourceTree = "<group>"; };
 		05A5BE6217A1D840000A0EAF /* splash.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.m4a; sourceTree = "<group>"; };
-		05AA2CEB17A1DFC7005D0AF5 /* step0.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = step0.aif; sourceTree = "<group>"; };
-		05AA2CEC17A1DFC7005D0AF5 /* step1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = step1.aif; sourceTree = "<group>"; };
-		05AA2CED17A1DFC7005D0AF5 /* step2.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = step2.aif; sourceTree = "<group>"; };
-		05AA2CEE17A1DFC7005D0AF5 /* step3.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = step3.aif; sourceTree = "<group>"; };
+		05AA2CFC17A1F3D5005D0AF5 /* step0.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = step0.wav; sourceTree = "<group>"; };
+		05AA2CFD17A1F3D5005D0AF5 /* step1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = step1.wav; sourceTree = "<group>"; };
+		05AA2CFE17A1F3D5005D0AF5 /* step2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = step2.wav; sourceTree = "<group>"; };
+		05AA2CFF17A1F3D5005D0AF5 /* step3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = step3.wav; sourceTree = "<group>"; };
 		05C5F66217A054FD0028EDCB /* SKPhysics+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKPhysics+Private.h"; sourceTree = "<group>"; };
 		05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKPhysics+Private.m"; sourceTree = "<group>"; };
 		05EDE1B8179EE2850051E7F6 /* bulleta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bulleta.png; sourceTree = "<group>"; };
@@ -455,10 +455,10 @@
 			isa = PBXGroup;
 			children = (
 				05A5BE6217A1D840000A0EAF /* splash.m4a */,
-				05AA2CEB17A1DFC7005D0AF5 /* step0.aif */,
-				05AA2CEC17A1DFC7005D0AF5 /* step1.aif */,
-				05AA2CED17A1DFC7005D0AF5 /* step2.aif */,
-				05AA2CEE17A1DFC7005D0AF5 /* step3.aif */,
+				05AA2CFC17A1F3D5005D0AF5 /* step0.wav */,
+				05AA2CFD17A1F3D5005D0AF5 /* step1.wav */,
+				05AA2CFE17A1F3D5005D0AF5 /* step2.wav */,
+				05AA2CFF17A1F3D5005D0AF5 /* step3.wav */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -614,18 +614,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				051BCBC8179C24440065B55D /* Images.xcassets in Resources */,
-				05AA2CF417A1DFC7005D0AF5 /* step2.aif in Resources */,
 				1B78C9F0179F3F6000EC54C5 /* breakable.png in Resources */,
-				05AA2CF217A1DFC7005D0AF5 /* step1.aif in Resources */,
 				1BE88FE517A0434E006109C3 /* arrow.png in Resources */,
-				05AA2CF017A1DFC7005D0AF5 /* step0.aif in Resources */,
-				05AA2CF617A1DFC7005D0AF5 /* step3.aif in Resources */,
 				0540B07617A1A16A00163AB8 /* hole.png in Resources */,
 				1B78C9F1179F3F6700EC54C5 /* wall.png in Resources */,
+				05AA2D0117A1F3D5005D0AF5 /* step0.wav in Resources */,
 				05EDE1BB179EE2850051E7F6 /* bulleta.png in Resources */,
 				051BCBB6179C24440065B55D /* InfoPlist.strings in Resources */,
 				0540B07317A1995B00163AB8 /* level_0.json in Resources */,
+				05AA2D0317A1F3D5005D0AF5 /* step1.wav in Resources */,
 				05EDE1BD179EE2850051E7F6 /* Tank.png in Resources */,
+				05AA2D0517A1F3D5005D0AF5 /* step2.wav in Resources */,
+				05AA2D0717A1F3D5005D0AF5 /* step3.wav in Resources */,
 				05A5BE6417A1D840000A0EAF /* splash.m4a in Resources */,
 				05EDE1C0179EE3E40051E7F6 /* Turret.png in Resources */,
 				1B712E3C17A0959E00A5E4D7 /* mine.png in Resources */,
@@ -640,18 +640,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				059CD607179C233E00B5981C /* Main_iPhone.storyboard in Resources */,
-				05AA2CF317A1DFC7005D0AF5 /* step2.aif in Resources */,
 				1B78C9EA179F3F2400EC54C5 /* breakable.png in Resources */,
-				05AA2CF117A1DFC7005D0AF5 /* step1.aif in Resources */,
 				1BE88FE417A0434E006109C3 /* arrow.png in Resources */,
-				05AA2CEF17A1DFC7005D0AF5 /* step0.aif in Resources */,
-				05AA2CF517A1DFC7005D0AF5 /* step3.aif in Resources */,
 				0540B07517A1A16A00163AB8 /* hole.png in Resources */,
 				1B78C9EB179F3F2400EC54C5 /* wall.png in Resources */,
+				05AA2D0017A1F3D5005D0AF5 /* step0.wav in Resources */,
 				05EDE1BA179EE2850051E7F6 /* bulleta.png in Resources */,
 				059CD609179C233E00B5981C /* Images.xcassets in Resources */,
 				0540B07217A1995B00163AB8 /* level_0.json in Resources */,
+				05AA2D0217A1F3D5005D0AF5 /* step1.wav in Resources */,
 				05EDE1BC179EE2850051E7F6 /* Tank.png in Resources */,
+				05AA2D0417A1F3D5005D0AF5 /* step2.wav in Resources */,
+				05AA2D0617A1F3D5005D0AF5 /* step3.wav in Resources */,
 				05A5BE6317A1D840000A0EAF /* splash.m4a in Resources */,
 				05EDE1BF179EE3E40051E7F6 /* Turret.png in Resources */,
 				1B712E3B17A0959E00A5E4D7 /* mine.png in Resources */,

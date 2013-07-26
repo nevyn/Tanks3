@@ -50,7 +50,8 @@ const static int tileSize = 30;
     TankLevel *_currentLevel;
     
 	PlayerInputState *_inputState;
-    NSTimeInterval _tankTickSoundDuration;
+    NSTimeInterval _tankTickSoundDuration[64];
+    NSTimeInterval _lastFrame;
 
     SKSpriteNode *_floor; // Background
     
@@ -252,11 +253,21 @@ const static int tileSize = 30;
 #endif
 
 -(void)update:(CFTimeInterval)currentTime {
+    NSTimeInterval delta = currentTime - _lastFrame;
+    
+    int i = 0;
 	for(TankTank *tank in self.game.currentLevel.tanks) {
 		TankNode *tankNode = _tankSprites[tank.identifier];
 		tankNode.position = tank.position.point;
 		tankNode.zRotation = tank.rotation;
 		tankNode.turret.zRotation = tank.turretRotation;
+        
+        _tankTickSoundDuration[i] += delta;
+        if(_tankTickSoundDuration[i] > 0.075 && tank.velocity.length > 0) {
+            [tankNode runAction:[SKAction playSoundFileNamed:[NSString stringWithFormat:@"step%d.wav", arc4random_uniform(4)] waitForCompletion:NO]];
+            _tankTickSoundDuration[i] = 0;
+        }
+        i++;
 	}
 	
 	for(TankBullet *bullet in self.game.currentLevel.bullets) {
@@ -269,6 +280,8 @@ const static int tileSize = 30;
         SKSpriteNode *sprite = _mineSprites[mine.identifier];
         sprite.position = mine.position.point;
     }
+    
+    _lastFrame = currentTime;
 }
 
 @end

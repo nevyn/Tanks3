@@ -4,6 +4,7 @@
 
 @interface TankPhysicalEntity : WorldEntity
 @property(nonatomic,WORLD_WRITABLE) Vector2 *position;
+@property(nonatomic,WORLD_WRITABLE) Vector2 *velocity;
 @property(nonatomic,WORLD_WRITABLE) Vector2 *acceleration;
 @property(nonatomic,WORLD_WRITABLE) float speed; // Max speed, pixels per second
 @property(nonatomic,WORLD_WRITABLE) float rotation; // 0 is up, cw
