@@ -70,7 +70,6 @@ const static int tileSize = 30;
         self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
 		_client = client;
 		_inputState = [PlayerInputState new];
-        _currentLevel = [self game].currentLevel;
         for(int i = 0; i < 64; i++) _tankTickSoundDuration[i] = arc4random_uniform(100)/1000.;
         
         _arena = [SKSpriteNode spriteNodeWithColor:[SKColor colorWithRed:0.25 green:0.25 blue:0.5 alpha:1.0] size:CGSizeMake(660, 480)];
@@ -78,7 +77,7 @@ const static int tileSize = 30;
         _arena.position = CGPointMake((800 - 660) / 2, (600-480)/2); // Move up-right a bit
         [self addChild:_arena];
         
-        [self bindUIToDataModel];
+        [self performSelector:@selector(bindUIToDataModel) withObject:nil afterDelay:0];
 	}
     return self;
 }
@@ -90,6 +89,7 @@ const static int tileSize = 30;
 
 - (void)bindUIToDataModel
 {
+    _currentLevel = [self game].currentLevel;
     _bulletSprites = [NSMutableDictionary new];
     __weak __typeof(self) weakSelf = self;
     [_client sp_observe:@"game.currentLevel.bullets" removed:^(TankBullet *bullet) {
@@ -173,11 +173,29 @@ const static int tileSize = 30;
     }];
     
     _tankSprites = [NSMutableDictionary new];
-    [_client sp_observe:@"game.currentLevel.tanks" removed:^(id tank) {
+    [_client sp_observe:@"game.currentLevel.tanks" removed:^(TankTank *tank) {
         if(!tank) return;
         TankNode *node = [weakSelf tankSprites][[tank identifier]];
         [node removeFromParent];
         [weakSelf.tankSprites removeObjectForKey:[tank identifier]];
+        
+        NSString *soundFile = [tank isKindOfClass:[TankEnemyTank class]] ?
+            weakSelf.level.enemyTanks.count == 0 ?
+                @"explosion_victory.m4a" :
+                @"explosion.m4a"
+            : @"explosion_youdied.m4a";
+        [weakSelf runAction:[SKAction playSoundFileNamed:soundFile waitForCompletion:NO]];
+        
+        NSArray *frames = [weakSelf explosionAnimationTextures];
+        SKSpriteNode *explosion = [SKSpriteNode spriteNodeWithTexture:frames[0] size:CGSizeMake(40, 40)];
+        explosion.position = [tank position].point;
+        [weakSelf.arena addChild:explosion];
+        [explosion runAction:[SKAction sequence:@[
+            [SKAction animateWithTextures:frames timePerFrame:1/50. resize:NO restore:NO],
+            [SKAction removeFromParent],
+        ]]];
+
+        
     } added:^(id tank) {
         if(!tank) return;
         TankNode *tankNode = [[TankNode alloc] initWithTank:tank];

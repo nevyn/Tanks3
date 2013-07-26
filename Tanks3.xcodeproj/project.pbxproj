@@ -28,6 +28,12 @@
 		0540B07617A1A16A00163AB8 /* hole.png in Resources */ = {isa = PBXBuildFile; fileRef = 0540B07417A1A16A00163AB8 /* hole.png */; };
 		055549C7179F54F7006E4BC1 /* TankSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 055549C6179F54F7006E4BC1 /* TankSceneManager.m */; };
 		055549C8179F54F7006E4BC1 /* TankSceneManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 055549C6179F54F7006E4BC1 /* TankSceneManager.m */; };
+		056C88E317A2134B00542D7F /* explosion_youdied.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C88E217A2134B00542D7F /* explosion_youdied.m4a */; };
+		056C88E417A2134B00542D7F /* explosion_youdied.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C88E217A2134B00542D7F /* explosion_youdied.m4a */; };
+		056C88EA17A214B100542D7F /* explosion.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C88E917A214B100542D7F /* explosion.m4a */; };
+		056C88EB17A214B100542D7F /* explosion.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C88E917A214B100542D7F /* explosion.m4a */; };
+		056C88ED17A214E700542D7F /* explosion_victory.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C88EC17A214E700542D7F /* explosion_victory.m4a */; };
+		056C88EE17A214E700542D7F /* explosion_victory.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C88EC17A214E700542D7F /* explosion_victory.m4a */; };
 		0598EEEA179EAAF700EAD12D /* libWorldKitClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE8179EAABE00EAD12D /* libWorldKitClient.a */; };
 		0598EEEB179EAAFB00EAD12D /* libWorldKitCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE2179EAABE00EAD12D /* libWorldKitCommon.a */; };
 		0598EEEC179EAAFB00EAD12D /* libWorldKitServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE6179EAABE00EAD12D /* libWorldKitServer.a */; };
@@ -184,6 +190,9 @@
 		0540B07417A1A16A00163AB8 /* hole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hole.png; sourceTree = "<group>"; };
 		055549C5179F54F7006E4BC1 /* TankSceneManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankSceneManager.h; sourceTree = "<group>"; };
 		055549C6179F54F7006E4BC1 /* TankSceneManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankSceneManager.m; sourceTree = "<group>"; };
+		056C88E217A2134B00542D7F /* explosion_youdied.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion_youdied.m4a; sourceTree = "<group>"; };
+		056C88E917A214B100542D7F /* explosion.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion.m4a; sourceTree = "<group>"; };
+		056C88EC17A214E700542D7F /* explosion_victory.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion_victory.m4a; sourceTree = "<group>"; };
 		0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WorldKit.xcodeproj; path = Vendor/WorldKit/WorldKit.xcodeproj; sourceTree = SOURCE_ROOT; };
 		0598EEF1179EB18600EAD12D /* TankGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankGame.h; sourceTree = "<group>"; };
 		0598EEF2179EB18600EAD12D /* TankGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankGame.m; sourceTree = "<group>"; };
@@ -483,6 +492,9 @@
 				05AA2D1317A20A54005D0AF5 /* bulletbounce1.wav */,
 				05AA2D1417A20A54005D0AF5 /* bulletbounce2.wav */,
 				05AA2D1517A20A54005D0AF5 /* bulletbounce3.wav */,
+				056C88E917A214B100542D7F /* explosion.m4a */,
+				056C88EC17A214E700542D7F /* explosion_victory.m4a */,
+				056C88E217A2134B00542D7F /* explosion_youdied.m4a */,
 				05AA2D0C17A1FF03005D0AF5 /* shoot.wav */,
 				05AA2D0D17A1FF03005D0AF5 /* shoot_enemy.wav */,
 				05A5BE6217A1D840000A0EAF /* splash.m4a */,
@@ -645,6 +657,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				056C88E417A2134B00542D7F /* explosion_youdied.m4a in Resources */,
 				051BCBC8179C24440065B55D /* Images.xcassets in Resources */,
 				1B78C9F0179F3F6000EC54C5 /* breakable.png in Resources */,
 				1BE88FE517A0434E006109C3 /* arrow.png in Resources */,
@@ -652,6 +665,7 @@
 				1B78C9F1179F3F6700EC54C5 /* wall.png in Resources */,
 				05AA2D0117A1F3D5005D0AF5 /* step0.wav in Resources */,
 				05AA2D1117A1FF03005D0AF5 /* shoot_enemy.wav in Resources */,
+				056C88EB17A214B100542D7F /* explosion.m4a in Resources */,
 				05AA2D1D17A20A54005D0AF5 /* bulletbounce3.wav in Resources */,
 				05AA2D2317A20DB9005D0AF5 /* explosion1.png in Resources */,
 				05EDE1BB179EE2850051E7F6 /* bulleta.png in Resources */,
@@ -660,6 +674,7 @@
 				05AA2D0317A1F3D5005D0AF5 /* step1.wav in Resources */,
 				05AA2D2017A20CD2005D0AF5 /* bullet_explode.wav in Resources */,
 				05EDE1BD179EE2850051E7F6 /* Tank.png in Resources */,
+				056C88EE17A214E700542D7F /* explosion_victory.m4a in Resources */,
 				05AA2D0517A1F3D5005D0AF5 /* step2.wav in Resources */,
 				05AA2D0717A1F3D5005D0AF5 /* step3.wav in Resources */,
 				05A5BE6417A1D840000A0EAF /* splash.m4a in Resources */,
@@ -679,6 +694,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				056C88E317A2134B00542D7F /* explosion_youdied.m4a in Resources */,
 				059CD607179C233E00B5981C /* Main_iPhone.storyboard in Resources */,
 				1B78C9EA179F3F2400EC54C5 /* breakable.png in Resources */,
 				1BE88FE417A0434E006109C3 /* arrow.png in Resources */,
@@ -686,6 +702,7 @@
 				1B78C9EB179F3F2400EC54C5 /* wall.png in Resources */,
 				05AA2D0017A1F3D5005D0AF5 /* step0.wav in Resources */,
 				05AA2D1017A1FF03005D0AF5 /* shoot_enemy.wav in Resources */,
+				056C88EA17A214B100542D7F /* explosion.m4a in Resources */,
 				05AA2D1C17A20A54005D0AF5 /* bulletbounce3.wav in Resources */,
 				05AA2D2217A20DB9005D0AF5 /* explosion1.png in Resources */,
 				05EDE1BA179EE2850051E7F6 /* bulleta.png in Resources */,
@@ -694,6 +711,7 @@
 				05AA2D0217A1F3D5005D0AF5 /* step1.wav in Resources */,
 				05AA2D1F17A20CD2005D0AF5 /* bullet_explode.wav in Resources */,
 				05EDE1BC179EE2850051E7F6 /* Tank.png in Resources */,
+				056C88ED17A214E700542D7F /* explosion_victory.m4a in Resources */,
 				05AA2D0417A1F3D5005D0AF5 /* step2.wav in Resources */,
 				05AA2D0617A1F3D5005D0AF5 /* step3.wav in Resources */,
 				05A5BE6317A1D840000A0EAF /* splash.m4a in Resources */,
