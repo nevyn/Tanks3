@@ -24,6 +24,18 @@
 	return self;
 }
 
+- (NSDictionary*)rep
+{
+    return WorldDictAppend([super rep], @{
+		@"enemyType": @(_enemyType),
+    });
+}
+- (void)updateFromRep:(NSDictionary*)rep fetcher:(WorldEntityFetcher)fetcher
+{
+    [super updateFromRep:rep fetcher:fetcher];
+    WorldIf(rep, @"enemyType", ^(id o) { self.enemyType = [o intValue]; });
+}
+
 - (TankBullet*)fireBulletIntoLevel:(TankLevel*)level
 {
     TankBullet *bullet = [super fireBulletIntoLevel:level];
@@ -62,7 +74,9 @@
 }
 
 - (void) updateMovement:(float)delta game:(TankGame*)game playerInSight:(TankTank*)playerInSight closestPlayer:(TankTank*)closestPlayer {
-	
+	if(self.enemyType == TankEnemyTypeBrown || self.enemyType == TankEnemyTypeGreen)
+        return;
+    
 	_timeSinceMovement += delta;
 	_timeSinceDirectionUpdate += delta;
 	

@@ -34,6 +34,8 @@
 		056C88EB17A214B100542D7F /* explosion.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C88E917A214B100542D7F /* explosion.m4a */; };
 		056C88ED17A214E700542D7F /* explosion_victory.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C88EC17A214E700542D7F /* explosion_victory.m4a */; };
 		056C88EE17A214E700542D7F /* explosion_victory.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 056C88EC17A214E700542D7F /* explosion_victory.m4a */; };
+		056C88F017A223B800542D7F /* level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 056C88EF17A223B800542D7F /* level_1.json */; };
+		056C88F117A223B800542D7F /* level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 056C88EF17A223B800542D7F /* level_1.json */; };
 		0598EEEA179EAAF700EAD12D /* libWorldKitClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE8179EAABE00EAD12D /* libWorldKitClient.a */; };
 		0598EEEB179EAAFB00EAD12D /* libWorldKitCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE2179EAABE00EAD12D /* libWorldKitCommon.a */; };
 		0598EEEC179EAAFB00EAD12D /* libWorldKitServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE6179EAABE00EAD12D /* libWorldKitServer.a */; };
@@ -193,6 +195,7 @@
 		056C88E217A2134B00542D7F /* explosion_youdied.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion_youdied.m4a; sourceTree = "<group>"; };
 		056C88E917A214B100542D7F /* explosion.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion.m4a; sourceTree = "<group>"; };
 		056C88EC17A214E700542D7F /* explosion_victory.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = explosion_victory.m4a; sourceTree = "<group>"; };
+		056C88EF17A223B800542D7F /* level_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level_1.json; sourceTree = "<group>"; };
 		0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WorldKit.xcodeproj; path = Vendor/WorldKit/WorldKit.xcodeproj; sourceTree = SOURCE_ROOT; };
 		0598EEF1179EB18600EAD12D /* TankGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankGame.h; sourceTree = "<group>"; };
 		0598EEF2179EB18600EAD12D /* TankGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankGame.m; sourceTree = "<group>"; };
@@ -343,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				0540B07117A1995B00163AB8 /* level_0.json */,
+				056C88EF17A223B800542D7F /* level_1.json */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -683,6 +687,7 @@
 				05AA2D1717A20A54005D0AF5 /* bulletbounce0.wav in Resources */,
 				051BCBBC179C24440065B55D /* Credits.rtf in Resources */,
 				05AA2D1B17A20A54005D0AF5 /* bulletbounce2.wav in Resources */,
+				056C88F117A223B800542D7F /* level_1.json in Resources */,
 				1B78C9F4179F43AB00EC54C5 /* floor.png in Resources */,
 				05AA2D0F17A1FF03005D0AF5 /* shoot.wav in Resources */,
 				051BCBBE179C24440065B55D /* MainMenu.xib in Resources */,
@@ -720,6 +725,7 @@
 				05AA2D1617A20A54005D0AF5 /* bulletbounce0.wav in Resources */,
 				059CD608179C233E00B5981C /* InfoPlist.strings in Resources */,
 				05AA2D1A17A20A54005D0AF5 /* bulletbounce2.wav in Resources */,
+				056C88F017A223B800542D7F /* level_1.json in Resources */,
 				1B78C9F3179F43AB00EC54C5 /* floor.png in Resources */,
 				05AA2D0E17A1FF03005D0AF5 /* shoot.wav in Resources */,
 				059CD606179C233E00B5981C /* Main_iPad.storyboard in Resources */,
