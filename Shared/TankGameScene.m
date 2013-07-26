@@ -92,9 +92,21 @@ const static int tileSize = 30;
 {
     _bulletSprites = [NSMutableDictionary new];
     __weak __typeof(self) weakSelf = self;
-    [_client sp_observe:@"game.currentLevel.bullets" removed:^(id bullet) {
+    [_client sp_observe:@"game.currentLevel.bullets" removed:^(TankBullet *bullet) {
         if(!bullet) return;
-        [weakSelf.bulletSprites[[bullet identifier]] removeFromParent];
+        SKNode *bulletSprite = weakSelf.bulletSprites[[bullet identifier]];
+        [weakSelf runAction:[SKAction playSoundFileNamed:@"bullet_explode.wav" waitForCompletion:NO]];
+        
+        NSArray *frames = [weakSelf explosionAnimationTextures];
+        SKSpriteNode *explosion = [SKSpriteNode spriteNodeWithTexture:frames[0] size:CGSizeMake(20, 20)];
+        explosion.position = [bullet position].point;
+        [weakSelf.arena addChild:explosion];
+        [explosion runAction:[SKAction sequence:@[
+            [SKAction animateWithTextures:frames timePerFrame:1/50. resize:NO restore:NO],
+            [SKAction removeFromParent],
+        ]]];
+        
+        [bulletSprite removeFromParent];
         [weakSelf.bulletSprites removeObjectForKey:[bullet identifier]];
     } added:^(id bullet) {
         if(!bullet) return;
@@ -177,6 +189,17 @@ const static int tileSize = 30;
 - (TankGame*)game
 {
 	return (id)_client.game;
+}
+
+- (NSArray*)explosionAnimationTextures
+{
+    SKTexture *tex = [SKTexture textureWithImageNamed:@"explosion1.png"];
+    NSMutableArray *frames = [NSMutableArray new];
+    float w = 1/5.;
+    for(int y = 4; y >= 0; y--)
+        for(int x = 0; x < 5; x++)
+            [frames addObject:[SKTexture textureWithRect:CGRectMake(x*w, y*w, w, w) inTexture:tex]];
+    return frames;
 }
 
 - (void)willMoveFromView:(SKView *)view
