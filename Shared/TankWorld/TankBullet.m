@@ -42,7 +42,7 @@
     self.physicsBody.velocity = [[Vector2 vectorWithX:0 y:self.speed] vectorByRotatingByRadians:self.rotation].point;
 }
 
-- (void)applyForces;
+- (void)applyForces:(float)delta
 {
 //    self.acceleration = [[[Vector2 vectorWithX:0 y:1] vectorByRotatingByRadians:self.rotation] vectorByMultiplyingWithScalar:self.speed];
     Vector2 *oldV = [Vector2 vectorWithPoint:self.physicsBody.velocity];

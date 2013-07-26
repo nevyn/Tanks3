@@ -47,6 +47,7 @@
 
 - (TankBullet*)fireBulletIntoLevel:(TankLevel*)level
 {
+    self.movementPenalty = TankFiringMovementPenaltyDuration;
 	TankBullet *bullet = [TankBullet new];
 	bullet.speed = TankBulletStandardSpeed;
 	bullet.collisionTTL = 2;
@@ -60,8 +61,9 @@
 
 - (TankMine*)layMineIntoLevel:(TankLevel *)level
 {
+    self.movementPenalty = TankFiringMovementPenaltyDuration;
     TankMine *mine = [TankMine new];
-    Vector2 *offset = [[Vector2 vectorWithX:0 y:TankCollisionRadius*2.1] vectorByRotatingByRadians:self.rotation+M_PI];
+    Vector2 *offset = [[Vector2 vectorWithX:0 y:TankCollisionRadius*3.5] vectorByRotatingByRadians:self.rotation+M_PI];
 	mine.position = [self.position vectorByAddingVector:offset];
 
     [mine updatePhysicsFromProperties];
@@ -70,12 +72,13 @@
     return mine;
 }
 
--(void)applyForces
+- (void)applyForces:(float)delta
 {
-    if(![self.moveIntent length]) {
+    if(![self.moveIntent length] || self.movementPenalty > 0) {
+        _movementPenalty = MAX(0, _movementPenalty - delta);
         self.physicsBody.velocity = CGPointZero;
         self.physicsBody.angularVelocity = 0;
-        return [super applyForces];
+        return [super applyForces:delta];
     }
 
     if(!self.canMove) {

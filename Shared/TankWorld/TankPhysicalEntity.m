@@ -49,7 +49,7 @@
     self.physicsBody.rotation = self.rotation;
 }
 
-- (void)applyForces
+- (void)applyForces:(float)delta
 {
     [self.physicsBody applyForce:[self acceleration].point];
     [self.physicsBody applyTorque:[self angularAcceleration]];

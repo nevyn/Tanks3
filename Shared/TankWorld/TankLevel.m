@@ -129,7 +129,7 @@
 - (void)tick:(float)delta inGame:(TankGame*)game;
 {
 	for(TankPhysicalEntity *ent in self.physicalEntities)
-        [ent applyForces];
+        [ent applyForces:delta];
     
     [_world stepWithTime:delta velocityIterations:10 positionIterations:10];
 	

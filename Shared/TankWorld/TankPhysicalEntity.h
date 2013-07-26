@@ -12,7 +12,7 @@
 @property(nonatomic,WORLD_WRITABLE) SKPhysicsBody *physicsBody;
 - (void)updatePropertiesFromPhysics;
 - (void)updatePhysicsFromProperties;
-- (void)applyForces;
+- (void)applyForces:(float)delta;
 
 - (void)collided:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame*)game;
 - (void)endedColliding:(SKPhysicsContact*)contact withBody:(SKPhysicsBody*)body entity:(WorldEntity*)other inGame:(TankGame*)game;
