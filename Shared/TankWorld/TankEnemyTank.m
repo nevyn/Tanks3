@@ -12,6 +12,15 @@
 #import "TankLevel.h"
 #import "SKPhysics+Private.h"
 
+@interface TankEnemyTank ()
+
+@property (nonatomic, assign) BOOL canMove;
+@property (nonatomic, assign) float shootDistance;
+@property (nonatomic, assign) float bulletSpeed;
+@property (nonatomic, assign) float movementSpeed;
+
+@end
+
 @implementation TankEnemyTank
 
 - (id)init
@@ -22,6 +31,30 @@
 		_timeSinceDirectionUpdate = 0.0f;
 	}
 	return self;
+}
+
+- (void)awakeFromPublish {
+	[super awakeFromPublish];
+	
+	self.canMove = YES;
+	self.shootDistance = -1;
+	self.bulletSpeed = 200;
+	self.movementSpeed = 2.0f;
+	
+	switch (_enemyType) {
+		case TankEnemyTypeBrown:
+			self.canMove = NO;
+			self.bulletSpeed = 100;
+			break;
+			
+		case TankEnemyTypeGreen:
+			self.canMove = NO;
+			self.bulletSpeed = 200;
+			break;
+			
+		default:
+			break;
+	}
 }
 
 - (NSDictionary*)rep
@@ -40,6 +73,7 @@
 {
     TankBullet *bullet = [super fireBulletIntoLevel:level];
     bullet.enemyBullet = YES;
+	bullet.speed = self.bulletSpeed;
     return bullet;
 }
 
@@ -49,12 +83,14 @@
 	
 	TankTank *playerInSight = [self closestPlayerInSight:[game.players valueForKeyPath:@"tank"] game:game];
 	
-	[self updateMovement:delta game:game playerInSight:playerInSight closestPlayer:closestPlayer];
+	if (self.canMove) [self updateMovement:delta game:game playerInSight:playerInSight closestPlayer:closestPlayer];
 	
 	[self updateFiring:delta game:game playerInSight:playerInSight closestPlayer:closestPlayer];
 }
 
 - (void) updateFiring:(float)delta game:(TankGame*)game playerInSight:(TankTank*)playerInSight closestPlayer:(TankTank*)closestPlayer {
+	
+	_timeSinceFire += delta;
 	
 	if (!playerInSight) {
 		if (closestPlayer) self.aimingAt = closestPlayer.position;
@@ -64,19 +100,18 @@
     self.aimingAt = playerInSight.position;
 	
 	// Should fire?
-    if (self.timeSinceFire > 2.f && [self.position distance:playerInSight.position] < 250) {
+    if (self.timeSinceFire > 2.f && (self.shootDistance < 0 || [self.position distance:playerInSight.position] < self.shootDistance)) {
 		
 		[self fireBulletIntoLevel:game.currentLevel];		
 		_timeSinceFire = 0.0f;
     }
-    
-    _timeSinceFire += delta;
 }
 
 - (void) updateMovement:(float)delta game:(TankGame*)game playerInSight:(TankTank*)playerInSight closestPlayer:(TankTank*)closestPlayer {
-	if(self.enemyType == TankEnemyTypeBrown || self.enemyType == TankEnemyTypeGreen)
-        return;
     
+	float distanceToKeepFromPlayer = 100.0f;
+	float distanceToKeepFromWalls = 40.0f;
+	
 	_timeSinceMovement += delta;
 	_timeSinceDirectionUpdate += delta;
 	
@@ -86,9 +121,9 @@
 	
 	if (playerInSight) {
 		
-		if ([playerInSight.position distance:self.position] > 100.0f) {
+		if ([playerInSight.position distance:self.position] > distanceToKeepFromPlayer) {
 			Vector2 *direction = [[playerInSight.position vectorBySubtractingVector:self.position] normalizedVector];
-			self.moveIntent = [direction vectorByMultiplyingWithScalar:0.2f];
+			self.moveIntent = [direction vectorByMultiplyingWithScalar:self.movementSpeed];
 			self.canMove = NO;
 		}
 		else {
@@ -100,36 +135,36 @@
 		
 		Vector2 *currentMoveDirection = self.moveIntent;
 		
-		if (_timeSinceDirectionUpdate > 4.0f || (currentMoveDirection.x == 0 && currentMoveDirection.y == 0)) {
-			currentMoveDirection = [[[closestPlayer.position vectorBySubtractingVector:self.position] normalizedVector] vectorByMultiplyingWithScalar:0.2f];
+		if (_timeSinceDirectionUpdate > 1.0f || (currentMoveDirection.x == 0 && currentMoveDirection.y == 0)) {
+			currentMoveDirection = [[[closestPlayer.position vectorBySubtractingVector:self.position] normalizedVector] vectorByMultiplyingWithScalar:self.movementSpeed];
 			_timeSinceDirectionUpdate = 0.0f;
 		}
 		
-		CGPoint endPoint = [self.position vectorByAddingVector:[currentMoveDirection vectorByMultiplyingWithScalar:800]].point;
+		CGPoint endPoint = [self.position vectorByAddingVector:[[currentMoveDirection normalizedVector] vectorByMultiplyingWithScalar:distanceToKeepFromWalls]].point;
 		
-		CGPoint startPoint1 = [self.position vectorByAddingVector:[[[currentMoveDirection normalizedVector] vectorByRotatingByRadians:M_PI_2] vectorByMultiplyingWithScalar:20]].point;
-		CGPoint startPoint2 = [self.position vectorByAddingVector:[[[currentMoveDirection normalizedVector] vectorByRotatingByRadians:-M_PI_2] vectorByMultiplyingWithScalar:20]].point;
+		CGPoint startPoint1 = [self.position vectorByAddingVector:[[[currentMoveDirection normalizedVector] vectorByRotatingByRadians:M_PI_2] vectorByMultiplyingWithScalar:15]].point;
+		CGPoint startPoint2 = [self.position vectorByAddingVector:[[[currentMoveDirection normalizedVector] vectorByRotatingByRadians:-M_PI_2] vectorByMultiplyingWithScalar:15]].point;
+		
+		CGPoint startPoint3 = self.position.point;
 		
 		int i = 0;
-		while ([game.currentLevel.world bodyAlongRayStart:startPoint1 end:endPoint] && [game.currentLevel.world bodyAlongRayStart:startPoint2 end:endPoint] && i < 100) {
+		while ([game.currentLevel.world bodyAlongRayStart:startPoint3 end:endPoint] && [game.currentLevel.world bodyAlongRayStart:startPoint1 end:endPoint] && [game.currentLevel.world bodyAlongRayStart:startPoint2 end:endPoint] && i < 100) {
 			
 			Vector2 *direction = [[closestPlayer.position vectorBySubtractingVector:self.position] normalizedVector];
 			
-			float x = direction.x + ((float)(arc4random()%24)-12)/10.0f;
-			float y = direction.y + ((float)(arc4random()%24)-12)/10.0f;
+			float angleInDegrees = 40 + (arc4random()%60);
+			if (arc4random() % 100 > 50) angleInDegrees *= -1;
+			float angleInRadians = angleInDegrees * (M_PI/180.0f);
 			
-			if (x == 0 && y == 0) {
-				x = 1;
-				y = 1;
-			}
+			Vector2 *randomDirection = [[direction vectorByRotatingByRadians:angleInRadians] normalizedVector];
 			
-			Vector2 *randomDirection = [[Vector2 vectorWithX:x y:y] normalizedVector];
-			currentMoveDirection = [randomDirection vectorByMultiplyingWithScalar:0.2f];
-			endPoint = [self.position vectorByAddingVector:[currentMoveDirection vectorByMultiplyingWithScalar:800]].point;
+			currentMoveDirection = [randomDirection vectorByMultiplyingWithScalar:self.movementSpeed];
+			endPoint = [self.position vectorByAddingVector:[[currentMoveDirection normalizedVector] vectorByMultiplyingWithScalar:distanceToKeepFromWalls]].point;
 			
 			i++;
 			if (i == 100) {
 				currentMoveDirection = [currentMoveDirection vectorByMultiplyingWithScalar:-1.0f]; // failsafe
+				NSLog(@"Got stuck! New movement direction: %@", currentMoveDirection);
 			}
 		}
 		

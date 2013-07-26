@@ -6,7 +6,7 @@
 // Pixels per second
 const static float TankMaxSpeed = 60;
 
-const static float TankCollisionRadius = 12;
+const static float TankCollisionRadius = 24;
 
 // Radians per second
 const static float TankRotationSpeed = M_PI*2;
