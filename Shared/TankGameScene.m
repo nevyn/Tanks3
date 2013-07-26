@@ -100,7 +100,8 @@ const static int tileSize = 30;
         SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"bulleta"];
         sprite.size = CGSizeMake(25, 15);
         [weakSelf.arena addChild:sprite];
-        [sprite runAction:[SKAction playSoundFileNamed:@"shoot.wav" waitForCompletion:NO]];
+        NSString *soundName = [bullet enemyBullet]?@"shoot_enemy.wav" : @"shoot.wav";
+        [sprite runAction:[SKAction playSoundFileNamed:soundName waitForCompletion:NO]];
         weakSelf.bulletSprites[[bullet identifier]] = sprite;
     } initial:YES];
     

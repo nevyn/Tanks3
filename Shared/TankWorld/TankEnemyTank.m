@@ -24,6 +24,13 @@
 	return self;
 }
 
+- (TankBullet*)fireBulletIntoLevel:(TankLevel*)level
+{
+    TankBullet *bullet = [super fireBulletIntoLevel:level];
+    bullet.enemyBullet = YES;
+    return bullet;
+}
+
 - (void) update:(float)delta game:(TankGame*)game {
 	
 	TankTank *closestPlayer = [self closestPlayerToPosition:self.position players:[game.players valueForKeyPath:@"tank"]];

@@ -45,7 +45,7 @@
 	return [[[[BNZLine alloc] initAt:self.position to:_aimingAt] vector] angle] - self.rotation - M_PI_2;
 }
 
-- (void)fireBulletIntoLevel:(TankLevel*)level
+- (TankBullet*)fireBulletIntoLevel:(TankLevel*)level
 {
 	TankBullet *bullet = [TankBullet new];
 	bullet.speed = TankBulletStandardSpeed;
@@ -55,9 +55,10 @@
 	bullet.position = [self.position vectorByAddingVector:offset];
     [bullet updatePhysicsFromProperties];
 	[[level mutableArrayValueForKey:@"bullets"] addObject:bullet];
+    return bullet;
 }
 
-- (void)layMineIntoLevel:(TankLevel *)level
+- (TankMine*)layMineIntoLevel:(TankLevel *)level
 {
     TankMine *mine = [TankMine new];
     Vector2 *offset = [[Vector2 vectorWithX:0 y:TankCollisionRadius*2.1] vectorByRotatingByRadians:self.rotation+M_PI];
@@ -66,6 +67,7 @@
     [mine updatePhysicsFromProperties];
     
     [[level mutableArrayValueForKey:@"mines"] addObject:mine];
+    return mine;
 }
 
 -(void)applyForces

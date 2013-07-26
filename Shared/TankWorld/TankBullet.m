@@ -26,12 +26,14 @@
 {
     return WorldDictAppend([super rep], @{
 		@"collisionTTL": @(_collisionTTL),
+        @"enemyBullet": @(_enemyBullet),
     });
 }
 - (void)updateFromRep:(NSDictionary*)rep fetcher:(WorldEntityFetcher)fetcher
 {
     [super updateFromRep:rep fetcher:fetcher];
     WorldIf(rep, @"collisionTTL", ^(id o) { self.collisionTTL = [o intValue]; });
+    WorldIf(rep, @"enemyBullet", ^(id o) { self.enemyBullet = [o boolValue]; });
 }
 
 - (void)updatePhysicsFromProperties
