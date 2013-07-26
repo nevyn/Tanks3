@@ -275,6 +275,9 @@ const static int tileSize = 30;
 	for(TankBullet *bullet in self.game.currentLevel.bullets) {
 		SKSpriteNode *sprite = _bulletSprites[bullet.identifier];
 		sprite.position = bullet.position.point;
+        if(sprite.zRotation != 0 && fabs(sprite.zRotation - bullet.rotation) > 0.05) {
+            [sprite runAction:[SKAction playSoundFileNamed:[NSString stringWithFormat:@"bulletbounce%d.wav", arc4random_uniform(4)] waitForCompletion:NO]];
+        }
 		sprite.zRotation = bullet.rotation;
 	}
     
