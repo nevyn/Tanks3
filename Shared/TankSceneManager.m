@@ -32,6 +32,9 @@ static const float kTransitionDuration = 0.6;
 		self.skView = view;
         
         _onlineHosts = [@[@"ishtori.nevyn.nu:29534"] mutableCopy];
+#if DEBUG
+        [_onlineHosts addObject:@"localhost:29534"];
+#endif
         _onlineMaster = [[WorldMasterClient alloc] initWithDelegate:self];
 		
 		TankMenuScene *scene = [[TankMenuScene alloc] initWithSize:kSceneSize onlineMaster:_onlineMaster];
@@ -65,7 +68,7 @@ static const float kTransitionDuration = 0.6;
     if(mc == _onlineMaster) {
         NSString *pair = [_onlineHosts objectAtIndex:0];
         [_onlineHosts removeObjectAtIndex:0];
-        [_onlineHosts insertObject:pair atIndex:0];
+        [_onlineHosts addObject:pair];
         
         NSString *host = [pair componentsSeparatedByString:@":"][0];
         *port = [[pair componentsSeparatedByString:@":"][1] intValue];

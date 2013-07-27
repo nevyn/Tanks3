@@ -131,6 +131,10 @@
 		return;
 	}
     
+    if(hit == _createOnlineGameButton) {
+        [_onlineMaster createGameNamed:_onlineMaster.authenticatedPlayer.alias];
+    }
+    
 	NSInteger i = [_serviceLabels indexOfObject:hit];
     if(i != NSNotFound) {
         NSNetService *service = _foundServices[i];

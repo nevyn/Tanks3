@@ -79,6 +79,29 @@
 		059CD60B179C233E00B5981C /* MVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FD179C233E00B5981C /* MVAppDelegate.m */; };
 		059CD60C179C233E00B5981C /* MVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD5FF179C233E00B5981C /* MVViewController.m */; };
 		059CD60E179C233E00B5981C /* TankGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* TankGameScene.m */; };
+		05A5045B17A4620300C59D42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 059CD5B4179C22F500B5981C /* Foundation.framework */; };
+		05A5045E17A4620300C59D42 /* DedicatedServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5045D17A4620300C59D42 /* DedicatedServer.m */; };
+		05A5046217A4620300C59D42 /* Tanks3DedicatedServer.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 05A5046117A4620300C59D42 /* Tanks3DedicatedServer.1 */; };
+		05A5046A17A4623000C59D42 /* TankGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EEF2179EB18600EAD12D /* TankGame.m */; };
+		05A5046B17A4623000C59D42 /* TankPhysicalEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0527DA1417A031E200731529 /* TankPhysicalEntity.m */; };
+		05A5046C17A4623000C59D42 /* TankPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EEFB179EB94E00EAD12D /* TankPlayer.m */; };
+		05A5046D17A4623000C59D42 /* TankTank.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF03179EB97400EAD12D /* TankTank.m */; };
+		05A5046E17A4623000C59D42 /* TankLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF07179EB9D200EAD12D /* TankLevel.m */; };
+		05A5046F17A4623000C59D42 /* TankLevelMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 0540B06517A13EA800163AB8 /* TankLevelMap.m */; };
+		05A5047017A4623000C59D42 /* TankBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF18179ED39300EAD12D /* TankBullet.m */; };
+		05A5047117A4623000C59D42 /* TankMine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF25179ED61900EAD12D /* TankMine.m */; };
+		05A5047217A4623000C59D42 /* TankEnemyTank.m in Sources */ = {isa = PBXBuildFile; fileRef = 38ED0717179F354F001D8294 /* TankEnemyTank.m */; };
+		05A5047317A4623000C59D42 /* TankStartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */; };
+		05A5047417A4623000C59D42 /* Vector2.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF1C179ED40C00EAD12D /* Vector2.m */; };
+		05A5047517A4623000C59D42 /* BNZLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF1E179ED40C00EAD12D /* BNZLine.m */; };
+		05A5047617A4623000C59D42 /* TankServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF0B179EBC5C00EAD12D /* TankServer.m */; };
+		05A5047717A4623000C59D42 /* TankMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0598EF14179EC0BD00EAD12D /* TankMenuScene.m */; };
+		05A5047817A4623000C59D42 /* TankGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 059CD604179C233E00B5981C /* TankGameScene.m */; };
+		05A5047917A4623000C59D42 /* TankSplashScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0540B06D17A14A0800163AB8 /* TankSplashScene.m */; };
+		05A5047B17A4623000C59D42 /* SKPhysics+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */; };
+		05A5047C17A4624100C59D42 /* libWorldKitCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE2179EAABE00EAD12D /* libWorldKitCommon.a */; };
+		05A5047D17A4624100C59D42 /* libWorldKitServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE6179EAABE00EAD12D /* libWorldKitServer.a */; };
+		05A5047F17A4624500C59D42 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A5047E17A4624500C59D42 /* SpriteKit.framework */; };
 		05A5BE5B17A1C51D000A0EAF /* TankStartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */; };
 		05A5BE5C17A1C51D000A0EAF /* TankStartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */; };
 		05A5BE6317A1D840000A0EAF /* splash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 05A5BE6217A1D840000A0EAF /* splash.m4a */; };
@@ -167,6 +190,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		05A5045817A4620300C59D42 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				05A5046217A4620300C59D42 /* Tanks3DedicatedServer.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		051BCBA9179C24440065B55D /* MacTanks3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacTanks3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		051BCBAA179C24440065B55D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
@@ -240,6 +276,11 @@
 		059CD601179C233E00B5981C /* Tanks3-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tanks3-Prefix.pch"; sourceTree = "<group>"; };
 		059CD603179C233E00B5981C /* TankGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankGameScene.h; sourceTree = "<group>"; };
 		059CD604179C233E00B5981C /* TankGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankGameScene.m; sourceTree = "<group>"; };
+		05A5045A17A4620300C59D42 /* Tanks3DedicatedServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tanks3DedicatedServer; sourceTree = BUILT_PRODUCTS_DIR; };
+		05A5045D17A4620300C59D42 /* DedicatedServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DedicatedServer.m; sourceTree = "<group>"; };
+		05A5046017A4620300C59D42 /* Tanks3DedicatedServer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tanks3DedicatedServer-Prefix.pch"; sourceTree = "<group>"; };
+		05A5046117A4620300C59D42 /* Tanks3DedicatedServer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Tanks3DedicatedServer.1; sourceTree = "<group>"; };
+		05A5047E17A4624500C59D42 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/SpriteKit.framework; sourceTree = DEVELOPER_DIR; };
 		05A5BE5917A1C51D000A0EAF /* TankStartLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankStartLocation.h; sourceTree = "<group>"; };
 		05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankStartLocation.m; sourceTree = "<group>"; };
 		05A5BE6217A1D840000A0EAF /* splash.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.m4a; sourceTree = "<group>"; };
@@ -303,6 +344,17 @@
 				059CD5DE179C22F500B5981C /* XCTest.framework in Frameworks */,
 				059CD5E0179C22F500B5981C /* UIKit.framework in Frameworks */,
 				059CD5DF179C22F500B5981C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05A5045717A4620300C59D42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05A5047F17A4624500C59D42 /* SpriteKit.framework in Frameworks */,
+				05A5047C17A4624100C59D42 /* libWorldKitCommon.a in Frameworks */,
+				05A5047D17A4624100C59D42 /* libWorldKitServer.a in Frameworks */,
+				05A5045B17A4620300C59D42 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +451,7 @@
 				059CD602179C233E00B5981C /* Shared */,
 				05EDE1B7179EE2850051E7F6 /* Resources */,
 				059CD5E3179C22F500B5981C /* Tanks3Tests */,
+				05A5045C17A4620300C59D42 /* Tanks3DedicatedServer */,
 				059CD5B3179C22F500B5981C /* Frameworks */,
 				059CD5B2179C22F500B5981C /* Products */,
 			);
@@ -410,6 +463,7 @@
 				059CD5B1179C22F500B5981C /* Tanks3.app */,
 				059CD5DC179C22F500B5981C /* Tanks3Tests.xctest */,
 				051BCBA9179C24440065B55D /* MacTanks3.app */,
+				05A5045A17A4620300C59D42 /* Tanks3DedicatedServer */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -417,6 +471,7 @@
 		059CD5B3179C22F500B5981C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05A5047E17A4624500C59D42 /* SpriteKit.framework */,
 				059CD5B4179C22F500B5981C /* Foundation.framework */,
 				059CD5B6179C22F500B5981C /* CoreGraphics.framework */,
 				059CD5B8179C22F500B5981C /* UIKit.framework */,
@@ -486,6 +541,24 @@
 				05C5F66317A054FD0028EDCB /* SKPhysics+Private.m */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		05A5045C17A4620300C59D42 /* Tanks3DedicatedServer */ = {
+			isa = PBXGroup;
+			children = (
+				05A5045D17A4620300C59D42 /* DedicatedServer.m */,
+				05A5046117A4620300C59D42 /* Tanks3DedicatedServer.1 */,
+				05A5045F17A4620300C59D42 /* Supporting Files */,
+			);
+			path = Tanks3DedicatedServer;
+			sourceTree = "<group>";
+		};
+		05A5045F17A4620300C59D42 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				05A5046017A4620300C59D42 /* Tanks3DedicatedServer-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		05A5BE6117A1D840000A0EAF /* Audio */ = {
@@ -584,6 +657,23 @@
 			productReference = 059CD5DC179C22F500B5981C /* Tanks3Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		05A5045917A4620300C59D42 /* Tanks3DedicatedServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 05A5046917A4620300C59D42 /* Build configuration list for PBXNativeTarget "Tanks3DedicatedServer" */;
+			buildPhases = (
+				05A5045617A4620300C59D42 /* Sources */,
+				05A5045717A4620300C59D42 /* Frameworks */,
+				05A5045817A4620300C59D42 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tanks3DedicatedServer;
+			productName = Tanks3DedicatedServer;
+			productReference = 05A5045A17A4620300C59D42 /* Tanks3DedicatedServer */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -621,6 +711,7 @@
 				059CD5B0179C22F500B5981C /* Tanks3 */,
 				059CD5DB179C22F500B5981C /* Tanks3Tests */,
 				051BCBA8179C24440065B55D /* MacTanks3 */,
+				05A5045917A4620300C59D42 /* Tanks3DedicatedServer */,
 			);
 		};
 /* End PBXProject section */
@@ -804,6 +895,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				059CD5EA179C22F500B5981C /* Tanks3Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		05A5045617A4620300C59D42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05A5046A17A4623000C59D42 /* TankGame.m in Sources */,
+				05A5046B17A4623000C59D42 /* TankPhysicalEntity.m in Sources */,
+				05A5046C17A4623000C59D42 /* TankPlayer.m in Sources */,
+				05A5046D17A4623000C59D42 /* TankTank.m in Sources */,
+				05A5046E17A4623000C59D42 /* TankLevel.m in Sources */,
+				05A5046F17A4623000C59D42 /* TankLevelMap.m in Sources */,
+				05A5047017A4623000C59D42 /* TankBullet.m in Sources */,
+				05A5047117A4623000C59D42 /* TankMine.m in Sources */,
+				05A5047217A4623000C59D42 /* TankEnemyTank.m in Sources */,
+				05A5047317A4623000C59D42 /* TankStartLocation.m in Sources */,
+				05A5047417A4623000C59D42 /* Vector2.m in Sources */,
+				05A5047517A4623000C59D42 /* BNZLine.m in Sources */,
+				05A5047617A4623000C59D42 /* TankServer.m in Sources */,
+				05A5047717A4623000C59D42 /* TankMenuScene.m in Sources */,
+				05A5047817A4623000C59D42 /* TankGameScene.m in Sources */,
+				05A5047917A4623000C59D42 /* TankSplashScene.m in Sources */,
+				05A5047B17A4623000C59D42 /* SKPhysics+Private.m in Sources */,
+				05A5045E17A4620300C59D42 /* DedicatedServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,6 +1194,37 @@
 			};
 			name = Release;
 		};
+		05A5046317A4620300C59D42 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Shared/Tanks3-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		05A5046417A4620300C59D42 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Shared/Tanks3-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1116,6 +1263,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		05A5046917A4620300C59D42 /* Build configuration list for PBXNativeTarget "Tanks3DedicatedServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				05A5046317A4620300C59D42 /* Debug */,
+				05A5046417A4620300C59D42 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
