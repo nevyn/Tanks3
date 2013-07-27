@@ -83,11 +83,11 @@
 			for(id label in weakSelf.serviceLabels)
 				[label removeFromParent];
 			[weakSelf.serviceLabels removeAllObjects];
-			CGPoint pen = CGPointMake(70, weakSelf.frame.size.height-300);
+			CGPoint pen = CGPointMake(50, weakSelf.frame.size.height-300);
 			for(NSNetService *service in weakSelf.foundServices) {
 				SKLabelNode *serviceLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
 				serviceLabel.fontColor = [SKColor whiteColor];
-				serviceLabel.text = service.name;
+				serviceLabel.text = [NSString stringWithFormat:@"Join %@", service.name];
 				serviceLabel.fontSize = 30;
 				serviceLabel.position = pen;
                 serviceLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
@@ -102,17 +102,17 @@
 			for(id label in weakSelf.onlineServiceLabels)
 				[label removeFromParent];
 			[weakSelf.onlineServiceLabels removeAllObjects];
-			CGPoint pen = CGPointMake(420, weakSelf.frame.size.height-300);
-			for(WorldListedGame *service in weakSelf.foundServices) {
+			CGPoint pen = CGPointMake(400, weakSelf.frame.size.height-350);
+			for(WorldListedGame *service in weakSelf.onlineMaster.publicGames) {
 				SKLabelNode *serviceLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
 				serviceLabel.fontColor = [SKColor whiteColor];
-				serviceLabel.text = service.name;
+				serviceLabel.text = [NSString stringWithFormat:@"Join %@", service.name];
 				serviceLabel.fontSize = 30;
 				serviceLabel.position = pen;
                 serviceLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-				pen.y -= 70;
+				pen.y -= 50;
 				[weakSelf addChild:serviceLabel];
-				[weakSelf.serviceLabels addObject:serviceLabel];
+				[weakSelf.onlineServiceLabels addObject:serviceLabel];
 			}
         }];
         
@@ -132,7 +132,7 @@
 	}
     
     if(hit == _createOnlineGameButton) {
-        [_onlineMaster createGameNamed:_onlineMaster.authenticatedPlayer.alias];
+        [_onlineMaster createGameNamed:[NSString stringWithFormat:@"%@'s game", _onlineMaster.authenticatedPlayer.alias]];
     }
     
 	NSInteger i = [_serviceLabels indexOfObject:hit];
