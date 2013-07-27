@@ -20,6 +20,7 @@
         _master = [[WorldMasterServer alloc] initListeningOnBasePort:kTankServerPort];
         _master.delegate = self;
         _tickTimer = [NSTimer scheduledTimerWithTimeInterval:1/60. target:self selector:@selector(tick) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(dumpStats) userInfo:nil repeats:YES];
     }
     return self;
 }
@@ -43,6 +44,27 @@
         [(TankGame*)server.game tick:1/60.];
     }
 }
+
+- (void)dumpStats
+{
+    printf("Stats:\n");
+    printf("   %-1s %-24s %-5s %-5s %-16s\n", "#", "Name", "Lvl", "State", "Players");
+    int i = 0;
+    for(WorldGameServer *server in _livingGames) {
+        TankGameState state = [(TankGame*)[server game] state];
+        const char *map[] = {"Unk", "Splash", "Game", "Win", "Win!", "Dead", "Haxx"};
+        const char *stateS = map[MIN(state, 6)];
+        printf("  %02d %-24s %-5d %-5s %-16s\n",
+            i,
+            [[[server game] name] UTF8String],
+            [(TankGame*)[server game] levelNumber],
+            stateS,
+            [[[[server game] valueForKeyPath:@"players.name"] componentsJoinedByString:@", "] UTF8String]
+        );
+        i++;
+    }
+}
+
 @end
 
 
