@@ -34,7 +34,12 @@
 
 - (void)tick
 {
-    for(WorldGameServer *server in _livingGames) {
+    for(WorldGameServer *server in [_livingGames copy]) {
+        if(server.game.players.count == 0) {
+            [_master stopGame:server];
+            [_livingGames removeObject:server];
+        }
+        
         [(TankGame*)server.game tick:1/60.];
     }
 }
