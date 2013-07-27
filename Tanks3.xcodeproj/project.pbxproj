@@ -102,6 +102,8 @@
 		05A5047C17A4624100C59D42 /* libWorldKitCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE2179EAABE00EAD12D /* libWorldKitCommon.a */; };
 		05A5047D17A4624100C59D42 /* libWorldKitServer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0598EEE6179EAABE00EAD12D /* libWorldKitServer.a */; };
 		05A5047F17A4624500C59D42 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A5047E17A4624500C59D42 /* SpriteKit.framework */; };
+		05A5048617A4691500C59D42 /* level_0.json in Copy Resources */ = {isa = PBXBuildFile; fileRef = 0540B07117A1995B00163AB8 /* level_0.json */; };
+		05A5048717A4691500C59D42 /* level_1.json in Copy Resources */ = {isa = PBXBuildFile; fileRef = 056C88EF17A223B800542D7F /* level_1.json */; };
 		05A5BE5B17A1C51D000A0EAF /* TankStartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */; };
 		05A5BE5C17A1C51D000A0EAF /* TankStartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */; };
 		05A5BE6317A1D840000A0EAF /* splash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 05A5BE6217A1D840000A0EAF /* splash.m4a */; };
@@ -200,6 +202,18 @@
 				05A5046217A4620300C59D42 /* Tanks3DedicatedServer.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		05A5048517A4690100C59D42 /* Copy Resources */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = TanksServerResources;
+			dstSubfolderSpec = 16;
+			files = (
+				05A5048617A4691500C59D42 /* level_0.json in Copy Resources */,
+				05A5048717A4691500C59D42 /* level_1.json in Copy Resources */,
+			);
+			name = "Copy Resources";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -664,6 +678,7 @@
 				05A5045617A4620300C59D42 /* Sources */,
 				05A5045717A4620300C59D42 /* Frameworks */,
 				05A5045817A4620300C59D42 /* CopyFiles */,
+				05A5048517A4690100C59D42 /* Copy Resources */,
 			);
 			buildRules = (
 			);
@@ -1271,6 +1286,7 @@
 				05A5046417A4620300C59D42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

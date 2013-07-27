@@ -34,7 +34,12 @@
 
 + (NSString*)levelPathForLevel:(int)levelNumber
 {
-    return [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"level_%d", levelNumber] ofType:@"json"];
+    NSString *filename = [NSString stringWithFormat:@"level_%d", levelNumber];
+    NSString *ret = [[NSBundle mainBundle] pathForResource:filename ofType:@"json"];
+    if(!ret) {
+        ret = [[NSBundle bundleWithPath:@"TanksServerResources"] pathForResource:filename ofType:@"json"];
+    }
+    return ret;
 }
 
 + (BOOL)isLastLevel:(int)levelNumber
