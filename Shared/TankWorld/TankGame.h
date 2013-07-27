@@ -2,10 +2,14 @@
 @class TankLevel;
 
 @interface PlayerInputState : NSObject
+// For keyboard users:
 @property (nonatomic, assign) BOOL up;
 @property (nonatomic, assign) BOOL right;
 @property (nonatomic, assign) BOOL down;
 @property (nonatomic, assign) BOOL left;
+// For joystick users:
+@property (nonatomic, assign) CGPoint joystick;
+
 - (NSDictionary*)rep;
 - (id)initWithRep:(NSDictionary*)rep;
 @end

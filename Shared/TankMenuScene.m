@@ -83,7 +83,7 @@
 			for(id label in weakSelf.serviceLabels)
 				[label removeFromParent];
 			[weakSelf.serviceLabels removeAllObjects];
-			CGPoint pen = CGPointMake(50, weakSelf.frame.size.height-300);
+			CGPoint pen = CGPointMake(50, weakSelf.frame.size.height-350);
 			for(NSNetService *service in weakSelf.foundServices) {
 				SKLabelNode *serviceLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
 				serviceLabel.fontColor = [SKColor whiteColor];

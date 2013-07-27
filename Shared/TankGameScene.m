@@ -7,6 +7,9 @@
 #import "TankBullet.h"
 #import "TankMine.h"
 #import <SPSuccinct/SPSuccinct.h>
+#if TARGET_OS_IPHONE
+#import "MVVirtualJoystickView.h"
+#endif
 
 const static int tileSize = 30;
 
@@ -61,6 +64,8 @@ const static int tileSize = 30;
 
 #if !TARGET_OS_IPHONE
     NSTrackingArea *_trackingArea;
+#else
+    MVVirtualJoystickView *_joystick;
 #endif
 }
 
@@ -232,6 +237,8 @@ const static int tileSize = 30;
         [view removeTrackingArea:_trackingArea];
         _trackingArea = nil;
     }
+#else
+    [_joystick removeFromSuperview];
 #endif
 }
 
@@ -243,6 +250,10 @@ const static int tileSize = 30;
         _trackingArea = [[NSTrackingArea alloc] initWithRect:CGRectMake(0, 0, self.size.width, self.size.height) options:opts owner:self userInfo:nil];
         [self.view addTrackingArea:_trackingArea];
     }
+#else
+    _joystick = [[MVVirtualJoystickView alloc] initWithFrame:CGRectMake(16, self.size.height, 128, 128)];
+    _joystick.delegate = self;
+    [self.view addSubview:_joystick];
 #endif
 }
 
@@ -255,8 +266,22 @@ const static int tileSize = 30;
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	[self.game cmd_aimTankAt:[Vector2 vectorWithPoint:[[touches anyObject] locationInNode:_arena]]];
-	[self.game cmd_fire];
+}
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.game cmd_fire];
+}
+
+- (void)virtualJoystick:(id)joystick changedDirectionTo:(CGPoint)direction
+{
+    direction.y = -direction.y;
+    _inputState.joystick = direction;
+/*    _inputState.left = direction.x < -0.5;
+    _inputState.right = direction.x > 0.5;
+    _inputState.up = direction.y > 0.5;
+    _inputState.down = direction.y < -0.5;*/
+	[self.game cmd_moveTank:_inputState];
 }
 
 #else

@@ -104,6 +104,10 @@
 		05A5047F17A4624500C59D42 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05A5047E17A4624500C59D42 /* SpriteKit.framework */; };
 		05A5048617A4691500C59D42 /* level_0.json in Copy Resources */ = {isa = PBXBuildFile; fileRef = 0540B07117A1995B00163AB8 /* level_0.json */; };
 		05A5048717A4691500C59D42 /* level_1.json in Copy Resources */ = {isa = PBXBuildFile; fileRef = 056C88EF17A223B800542D7F /* level_1.json */; };
+		05A5049017A4771D00C59D42 /* MVVirtualJoystickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5048C17A4771D00C59D42 /* MVVirtualJoystickView.m */; };
+		05A5049117A4771D00C59D42 /* stick_base.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A5048D17A4771D00C59D42 /* stick_base.png */; };
+		05A5049217A4771D00C59D42 /* stick_hold.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A5048E17A4771D00C59D42 /* stick_hold.png */; };
+		05A5049317A4771D00C59D42 /* stick_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 05A5048F17A4771D00C59D42 /* stick_normal.png */; };
 		05A5BE5B17A1C51D000A0EAF /* TankStartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */; };
 		05A5BE5C17A1C51D000A0EAF /* TankStartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */; };
 		05A5BE6317A1D840000A0EAF /* splash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 05A5BE6217A1D840000A0EAF /* splash.m4a */; };
@@ -295,6 +299,11 @@
 		05A5046017A4620300C59D42 /* Tanks3DedicatedServer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tanks3DedicatedServer-Prefix.pch"; sourceTree = "<group>"; };
 		05A5046117A4620300C59D42 /* Tanks3DedicatedServer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Tanks3DedicatedServer.1; sourceTree = "<group>"; };
 		05A5047E17A4624500C59D42 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/SpriteKit.framework; sourceTree = DEVELOPER_DIR; };
+		05A5048B17A4771D00C59D42 /* MVVirtualJoystickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVVirtualJoystickView.h; sourceTree = "<group>"; };
+		05A5048C17A4771D00C59D42 /* MVVirtualJoystickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVVirtualJoystickView.m; sourceTree = "<group>"; };
+		05A5048D17A4771D00C59D42 /* stick_base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stick_base.png; sourceTree = "<group>"; };
+		05A5048E17A4771D00C59D42 /* stick_hold.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stick_hold.png; sourceTree = "<group>"; };
+		05A5048F17A4771D00C59D42 /* stick_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stick_normal.png; sourceTree = "<group>"; };
 		05A5BE5917A1C51D000A0EAF /* TankStartLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TankStartLocation.h; sourceTree = "<group>"; };
 		05A5BE5A17A1C51D000A0EAF /* TankStartLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TankStartLocation.m; sourceTree = "<group>"; };
 		05A5BE6217A1D840000A0EAF /* splash.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.m4a; sourceTree = "<group>"; };
@@ -527,6 +536,11 @@
 				059CD5FD179C233E00B5981C /* MVAppDelegate.m */,
 				059CD5FE179C233E00B5981C /* MVViewController.h */,
 				059CD5FF179C233E00B5981C /* MVViewController.m */,
+				05A5048B17A4771D00C59D42 /* MVVirtualJoystickView.h */,
+				05A5048C17A4771D00C59D42 /* MVVirtualJoystickView.m */,
+				05A5048D17A4771D00C59D42 /* stick_base.png */,
+				05A5048E17A4771D00C59D42 /* stick_hold.png */,
+				05A5048F17A4771D00C59D42 /* stick_normal.png */,
 				059CD600179C233E00B5981C /* Tanks3-Info.plist */,
 			);
 			path = iOS;
@@ -828,14 +842,17 @@
 				05A5BE6317A1D840000A0EAF /* splash.m4a in Resources */,
 				05EDE1BF179EE3E40051E7F6 /* Turret.png in Resources */,
 				1B712E3B17A0959E00A5E4D7 /* mine.png in Resources */,
+				05A5049317A4771D00C59D42 /* stick_normal.png in Resources */,
 				05AA2D1617A20A54005D0AF5 /* bulletbounce0.wav in Resources */,
 				059CD608179C233E00B5981C /* InfoPlist.strings in Resources */,
+				05A5049117A4771D00C59D42 /* stick_base.png in Resources */,
 				05AA2D1A17A20A54005D0AF5 /* bulletbounce2.wav in Resources */,
 				056C88F017A223B800542D7F /* level_1.json in Resources */,
 				1B78C9F3179F43AB00EC54C5 /* floor.png in Resources */,
 				05AA2D0E17A1FF03005D0AF5 /* shoot.wav in Resources */,
 				059CD606179C233E00B5981C /* Main_iPad.storyboard in Resources */,
 				05AA2D1817A20A54005D0AF5 /* bulletbounce1.wav in Resources */,
+				05A5049217A4771D00C59D42 /* stick_hold.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +912,7 @@
 				0598EF08179EB9D200EAD12D /* TankLevel.m in Sources */,
 				0540B06E17A14A0800163AB8 /* TankSplashScene.m in Sources */,
 				0598EEF3179EB18600EAD12D /* TankGame.m in Sources */,
+				05A5049017A4771D00C59D42 /* MVVirtualJoystickView.m in Sources */,
 				05C5F66417A054FD0028EDCB /* SKPhysics+Private.m in Sources */,
 				059CD60C179C233E00B5981C /* MVViewController.m in Sources */,
 				059CD60B179C233E00B5981C /* MVAppDelegate.m in Sources */,

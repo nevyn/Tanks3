@@ -74,7 +74,7 @@
 
 - (void)applyForces:(float)delta
 {
-    if(![self.moveIntent length] || self.movementPenalty > 0) {
+    if([self.moveIntent length] == 0 || self.movementPenalty > 0) {
         _movementPenalty = MAX(0, _movementPenalty - delta);
         self.physicsBody.velocity = CGPointZero;
         self.physicsBody.angularVelocity = 0;

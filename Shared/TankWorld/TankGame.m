@@ -114,23 +114,20 @@
 	TankTank *playerTank = player.tank;
 	
 	PlayerInputState *state = [[PlayerInputState alloc] initWithRep:args[@"state"]];
-	
-    if(state.up)
-        playerTank.moveIntent = [Vector2 vectorWithX:playerTank.moveIntent.x y:1.0f];
-    else if (state.down)
-        playerTank.moveIntent = [Vector2 vectorWithX:playerTank.moveIntent.x y:-1.0f];
-    else
-        playerTank.moveIntent = [Vector2 vectorWithX:playerTank.moveIntent.x y:0];
+    
+    Vector2 *joystick = [Vector2 vectorWithPoint:state.joystick];
 
-    if(state.right)
-        playerTank.moveIntent = [Vector2 vectorWithX:1.0f y:playerTank.moveIntent.y];
-    else if(state.left)
-        playerTank.moveIntent = [Vector2 vectorWithX:-1.0f y:playerTank.moveIntent.y];
-    else
-        playerTank.moveIntent = [Vector2 vectorWithX:0 y:playerTank.moveIntent.y];
-
+    if(joystick.length > 0) {
+        playerTank.moveIntent = joystick;
+    } else {
+        MutableVector2 *moveIntent = [playerTank.moveIntent mutableCopy];
+        moveIntent.x = state.right ? 1 : state.left ? -1 : 0;
+        moveIntent.y = state.up ? 1 : state.down ? -1 : 0;
+        playerTank.moveIntent = [moveIntent copy];
+    }
+    
     // Normalize so we don't go faster diagonally
-    if([playerTank.moveIntent length] > 0.0)
+    if([playerTank.moveIntent length] > 1.0)
         playerTank.moveIntent = [playerTank.moveIntent normalizedVector];
     
     // Something changed, so force recalc of canMove
@@ -159,6 +156,7 @@
 		@"right": @(_right),
 		@"down": @(_down),
 		@"left": @(_left),
+        @"joystick": NSStringFromCGPoint(_joystick),
 	};
 }
 - (id)initWithRep:(NSDictionary*)rep
@@ -168,6 +166,7 @@
 		self.right = [rep[@"right"] boolValue];
 		self.down = [rep[@"down"] boolValue];
 		self.left = [rep[@"left"] boolValue];
+        self.joystick = CGPointFromString(rep[@"joystick"]);
 	}
 	return self;
 }
