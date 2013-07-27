@@ -7,10 +7,11 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-@class TankGame;
+@class TankGame, WorldMasterClient;
 @protocol TankMenuSceneDelegate;
 
 @interface TankMenuScene : SKScene
+-(id)initWithSize:(CGSize)size onlineMaster:(WorldMasterClient*)onlineMaster;
 @property(weak) id<TankMenuSceneDelegate> delegate;
 @end
 

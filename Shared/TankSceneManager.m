@@ -12,10 +12,16 @@ static const float kTransitionDuration = 0.6;
 @interface TankSceneManager () <TankMenuSceneDelegate, WorldMasterClientDelegate>
 {
 	TankServer *_server;
-	WorldMasterClient *_master;
+    
+    // Well, it'd be swell if a single master could handle online + bonjour...
+	WorldMasterClient *_localMaster;
+    WorldMasterClient *_onlineMaster;
+    __weak WorldMasterClient *_playingMaster; // if we're in a game: the master we're using.
+    
     WorldGameClient *_gameClient;
 	NSString *_destinationHost;
 	NSInteger _destinationPort;
+    NSMutableArray *_onlineHosts;
 }
 @end
 
@@ -24,8 +30,11 @@ static const float kTransitionDuration = 0.6;
 {
 	if(self = [super init]) {
 		self.skView = view;
+        
+        _onlineHosts = [@[@"ishtori.nevyn.nu:29534"] mutableCopy];
+        _onlineMaster = [[WorldMasterClient alloc] initWithDelegate:self];
 		
-		TankMenuScene *scene = [TankMenuScene sceneWithSize:kSceneSize];
+		TankMenuScene *scene = [[TankMenuScene alloc] initWithSize:kSceneSize onlineMaster:_onlineMaster];
 		scene.delegate = self;
 		scene.scaleMode = SKSceneScaleModeAspectFit;
 		[self.skView presentScene:scene];
@@ -47,32 +56,46 @@ static const float kTransitionDuration = 0.6;
 {
 	_destinationHost = hostName;
 	_destinationPort = port;
-	_master = [[WorldMasterClient alloc] initWithDelegate:self];
+	_localMaster = [[WorldMasterClient alloc] initWithDelegate:self];
     [self.skView presentScene:[[TankTextScene alloc] initWithSize:kSceneSize text:@"Connecting..."] transition:[SKTransition crossFadeWithDuration:kTransitionDuration]];
 }
 
 - (NSString*)nextMasterHostForMasterClient:(WorldMasterClient*)mc port:(int*)port
 {
-	*port = (int)_destinationPort;
-	return _destinationHost;
+    if(mc == _onlineMaster) {
+        NSString *pair = [_onlineHosts objectAtIndex:0];
+        [_onlineHosts removeObjectAtIndex:0];
+        [_onlineHosts insertObject:pair atIndex:0];
+        
+        NSString *host = [pair componentsSeparatedByString:@":"][0];
+        *port = [[pair componentsSeparatedByString:@":"][1] intValue];
+        return host;
+    } else {
+        *port = (int)_destinationPort;
+        return _destinationHost;
+    }
 }
 
 -(void)masterClient:(WorldMasterClient*)mc wasDisconnectedWithReason:(NSString*)reason redirect:(NSURL*)url
 {
-    [self returnToMenu];
+    if(mc == _playingMaster)
+        [self returnToMenu];
 }
 
 -(void)masterClient:(WorldMasterClient *)mc failedGameCreationWithReason:(NSString*)reason
 {
-    [self returnToMenu];
+    if(mc == _playingMaster)
+        [self returnToMenu];
 }
 -(void)masterClient:(WorldMasterClient *)mc failedGameJoinWithReason:(NSString*)reason
 {
-    [self returnToMenu];
+    if(mc == _playingMaster)
+        [self returnToMenu];
 }
 
 -(void)masterClient:(WorldMasterClient *)mc isNowInGame:(WorldGameClient*)gameClient
 {
+    _playingMaster = mc;
     _gameClient = gameClient;
     [self sp_addDependency:@"state" on:@[_gameClient, @"game.state"] target:self action:@selector(stateChanged)];
 }
@@ -112,8 +135,9 @@ static const float kTransitionDuration = 0.6;
 
 - (void)returnToMenu
 {
-	[_master disconnect];
-	_master = nil;
+    _playingMaster = nil;
+	[_localMaster disconnect];
+	_localMaster = nil;
     _gameClient = nil;
     
     [_server stop];
@@ -122,7 +146,7 @@ static const float kTransitionDuration = 0.6;
     if([self.skView.scene isKindOfClass:[TankMenuScene class]])
         return;
 	
-    TankMenuScene *scene = [TankMenuScene sceneWithSize:kSceneSize];
+    TankMenuScene *scene = [[TankMenuScene alloc] initWithSize:kSceneSize onlineMaster:_onlineMaster];
     scene.delegate = self;
     scene.scaleMode = SKSceneScaleModeAspectFit;
     
