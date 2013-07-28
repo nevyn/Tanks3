@@ -251,7 +251,7 @@ const static int tileSize = 30;
         [self.view addTrackingArea:_trackingArea];
     }
 #else
-    _joystick = [[MVVirtualJoystickView alloc] initWithFrame:CGRectMake(16, self.size.height, 128, 128)];
+    _joystick = [[MVVirtualJoystickView alloc] initWithFrame:CGRectMake(16, self.view.frame.size.width-128-16, 128, 128)];
     _joystick.delegate = self;
     [self.view addSubview:_joystick];
 #endif

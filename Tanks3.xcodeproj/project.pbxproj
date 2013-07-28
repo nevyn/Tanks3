@@ -159,6 +159,62 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0551615217A4922600457ACF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 055A815B15CD45CF0033FA0C;
+			remoteInfo = WorldKitCommon;
+		};
+		0551615417A4922600457ACF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 05AD0D7216341D9500DF7452;
+			remoteInfo = WorldKitServer;
+		};
+		0551615A17A4922C00457ACF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 055A815B15CD45CF0033FA0C;
+			remoteInfo = WorldKitCommon;
+		};
+		0551615C17A4922C00457ACF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 05AD0D7216341D9500DF7452;
+			remoteInfo = WorldKitServer;
+		};
+		0551615E17A4922C00457ACF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 05AD0D8F16341D9E00DF7452;
+			remoteInfo = WorldKitClient;
+		};
+		0551616017A4923300457ACF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 055A815B15CD45CF0033FA0C;
+			remoteInfo = WorldKitCommon;
+		};
+		0551616217A4923300457ACF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 05AD0D7216341D9500DF7452;
+			remoteInfo = WorldKitServer;
+		};
+		0551616417A4923300457ACF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 05AD0D8F16341D9E00DF7452;
+			remoteInfo = WorldKitClient;
+		};
 		0598EEE1179EAABE00EAD12D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0598EEDA179EAABE00EAD12D /* WorldKit.xcodeproj */;
@@ -644,6 +700,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				0551615B17A4922C00457ACF /* PBXTargetDependency */,
+				0551615D17A4922C00457ACF /* PBXTargetDependency */,
+				0551615F17A4922C00457ACF /* PBXTargetDependency */,
 			);
 			name = MacTanks3;
 			productName = MacTanks3;
@@ -661,6 +720,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				0551616117A4923300457ACF /* PBXTargetDependency */,
+				0551616317A4923300457ACF /* PBXTargetDependency */,
+				0551616517A4923300457ACF /* PBXTargetDependency */,
 			);
 			name = Tanks3;
 			productName = Tanks3;
@@ -697,6 +759,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				0551615317A4922600457ACF /* PBXTargetDependency */,
+				0551615517A4922600457ACF /* PBXTargetDependency */,
 			);
 			name = Tanks3DedicatedServer;
 			productName = Tanks3DedicatedServer;
@@ -959,6 +1023,46 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0551615317A4922600457ACF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WorldKitCommon;
+			targetProxy = 0551615217A4922600457ACF /* PBXContainerItemProxy */;
+		};
+		0551615517A4922600457ACF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WorldKitServer;
+			targetProxy = 0551615417A4922600457ACF /* PBXContainerItemProxy */;
+		};
+		0551615B17A4922C00457ACF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WorldKitCommon;
+			targetProxy = 0551615A17A4922C00457ACF /* PBXContainerItemProxy */;
+		};
+		0551615D17A4922C00457ACF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WorldKitServer;
+			targetProxy = 0551615C17A4922C00457ACF /* PBXContainerItemProxy */;
+		};
+		0551615F17A4922C00457ACF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WorldKitClient;
+			targetProxy = 0551615E17A4922C00457ACF /* PBXContainerItemProxy */;
+		};
+		0551616117A4923300457ACF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WorldKitCommon;
+			targetProxy = 0551616017A4923300457ACF /* PBXContainerItemProxy */;
+		};
+		0551616317A4923300457ACF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WorldKitServer;
+			targetProxy = 0551616217A4923300457ACF /* PBXContainerItemProxy */;
+		};
+		0551616517A4923300457ACF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WorldKitClient;
+			targetProxy = 0551616417A4923300457ACF /* PBXContainerItemProxy */;
+		};
 		059CD5E2179C22F500B5981C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 059CD5B0179C22F500B5981C /* Tanks3 */;
